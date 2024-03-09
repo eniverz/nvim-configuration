@@ -84,7 +84,7 @@ function mapping.gitsigns(buf)
             end)
             :with_buffer(buf)
             :with_desc("git: Reset buffer"),
-        ["n|<leader>gp"] = bind.map_callback(function()
+        ["n|<leader>gh"] = bind.map_callback(function()
                 actions.preview_hunk()
             end)
             :with_buffer(buf)
