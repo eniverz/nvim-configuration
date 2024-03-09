@@ -102,11 +102,18 @@ settings["server_formatting_block_list"] = {
 settings["lsp_deps"] = {
     "bashls",
     "clangd",
+    "cmake",
+    "cssls",
+    "cssmodules_ls",
+    "csharp_ls",
+    "eslint",
     "html",
+    "htmx",
     "jsonls",
     "lua_ls",
     "pylsp",
-    -- "gopls",
+    "tsserver",
+    "vuels",
 }
 
 -- Set the general-purpose servers that will be installed during bootstrap here.
@@ -116,8 +123,6 @@ settings["lsp_deps"] = {
 ---@type string[]
 settings["null_ls_deps"] = {
     "clang_format",
-    "gofumpt",
-    "goimports",
     "prettier",
     "shfmt",
     "stylua",
@@ -129,8 +134,9 @@ settings["null_ls_deps"] = {
 -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
 ---@type string[]
 settings["dap_deps"] = {
+    "cppdbg", -- Cpp-Family
     "codelldb", -- C-Family
-    "delve", -- Go
+    "bash",  -- Bash
     "python", -- Python (debugpy)
 }
 
@@ -143,8 +149,6 @@ settings["treesitter_deps"] = {
     "c",
     "cpp",
     "css",
-    "go",
-    "gomod",
     "html",
     "javascript",
     "json",
