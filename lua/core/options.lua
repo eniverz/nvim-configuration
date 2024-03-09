@@ -17,6 +17,7 @@ local function load_options()
         clipboard = "unnamedplus",
         cmdheight = 1, -- 0, 1, 2
         cmdwinheight = 5,
+        colorcolumn = "80",
         complete = ".,w,b,k",
         completeopt = "menuone,noselect",
         concealcursor = "niv",
@@ -29,6 +30,7 @@ local function load_options()
         equalalways = false,
         errorbells = true,
         expandtab = true,
+        fileencoding = "utf-8",
         fileformats = "unix,mac,dos",
         foldenable = true,
         foldlevelstart = 99,
@@ -38,6 +40,7 @@ local function load_options()
         helpheight = 12,
         hidden = true,
         history = 2000,
+        hlsearch = true,
         ignorecase = true,
         inccommand = "nosplit",
         incsearch = true,
@@ -55,7 +58,7 @@ local function load_options()
         pumblend = 0,
         pumheight = 15,
         redrawtime = 1500,
-        relativenumber = true,
+        relativenumber = false,
         ruler = true,
         scrolloff = 2,
         sessionoptions = "buffers,curdir,folds,help,tabpages,winpos,winsize",
@@ -69,6 +72,7 @@ local function load_options()
         showtabline = 2,
         sidescrolloff = 5,
         signcolumn = "yes",
+        smartindent = true,
         smartcase = true,
         smarttab = true,
         softtabstop = 4,
@@ -96,6 +100,7 @@ local function load_options()
         wildignore =
         ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
         wildignorecase = true,
+        wildmenu = true,
         -- Do NOT adjust the following option (winblend) if you're using transparent background
         winblend = 0,
         winminwidth = 10,

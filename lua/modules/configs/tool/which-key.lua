@@ -11,6 +11,9 @@ return function()
             b = {
                 name = icons.ui.Buffer .. " Buffer",
             },
+            c = {
+                name = icons.misc.Gavel .. "Crates",
+            },
             d = {
                 name = icons.ui.Bug .. " Debug",
             },
@@ -31,6 +34,12 @@ return function()
             },
             s = {
                 name = icons.cmp.tmux .. "Session",
+            },
+            t = {
+                name = icons.misc.PyEnv .. " Terminal",
+            },
+            w = {
+                name = icons.misc.ManUp .. " Window",
             },
         },
     })

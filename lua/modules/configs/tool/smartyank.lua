@@ -1,12 +1,12 @@
 return function()
     require("modules.utils").load_plugin("smartyank", {
         highlight = {
-            enabled = false, -- highlight yanked text
+            enabled = true, -- highlight yanked text
             higroup = "IncSearch", -- highlight group of yanked text
             timeout = 2000, -- timeout for clearing the highlight
         },
         clipboard = {
-            enabled = true,
+            enabled = false,
         },
         tmux = {
             enabled = true,
