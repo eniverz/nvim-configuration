@@ -108,7 +108,6 @@ settings["lsp_deps"] = {
     "csharp_ls",
     "eslint",
     "html",
-    "htmx",
     "jsonls",
     "lua_ls",
     "pylsp",

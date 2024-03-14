@@ -160,6 +160,10 @@ local load_core = function()
     require("core.pack")
     require("keymap")
 
+    -- change delete keymap
+    vim.api.nvim_set_keymap("n", "d", "\"_d", { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("v", "d", "\"_d", { noremap = true, silent = true })
+
     local colorscheme = settings.colorscheme
     local background = settings.background
     vim.api.nvim_command("set background=" .. background)
