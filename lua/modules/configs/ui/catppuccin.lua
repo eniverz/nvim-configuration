@@ -152,6 +152,43 @@ return function()
                     TelescopeResultsDiffAdd = { fg = cp.green },
                     TelescopeResultsDiffChange = { fg = cp.yellow },
                     TelescopeResultsDiffDelete = { fg = cp.red },
+                    TelescopeBorder = {
+                        fg = cp.blue,
+                        bg = cp.none,
+                    },
+                    TelescopeNormal = {
+                        bg = cp.none,
+                    },
+                    TelescopePromptBorder = {
+                        fg = cp.blue,
+                        bg = cp.none,
+                    },
+                    TelescopePromptNormal = {
+                        fg = cp.text,
+                        bg = cp.none,
+                    },
+                    TelescopePromptPrefix = {
+                        fg = cp.flamingo,
+                        bg = cp.none,
+                    },
+                    TelescopePreviewTitle = {
+                        fg = cp.green,
+                        bg = cp.none,
+                    },
+                    TelescopePromptTitle = {
+                        fg = cp.red,
+                        bg = cp.none,
+                    },
+                    TelescopeResultsTitle = {
+                        fg = cp.lavender,
+                        bg = cp.none,
+                    },
+                    TelescopeSelection = {
+                        fg = cp.flamingo,
+                        bg = cp.none,
+                        style = { "bold" },
+                    },
+                    TelescopeSelectionCaret = { fg = cp.flamingo },
 
                     -- For glance.nvim
                     GlanceWinBarFilename = { fg = cp.subtext1, style = { "bold" } },
