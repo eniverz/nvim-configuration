@@ -1,9 +1,14 @@
 local ui = {}
 
-ui["goolord/alpha-nvim"] = {
+--[[ ui["goolord/alpha-nvim"] = {
     lazy = true,
     event = "BufWinEnter",
     config = require("ui.alpha"),
+} ]]
+ui["nvimdev/dashboard-nvim"] = {
+  event = 'VimEnter',
+  config = require("ui.dashboard"),
+  dependencies = {{'nvim-tree/nvim-web-devicons'}}
 }
 ui["akinsho/bufferline.nvim"] = {
     lazy = true,

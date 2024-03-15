@@ -1,4 +1,4 @@
-return function()
+--[[ return function()
     local dashboard = require("alpha.themes.dashboard")
     require("modules.utils").gen_alpha_hl()
 
@@ -134,4 +134,4 @@ return function()
             pcall(vim.cmd.AlphaRedraw)
         end,
     })
-end
+end ]]
