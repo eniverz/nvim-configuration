@@ -1,5 +1,4 @@
 return function()
-    local stats = require("lazy").stats()
     local opt = {
         theme = 'doom',
         config = {
@@ -11,10 +10,10 @@ return function()
                     icon_hl = "Title",
                     desc = 'Scheme Change                                  ',
                     desc_hl = "String",
-                    key = '<leader> f f',
+                    key = '<leader> f C',
                     key_hl = "Number",
                     key_format = ' %s', -- remove default surrounding `[]`
-                    action = 'lua print(stats.startuptime)'
+                    action = 'Telescope colorscheme'
                 },
                 {
                     icon_hl = "Title",
@@ -67,18 +66,24 @@ return function()
                     action = 'Telescope live_grep'
                 }
             },
-            footer = {
-                "   Have Fun with neovim"
-                .. "  󰀨 v"
-                .. vim.version().major
-                .. "."
-                .. vim.version().minor
-                .. "."
-                .. vim.version().patch
-                .. "  󰂖 "
-                .. stats.count
-                .. " plugins"
-            } --your footer
+            footer = function ()
+                local stats = require("lazy").stats()
+                local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                return {
+                    "   Have Fun with neovim"
+                    .. "  󰀨 v"
+                    .. vim.version().major
+                    .. "."
+                    .. vim.version().minor
+                    .. "."
+                    .. vim.version().patch
+                    .. "  󰂖 "
+                    .. stats.count
+                    .. " plugins in "
+                    .. ms
+                    .. "ms"
+                }
+            end --your footer
         }
     }
     require("modules.utils").load_plugin("dashboard", opt)
