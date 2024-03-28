@@ -20,6 +20,15 @@ local plug_map = {
     ["n|<leader>sd"] = map_cu("SessionDelete"):with_noremap():with_silent():with_desc("session: Delete"),
 
     -- Plugin: comment.nvim
+    ["n|<C-/>"] = map_callback(function()
+            return vim.v.count == 0 and et("<Plug>(comment_toggle_linewise_current)")
+                or et("<Plug>(comment_toggle_linewise_count)")
+        end)
+        :with_silent()
+        :with_noremap()
+        :with_expr()
+        :with_desc("edit: Toggle comment for line"),
+    -- Some terminal emulator should use _ for /, such as gnome-terminal and terminator
     ["n|<C-_>"] = map_callback(function()
             return vim.v.count == 0 and et("<Plug>(comment_toggle_linewise_current)")
                 or et("<Plug>(comment_toggle_linewise_count)")
@@ -28,6 +37,7 @@ local plug_map = {
         :with_noremap()
         :with_expr()
         :with_desc("edit: Toggle comment for line"),
+
     ["n|gbc"] = map_callback(function()
             return vim.v.count == 0 and et("<Plug>(comment_toggle_blockwise_current)")
                 or et("<Plug>(comment_toggle_blockwise_count)")
