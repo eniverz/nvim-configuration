@@ -176,6 +176,42 @@ local plug_map = {
         :with_noremap()
         :with_silent()
         :with_desc("debug: Step over"),
+    ["n|<leader>dr"] = map_callback(function()
+            require("dap").continue()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("debug: Run/Continue, <F6>"),
+    ["n|<leader>ds"] = map_callback(function()
+            require("dap").terminate()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("debug: Stop, <F7>"),
+    ["n|<leader>dB"] = map_callback(function()
+            require("dap").toggle_breakpoint()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("debug: Toggle breakpoint, <F8>"),
+    ["n|<leader>di"] = map_callback(function()
+            require("dap").step_into()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("debug: Step into, <F9>"),
+    ["n|<leader>dO"] = map_callback(function()
+            require("dap").step_out()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("debug: Step out, <F10>"),
+    ["n|<leader>dS"] = map_callback(function()
+            require("dap").step_over()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("debug: Step over, <F11>"),
     ["n|<leader>db"] = map_callback(function()
             require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
         end)
