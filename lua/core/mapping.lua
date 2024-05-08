@@ -27,11 +27,11 @@ local core_map = {
     ["n|<leader>w]"] = map_cr("vertical resize +5"):with_silent():with_desc("window: Resize +5 vertically"),
     ["n|<leader>w="] = map_cr("resize -2"):with_silent():with_desc("window: Resize -2 horizontally"),
     ["n|<leader>w-"] = map_cr("resize +2"):with_silent():with_desc("window: Resize +2 horizontally"),
-    ["n|<A-q>"] = map_cr("BufDel"):with_noremap():with_silent():with_desc("buffer: Close current"),
+    ["n|<C-w>"] = map_cr("BufDel"):with_noremap():with_silent():with_desc("buffer: Close current"),
     ["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
     ["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"):with_desc("edit: Toggle spell check"),
     -- Insert mode
-    ["i|<C-s>"] = map_cmd("<Esc>:w<CR>"):with_desc("edit: Save file"),
+    ["i|<C-s>"] = map_cmd("<Esc><Esc><Esc>:w<CR>"):with_desc("edit: Save file"),
     ["i|<A-q>"] = map_cr("BufDel"):with_noremap():with_silent():with_desc("buffer: Close current"),
     -- Command mode
     ["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]])

@@ -22,7 +22,20 @@ return function()
             selection_strategy = "reset",
             sorting_strategy = "ascending",
             color_devicons = true,
-            file_ignore_patterns = { ".git/", ".cache", "build/", "%.class", "%.pdf", "%.mkv", "%.mp4", "%.zip" },
+            file_ignore_patterns = {
+                "%.git/",
+                ".cache",
+                "build/",
+                "%.pdf",
+                "%.mp3",
+                "%.mkv",
+                "%.mp4",
+                "%.zip",
+                "node_modules/.*",
+                "yarn.lock",
+                "package%-lock.json",
+                "lazy%-lock.json"
+            },
             layout_config = {
                 horizontal = {
                     prompt_position = "top",
@@ -61,7 +74,7 @@ return function()
                 use_sqlite = false,
                 show_scores = true,
                 show_unindexed = true,
-                ignore_patterns = { "*.git/*", "*/tmp/*" },
+                ignore_patterns = { "*/[.]git/*", "*/tmp/*" },
             },
             live_grep_args = {
                 auto_quoting = true, -- enable/disable auto-quoting
@@ -81,10 +94,12 @@ return function()
                         -- you want to use the following actions. This means installing as a dependency of
                         -- telescope in it's `requirements` and loading this extension from there instead of
                         -- having the separate plugin definition as outlined above. See issue #6.
-                        ["<cr>"] = require("telescope-undo.actions").yank_additions,
-                        ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-                        ["<C-cr>"] = require("telescope-undo.actions").restore,
+                        ["<cr>"] = require("telescope-undo.actions").restore,
                     },
+                    n = {
+                        ["<cr>"] = require("telescope-undo.actions").restore,
+                    },
+
                 },
             },
         },
