@@ -113,6 +113,12 @@ local plug_map = {
         :with_silent()
         :with_desc("find: Word in project"),
     ["n|<leader>fe"] = map_cu("Telescope oldfiles"):with_noremap():with_silent():with_desc("find: File by history"),
+    ["n|<leader>fj"] = map_callback(function ()
+            require("telescope.builtin").jumplist()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("jump: show jumplist"),
     ["n|<leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent():with_desc("find: File in project"),
     ["n|<leader>fC"] = map_callback(function()
             require("telescope.builtin").colorscheme({ enable_preview = true })
