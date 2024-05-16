@@ -67,7 +67,7 @@ local plug_map = {
         :with_noremap()
         :with_silent()
         :with_desc("lsp: Show lsp references"),
-    ["n|<leader>ld"] = map_cr("TroubleToggle document_diagnostics")
+    ["n|<leader>lD"] = map_cr("TroubleToggle document_diagnostics")
         :with_noremap()
         :with_silent()
         :with_desc("lsp: Show document diagnostics"),

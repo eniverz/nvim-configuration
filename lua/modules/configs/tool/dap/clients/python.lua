@@ -38,28 +38,10 @@ return function()
             program = utils.input_file_path(),
             pythonPath = function()
                 if not is_empty(vim.env.CONDA_PREFIX) then
+                    if not is_empty(vim.env.CONDA_DEFAULT_ENV) then
+                        return vim.env.CONDA_PREFIX .. "/envs/" .. vim.env.CONDA_DEFAULT_ENV .. "/bin/python"
+                    end
                     return vim.env.CONDA_PREFIX .. "/bin/python"
-                else
-                    return "python3"
-                end
-            end,
-        },
-        {
-            -- NOTE: This setting is for people using venv
-            type = "python",
-            request = "launch",
-            name = "Debug (using venv)",
-            -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-            console = "integratedTerminal",
-            program = utils.input_file_path(),
-            pythonPath = function()
-                local cwd, venv = vim.fn.getcwd(), os.getenv("VIRTUAL_ENV")
-                if venv and vim.fn.executable(venv .. "/bin/python") == 1 then
-                    return venv .. "/bin/python"
-                elseif vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-                    return cwd .. "/venv/bin/python"
-                elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-                    return cwd .. "/.venv/bin/python"
                 else
                     return "python3"
                 end
