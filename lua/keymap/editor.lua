@@ -19,6 +19,12 @@ local plug_map = {
     ["n|<leader>sl"] = map_cu("SessionLoad"):with_noremap():with_silent():with_desc("session: Load current"),
     ["n|<leader>sd"] = map_cu("SessionDelete"):with_noremap():with_silent():with_desc("session: Delete"),
 
+    -- Ctrl + Backspace(<C-H>, usually ^H is the keycode of Ctrl Backspace) or Ctrl + Del
+    ["n|<C-H>"] = map_cmd("db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
+    ["i|<C-H>"] = map_cmd("<C-o>db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
+    ["n|<C-Del>"] = map_cmd("dw"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word backward"),
+    ["i|<C-Del>"] = map_cmd("<C-o>dw"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word backward"),
+
     -- Plugin: comment.nvim
     ["n|<C-/>"] = map_callback(function()
             return vim.v.count == 0 and et("<Plug>(comment_toggle_linewise_current)")
