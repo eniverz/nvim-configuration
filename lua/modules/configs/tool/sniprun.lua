@@ -1,6 +1,26 @@
 return function()
+    local function is_empty(s)
+        return s == nil or s == ""
+    end
+
+    local function get_python_env ()
+        local venv = vim.env.CONDA_PREFIX
+        if not is_empty(venv) then
+            if not is_empty(vim.env.CONDA_DEFAULT_ENV) and vim.env.CONDA_DEFAULT_ENV ~= "base" then
+                print(vim.env.CONDA_DEFAULT_ENV)
+                return venv .. "/envs/" .. vim.env.CONDA_DEFAULT_ENV .. "/bin/python"
+            end
+            return venv .. "/bin/python"
+        end
+        if not is_empty(vim.env.VIRTUAL_ENV) then
+            return vim.env.VIRTUAL_ENV .. "/bin/python"
+        end
+    end
+
     require("modules.utils").load_plugin("sniprun", {
-        selected_interpreters = {}, -- " use those instead of the default for the current filetype
+        selected_interpreters = {
+            get_python_env(),
+        }, -- " use those instead of the default for the current filetype
         repl_enable = {},     -- " enable REPL-like behavior for the given interpreters
         repl_disable = {},    -- " disable REPL-like behavior for the given interpreters
         interpreter_options = {}, -- " intepreter-specific options, consult docs / :SnipInfo <name>
