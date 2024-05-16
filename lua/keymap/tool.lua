@@ -182,6 +182,13 @@ local plug_map = {
         :with_noremap()
         :with_silent()
         :with_desc("debug: Step over"),
+    ["n|<leader>du"] = map_callback(function()
+        require("dap")
+        require("dapui").toggle()
+    end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("toggle the ui of dap"),
     ["n|<leader>dr"] = map_callback(function()
             require("dap").continue()
         end)
