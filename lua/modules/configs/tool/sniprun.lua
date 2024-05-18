@@ -6,10 +6,6 @@ return function()
     local function get_python_env ()
         local venv = vim.env.CONDA_PREFIX
         if not is_empty(venv) then
-            if not is_empty(vim.env.CONDA_DEFAULT_ENV) and vim.env.CONDA_DEFAULT_ENV ~= "base" then
-                print(vim.env.CONDA_DEFAULT_ENV)
-                return venv .. "/envs/" .. vim.env.CONDA_DEFAULT_ENV .. "/bin/python"
-            end
             return venv .. "/bin/python"
         end
         if not is_empty(vim.env.VIRTUAL_ENV) then
