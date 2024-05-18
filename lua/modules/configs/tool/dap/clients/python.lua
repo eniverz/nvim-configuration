@@ -38,9 +38,6 @@ return function()
             program = utils.input_file_path(),
             pythonPath = function()
                 if not is_empty(vim.env.CONDA_PREFIX) then
-                    if not is_empty(vim.env.CONDA_DEFAULT_ENV) then
-                        return vim.env.CONDA_PREFIX .. "/envs/" .. vim.env.CONDA_DEFAULT_ENV .. "/bin/python"
-                    end
                     return vim.env.CONDA_PREFIX .. "/bin/python"
                 else
                     return "python3"
