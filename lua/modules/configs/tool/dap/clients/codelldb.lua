@@ -24,6 +24,15 @@ return function()
             terminal = "integrated",
         },
         {
+            name = "CMake with CLion format",
+            type = "codelldb",
+            request = "launch",
+            program = utils.input_cmake_exec_path(),
+            cwd = "${workspaceFolder}",
+            stopOnEntry = false,
+            terminal = "integrated",
+        },
+        {
             name = "Debug (with args)",
             type = "codelldb",
             request = "launch",
