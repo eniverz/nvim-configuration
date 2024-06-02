@@ -118,4 +118,7 @@ bind.nvim_load_mapping({
         :with_noremap()
         :with_nowait()
         :with_desc("edit: move line down"),
+
+    -- indent
+    ["n|<leader>lF"] = map_cmd("<Cmd>normal! gg=G``"):with_noremap():with_silent():with_desc("format indent"),
 })

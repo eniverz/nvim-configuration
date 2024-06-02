@@ -15,6 +15,7 @@ local settings = {
             buftypes = {},
         },
     },
+    load_big_files_faster = true,
 }
 
 return settings
