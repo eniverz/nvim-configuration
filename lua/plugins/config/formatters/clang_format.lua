@@ -2,15 +2,16 @@
 local function tableToString(tbl)
     local result = {}
     for k, v in pairs(tbl) do
+        table.insert(result, k)
         -- 如果值是字符串，则加上引号，否则直接转换为字符串
         if type(v) == "string" then
-            table.insert(result, k .. ": " .. '"' .. v .. '"')
+            table.insert(result, v)
         else
-            table.insert(result, k .. ": " .. tostring(v))
+            table.insert(result, tostring(v))
         end
     end
-    -- 将结果列表用逗号和空格连接，形成最终的字符串
-    return table.concat(result, ", ")
+
+    return result
 end
 
 
@@ -79,4 +80,4 @@ local styles = {
     UseTab = "Never"
 }
 
-return { "-style={" .. tableToString(styles) .. "}" }
+return tableToString(styles)

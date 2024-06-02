@@ -1,5 +1,8 @@
 return {
     "williamboman/mason.nvim",
+    dependencies = {
+        "williamboman/mason-lspconfig.nvim"
+    },
     cmd = {
         "Mason",
         "MasonInstall",
@@ -27,4 +30,5 @@ return {
         },
     },
     build = ":MasonUpdate",
+    config = require("plugins.config.mason"),
 }

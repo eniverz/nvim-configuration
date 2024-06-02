@@ -86,4 +86,18 @@ return {
             end, opts)
         end,
     },
+    {
+        "dmitmel/cmp-cmdline-history",
+        after = "cmp-cmdline",
+        config = function()
+            local cmp = require("cmp")
+            for _, cmd_type in ipairs({':', '/', '?', '@'}) do
+                cmp.setup.cmdline(cmd_type, {
+                    sources = {
+                        { name = 'cmdline_history' },
+                    },
+                })
+            end
+        end,
+    }
 }

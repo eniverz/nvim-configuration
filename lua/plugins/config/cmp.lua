@@ -68,6 +68,7 @@ return function(_, opts)
         }
 
     local cmp = require("cmp")
+    ---@diagnostic disable: missing-fields
     cmp.setup({
         preselect = cmp.PreselectMode.Item,
         window = {

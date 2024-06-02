@@ -1,6 +1,4 @@
-local M = {}
-
-M.setup = function()
+return function()
     local is_windows = require("config.global").is_windows
 
     local mason_registry = require("mason-registry")
@@ -90,5 +88,3 @@ M.setup = function()
         end)
     )
 end
-
-return M
