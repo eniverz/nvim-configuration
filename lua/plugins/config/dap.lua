@@ -44,7 +44,7 @@ return function()
     ---@param config table
     local function mason_dap_handler(config)
         local dap_name = config.name
-        ok, custom_handler = pcall(require, "plugins.config.clients." .. dap_name)
+        local ok, custom_handler = pcall(require, "plugins.config.clients." .. dap_name)
         if not ok then
             -- Default to use factory config for clients(s) that doesn't include a spec
             mason_dap.default_setup(config)

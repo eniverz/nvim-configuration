@@ -16,6 +16,7 @@ local settings = {
         },
     },
     load_big_files_faster = true,
+    external_browser = "xdg-open",
 }
 
 return settings
