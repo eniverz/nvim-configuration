@@ -4,20 +4,40 @@ return {
         "nvim-treesitter/nvim-treesitter",
         lazy = true,
         dependencies = { { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true } },
-        build = function()
-            if #vim.api.nvim_list_uis() ~= 0 then
-                vim.api.nvim_command([[TSUpdate]])
-            end
+        cmd = {
+            "TSBufDisable",
+            "TSBufEnable",
+            "TSBufToggle",
+            "TSDisable",
+            "TSEnable",
+            "TSToggle",
+            "TSInstall",
+            "TSInstallInfo",
+            "TSInstallSync",
+            "TSModuleInfo",
+            "TSUninstall",
+            "TSUpdate",
+            "TSUpdateSync",
+        },
+        build = ":TSUpdate",
+        init = function(plugin)
+            -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
+            -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
+            -- no longer trigger the **nvim-treeitter** module to be loaded in time.
+            -- Luckily, the only thins that those plugins need are the custom queries, which we make available
+            -- during startup.
+            -- CODE FROM LazyVim (thanks folke!) https://github.com/LazyVim/LazyVim/commit/1e1b68d633d4bd4faa912ba5f49ab6b8601dc0c9
+            require("lazy.core.loader").add_to_rtp(plugin)
+            require "nvim-treesitter.query_predicates"
         end,
-        config = function()
-            local config = require("nvim-treesitter.configs")
+        config = vim.schedule_wrap(function(_, opts)
             local use_ssh = require("config.settings").use_ssh
 
             vim.api.nvim_set_option_value("foldmethod", "expr", {})
             vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
 
-            ---@diagnostic disable: missing-fields
-            config.setup({
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = opts.ensure_installed or "maintained",
                 highlight = {
                     enable = true,
                     disable = function(ft, bufnr)
@@ -71,47 +91,31 @@ return {
                     p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
                 end
             end
-
-        end,
+        end),
     },
     { "andymass/vim-matchup" },
     { "mfussenegger/nvim-treehopper" },
     {
         "abecodes/tabout.nvim",
         event  = "InsertEnter",
-        {
-            "hrsh7th/nvim-cmp",
-            opts = function(_, opts)
-                local cmp, luasnip = require "cmp", require "luasnip"
-                opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" })
-            end,
+        opts = {
+            tabkey = "",        -- key to trigger tabout, set to an empty string to disable
+            backwards_tabkey = "", -- key to trigger backwards tabout, set to an empty string to disable
+            act_as_tab = true,  -- shift content if tab out is not possible
+            act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+            enable_backwards = true,
+            completion = true,  -- if the tabkey is used in a completion pum
+            tabouts = {
+                { open = "'", close = "'" },
+                { open = '"', close = '"' },
+                { open = "`", close = "`" },
+                { open = "(", close = ")" },
+                { open = "[", close = "]" },
+                { open = "{", close = "}" },
+            },
+            ignore_beginning = true, -- if the cursor is at the beginning of a filled element it will rather tab out than shift the content
+            exclude = {},      -- tabout will ignore these filetypes
         },
-        -- opts = {
-        --     tabkey = "",        -- key to trigger tabout, set to an empty string to disable
-        --     backwards_tabkey = "", -- key to trigger backwards tabout, set to an empty string to disable
-        --     act_as_tab = true,  -- shift content if tab out is not possible
-        --     act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-        --     enable_backwards = true,
-        --     completion = true,  -- if the tabkey is used in a completion pum
-        --     tabouts = {
-        --         { open = "'", close = "'" },
-        --         { open = '"', close = '"' },
-        --         { open = "`", close = "`" },
-        --         { open = "(", close = ")" },
-        --         { open = "[", close = "]" },
-        --         { open = "{", close = "}" },
-        --     },
-        --     ignore_beginning = true, -- if the cursor is at the beginning of a filled element it will rather tab out than shift the content
-        --     exclude = {},      -- tabout will ignore these filetypes
-        -- },
         config = function (_, opts)
             require("tabout").setup(opts)
         end,
@@ -158,7 +162,7 @@ return {
                         return nil
                     end
                     return vim.fn.line("$") > threshold and require("rainbow-delimiters").strategy["global"]
-                        or require("rainbow-delimiters").strategy["local"]
+                    or require("rainbow-delimiters").strategy["local"]
                 end
             end
 
@@ -186,7 +190,6 @@ return {
                     "RainbowDelimiterViolet",
                 },
             }
-            require("rainbow-delimiters").setup()
         end,
     },
     {
@@ -220,7 +223,7 @@ return {
                             context_commentstring = ts_context_avail and ts_context
                         end
                         return context_commentstring and context_commentstring.calculate_commentstring()
-                            or get_option(filetype, option)
+                        or get_option(filetype, option)
                     end
                 end)
             end
@@ -228,7 +231,7 @@ return {
         opts = { enable_autocmd = false },
         config = function(_, opts)
             vim.g.skip_ts_context_commentstring_module = true
-            require("nvim-ts-context-commentstring").setup(opts)
+            require("ts_context_commentstring").setup(opts)
         end,
     },
 }

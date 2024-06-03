@@ -26,6 +26,5 @@ require("lazy").setup({
     { import = "plugins.languages" },
     { import = "plugins.lsp" },
     { import = "plugins.tools" },
-    { import = "plugins" },
     { import = "themes" },
 }, lazy_config)
