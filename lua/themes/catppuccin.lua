@@ -2,6 +2,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
+        lazy = false,
         config = function()
             local transparent_background = require("config.scheme").transparent_background
             local clear = {}
