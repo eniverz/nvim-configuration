@@ -87,4 +87,7 @@ return {
             },
         }
     end,
+    config = function(_, opts)
+        require("glance").setup(opts)
+    end
 }

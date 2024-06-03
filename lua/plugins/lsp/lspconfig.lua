@@ -71,6 +71,7 @@ return {
     },
     {
         "nvimdev/lspsaga.nvim",
+        lazy = true,
         event = "LspAttach",
         cmd = "Lspsaga",
         dependencies = {
@@ -78,8 +79,6 @@ return {
             "nvim-lua/popup.nvim",
             "nvim-lua/plenary.nvim",
         },
-        config = function()
-            require("lspsaga")
-        end,
+        config = require("plugins.config.lspsaga"),
     }
 }
