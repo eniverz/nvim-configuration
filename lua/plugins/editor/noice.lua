@@ -52,7 +52,7 @@ return {
     {
         "hrsh7th/cmp-cmdline",
         keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
-        dependencies = { "hrsh7th/nvim-cmp" },
+        dependencies = { "hrsh7th/nvim-cmp", "dmitmel/cmp-cmdline-history" },
         opts = function()
             local cmp = require("cmp")
             return {
@@ -60,23 +60,42 @@ return {
                     type = "/",
                     mapping = cmp.mapping.preset.cmdline(),
                     sources = {
-                        { name = "buffer" },
+                        cmp.config.sources(
+                            { { name = "buffer" } },
+                            { { name = "cmdline_history" } }
+                        ),
                     },
                 },
                 {
                     type = ":",
                     mapping = cmp.mapping.preset.cmdline(),
-                    sources = cmp.config.sources({
-                        { name = "path" },
-                    }, {
+                    sources = cmp.config.sources(
                         {
-                        	name = "cmdline",
-                        	option = {
-                        		ignore_cmds = { "Man", "!" },
-                        	},
+                            { name = "path" },
                         },
-                    }),
+                        {
+                            {
+                                name = "cmdline",
+                                option = {
+                                    ignore_cmds = { "Man", "!" },
+                                },
+                            },
+                        },
+                        {
+                            { name = "cmdline_history" },
+                        }
+                    ),
                 },
+                {
+                    type = "?",
+                    mapping = cmp.mapping.preset.cmdline(),
+                    sources = { name = "cmdline_history" }
+                },
+                {
+                    type = "@",
+                    mapping = cmp.mapping.preset.cmdline(),
+                    sources = { name = "cmdline_history" }
+                }
             }
         end,
         config = function(_, opts)
@@ -86,18 +105,4 @@ return {
             end, opts)
         end,
     },
-    {
-        "dmitmel/cmp-cmdline-history",
-        after = "cmp-cmdline",
-        config = function()
-            local cmp = require("cmp")
-            for _, cmd_type in ipairs({':', '/', '?', '@'}) do
-                cmp.setup.cmdline(cmd_type, {
-                    sources = {
-                        { name = 'cmdline_history' },
-                    },
-                })
-            end
-        end,
-    }
 }
