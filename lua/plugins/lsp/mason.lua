@@ -38,6 +38,13 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         dependencies = { "williamboman/mason.nvim" },
+        opts = {
+            integrations = {
+                ["mason-lspconfig"] = true,
+                ["mason-null-ls"] = true,
+                ["mason-nvim-dap"] = false,
+            }
+        },
         config = function(_, opts)
             require("mason-tool-installer").setup(opts)
         end

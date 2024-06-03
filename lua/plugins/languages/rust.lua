@@ -119,41 +119,4 @@ return {
         },
         config = require("plugins.config.crates"),
     },
-    {
-        "mfussenegger/nvim-dap",
-        optional = true,
-        config = function ()
-            local dap = require("dap")
-            local utils = require("utils.dap")
-            dap.configurations.rust = {
-                {
-                    name = "Debug",
-                    type = "codelldb",
-                    request = "launch",
-                    program = utils.input_rust_exec_path(),
-                    cwd = "${workspaceFolder}",
-                    stopOnEntry = false,
-                    terminal = "integrated",
-                },
-                {
-                    name = "Debug (with args)",
-                    type = "codelldb",
-                    request = "launch",
-                    program = utils.input_rust_exec_path(),
-                    args = utils.input_args(),
-                    cwd = "${workspaceFolder}",
-                    stopOnEntry = false,
-                    terminal = "integrated",
-                },
-                {
-                    name = "Attach to a running process",
-                    type = "codelldb",
-                    request = "attach",
-                    program = utils.input_rust_exec_path(),
-                    stopOnEntry = false,
-                    waitFor = true,
-                },
-            }
-        end
-    }
 }
