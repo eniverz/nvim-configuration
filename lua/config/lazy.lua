@@ -69,7 +69,7 @@ local lazy_settings = {
         skip_if_doc_exists = true,
     },
 }
-if is_mac then
+if global.is_mac then
     lazy_settings.concurrency = 20
 end
 
