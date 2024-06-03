@@ -154,8 +154,8 @@ local load_core = function()
 
     require("config.options")
     require("config.events")
-    require("keymap")
     require("lazy_setup")
+    require("keymap")
 
     -- change delete keymap
     vim.api.nvim_set_keymap("n", "d", '"_d', { noremap = true, silent = true })

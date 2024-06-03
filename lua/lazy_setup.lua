@@ -21,10 +21,10 @@ if not pcall(require, "lazy") then
 end
 
 require("lazy").setup({
+    { import = "themes" },
     { import = "plugins.editor" },
     { import = "plugins.formatter" },
     { import = "plugins.languages" },
     { import = "plugins.lsp" },
     { import = "plugins.tools" },
-    { import = "themes" },
 }, lazy_config)
