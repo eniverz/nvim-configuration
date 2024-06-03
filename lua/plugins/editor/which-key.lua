@@ -14,7 +14,7 @@ return {
                 b = {
                     name = icons.ui.Buffer .. " Buffer",
                 },
-                c = {
+                C = {
                     name = icons.misc.Gavel .. "Crates",
                 },
                 d = {
