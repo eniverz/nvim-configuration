@@ -6,13 +6,15 @@ bind.nvim_load_mapping({
     -- Ctrl + Backspace(<C-H>, usually ^H is the keycode of Ctrl Backspace) or Ctrl + Del
     ["n|<C-H>"] = map_cmd("db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
     -- ["i|<C-BS>"] = map_cmd("<C-o>db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
-    ["i|<C-H>"] = map_callback(function()
-            print(123)
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_expr()
-        :with_desc("sad"),
+    -- ["i|<C-H>"] = map_callback(function()
+    --         print(123)
+    --     end)
+    --     :with_silent()
+    --     :with_noremap()
+    --     :with_expr()
+    --     :with_desc("sad"),
+    ["i|<C-H>"] = map_cmd("<C-o>db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
+    ["i|<C-BS>"] = map_cmd("<C-o>db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
     ["n|<C-Del>"] = map_cmd("dw"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word backward"),
     ["i|<C-Del>"] = map_cmd("<C-o>dw")
         :with_noremap()
@@ -120,5 +122,5 @@ bind.nvim_load_mapping({
         :with_desc("edit: move line down"),
 
     -- indent
-    ["n|<leader>lF"] = map_cmd("<Cmd>normal! gg=G``"):with_noremap():with_silent():with_desc("format indent"),
+    ["n|<leader>lF"] = map_cmd("<Cmd>normal! gg=G``<CR>"):with_noremap():with_silent():with_desc("format indent"),
 })
