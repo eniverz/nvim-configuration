@@ -37,6 +37,7 @@ return {
             vim.api.nvim_set_option_value("foldmethod", "expr", {})
             vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
 
+            ---@diagnostic disable: missing-fields
             require("nvim-treesitter.configs").setup({
                 ensure_installed = opts.ensure_installed or "maintained",
                 highlight = {
