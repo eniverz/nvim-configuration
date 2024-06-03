@@ -13,7 +13,7 @@ return {
         optional = true,
         opts = function(_, opts)
             opts.ensure_installed =
-            require("utils.core").list_insert_unique(opts.ensure_installed, { "html", "cssls", "emmet_ls", "tailwindcss" })
+            require("utils.core").list_insert_unique(opts.ensure_installed, { "html", "cssls", "cssmodules_ls", "emmet_ls", "tailwindcss" })
         end,
     },
     {
@@ -39,29 +39,4 @@ return {
             },
         },
     },
-    {
-        "neovim/nvim-lspconfig",
-        config = function (_, opts)
-            require("lspconfig").html.setup({
-                cmd = { "html-languageserver", "--stdio" },
-                filetypes = { "html" },
-                init_options = {
-                    configurationSection = { "html", "css", "javascript" },
-                    embeddedLanguages = { css = true, javascript = true },
-                    provideFormatter = false,
-                },
-                settings = {},
-                single_file_support = true,
-                flags = { debounce_text_changes = 500 },
-
-                capabilities = opts.capabilities,
-                on_attach = opts.on_attach,
-            })
-            require("lspconfig").cssls.setup({
-                init_options = { provideFormatter = false },
-                capabilities = opts.capabilities,
-                on_attach = opts.on_attach,
-            })
-        end
-    }
 }

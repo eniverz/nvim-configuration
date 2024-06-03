@@ -9,40 +9,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        config = function (_, opts)
-            require("lspconfig").lua_ls.setup({
-                capabilities = opts.capabilities,
-                on_attach = opts.on_attach,
-
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" },
-                            disable = { "different-requires" },
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("config") .. "/lua"] = true,
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 10000,
-                        },
-                        hint = {
-                            enable = true,
-                            arrayIndex = "Disable"
-                        },
-                        format = { enable = false },
-                        telemetry = { enable = false },
-                        -- Do not override treesitter lua highlighting with lua_ls's highlighting
-                        semantic = { enable = false },
-                    }
-                }
-            })
-        end
-    },
-    {
         "williamboman/mason-lspconfig.nvim",
         optional = true,
         opts = function(_, opts)
@@ -54,8 +20,14 @@ return {
         optional = true,
         opts = function(_, opts)
             opts.ensure_installed =
-            require("utils.core").list_insert_unique(opts.ensure_installed, { "lua-language-server", "stylua", "selene" })
+            require("utils.core").list_insert_unique(opts.ensure_installed,
+                { "lua-language-server", "stylua", "selene" })
         end,
+    },
+    {
+        "folke/neodev.nvim",
+        lazy = true,
+        config = true,
     },
     {
         "stevearc/conform.nvim",

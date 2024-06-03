@@ -9,23 +9,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        config = function(_, opts)
-            require("lspconfig").bashls.setup({
-                cmd = { "bash-language-server", "start" },
-                on_attach = opts.on_attach,
-                filetypes = { "sh", "bash" },
-                settings = {
-                    {
-                        bashIde = {
-                            globPattern = "*@(.sh|.inc|.bash|.command|.zsh)"
-                        }
-                    }
-                }
-            })
-        end,
-    },
-    {
         "williamboman/mason-lspconfig.nvim",
         optional = true,
         opts = function(_, opts)

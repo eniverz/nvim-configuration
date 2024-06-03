@@ -32,14 +32,4 @@ return {
             )
         end,
     },
-    {
-        "neovim/nvim-lspconfig",
-        config = function (_, opts)
-            require("lspconfig").csharp_ls.setup({
-                filetype = { "cs" },
-                capabilities = opts.capabilities,
-                on_attach = opts.on_attach,
-            })
-        end
-    }
 }

@@ -7,13 +7,19 @@ return {
             {
                 "antosha417/nvim-lsp-file-operations",
                 config = true,
-            }
+            },
+            {
+                "folke/neodev.nvim",
+                lazy = true,
+                config = true,
+            },
         },
         config = function (_, opts)
+            require("lspconfig.ui.windows").default_options.border = "rounded"
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
             opts.capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-            opts.on_attach = require("keymap.completion")
+            opts.on_attach = require("keymap.completion").lsp
 
             vim.api.nvim_command([[LspStart]])
         end

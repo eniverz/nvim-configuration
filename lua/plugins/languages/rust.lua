@@ -121,7 +121,7 @@ return {
     },
     {
         "mfussenegger/nvim-dap",
-        lazy = true,
+        optional = true,
         config = function ()
             local dap = require("dap")
             local utils = require("utils.dap")

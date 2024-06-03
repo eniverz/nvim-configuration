@@ -27,19 +27,4 @@ return {
             opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "jsonls" })
         end,
     },
-    {
-        "neovim/nvim-lspconfig",
-        config = function (_, opts)
-            require("lspconfig").jsonls.setup({
-                flags = { debounce_text_changes = 500 },
-                capabilities = opts.capabilities,
-                on_attach = opts.on_attach,
-                on_new_config = function(config)
-                    if not config.settings.json.schemas then config.settings.json.schemas = {} end
-                    vim.list_extend(config.settings.json.schemas, require("schemastore").json.schemas())
-                end,
-                settings = { json = { validate = { enable = true } } },
-            })
-        end
-    }
 }
