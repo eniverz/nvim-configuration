@@ -105,7 +105,7 @@ return {
             buftypes = { "terminal", "nofile", "quickfix", "prompt" },
         },
     },
-    config = function()
-        require("ibl").setup()
+    config = function(_, opts)
+        require("ibl").setup(opts)
     end,
 }
