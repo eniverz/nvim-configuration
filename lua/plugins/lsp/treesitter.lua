@@ -3,7 +3,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         lazy = true,
-        dependencies = { { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true } },
+        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
         cmd = {
             "TSBufDisable",
             "TSBufEnable",
@@ -19,6 +19,7 @@ return {
             "TSUpdate",
             "TSUpdateSync",
         },
+        event = "BufReadPre",
         build = ":TSUpdate",
         init = function(plugin)
             -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -136,11 +137,9 @@ return {
     },
     {
         "NvChad/nvim-colorizer.lua",
-        cmd = { "ColorizerToggle", "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer", "ColorizerReloadAllBuffers" },
-        opts = { user_default_options = { names = false } },
-        config = function(_, opts)
+        config = function()
             local colorizer = require "colorizer"
-            colorizer.setup(opts)
+            colorizer.setup({})
             for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
                 if vim.t[tab].bufs then vim.tbl_map(function(buf) colorizer.attach_to_buffer(buf) end, vim.t[tab].bufs) end
             end
