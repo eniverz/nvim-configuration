@@ -81,7 +81,7 @@ return {
                     navic = { enabled = false },
                     neogit = false,
                     neotest = false,
-                    neotree = { enabled = false, show_root = true, transparent_panel = false },
+                    neotree = false,
                     noice = false,
                     notify = true,
                     nvimtree = true,
