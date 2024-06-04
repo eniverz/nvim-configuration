@@ -7,7 +7,10 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "cpp", "c", "objc", "cuda", "proto" })
+                opts.ensure_installed = require("utils.core").list_insert_unique(
+                    opts.ensure_installed,
+                    { "cpp", "c", "objc", "cuda", "proto" }
+                )
             end
         end,
     },
@@ -70,7 +73,9 @@ return {
         optional = true,
         opts = function(_, opts)
             local tools = { "codelldb" }
-            if not is_linux_arm then table.insert(tools, "clangd") end
+            if not is_linux_arm then
+                table.insert(tools, "clangd")
+            end
             opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, tools)
         end,
     },
@@ -78,7 +83,8 @@ return {
         "jay-babu/mason-nvim-dap.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb", "cppdbg" })
+            opts.ensure_installed =
+                require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb", "cppdbg" })
         end,
     },
     {
@@ -95,9 +101,14 @@ return {
             formatters = {
                 ["clang-format"] = {
                     command = "clang-format",
-                    args = vim.tbl_extend("force", require("plugins.config.formatters.clang_format"), {"-assume-filename", "$FILENAME"}),
+                    args = vim.tbl_extend(
+                        "force",
+                        require("plugins.config.formatters.clang_format"),
+                        { "-assume-filename", "$FILENAME" }
+                    ),
                     range_args = function(self, ctx)
-                        local start_offset, end_offset = require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
+                        local start_offset, end_offset =
+                            require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
                         local length = end_offset - start_offset
                         return {
                             "-assume-filename",
@@ -108,8 +119,8 @@ return {
                             tostring(length),
                         }
                     end,
-                }
-            }
-        }
-    }
+                },
+            },
+        },
+    },
 }

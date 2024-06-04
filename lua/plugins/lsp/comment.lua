@@ -8,9 +8,9 @@ return {
         local opts = require("lazy.core.plugin").values(plugin, "opts", false)
         if vim.tbl_get(opts, "mappings", "basic") ~= false then
             vim.list_extend(keys, {
-                { vim.tbl_get(opts, "toggler", "line") or "gcc",  desc = "Comment toggle current line" },
+                { vim.tbl_get(opts, "toggler", "line") or "gcc", desc = "Comment toggle current line" },
                 { vim.tbl_get(opts, "toggler", "block") or "gbc", desc = "Comment toggle current block" },
-                { vim.tbl_get(opts, "opleader", "line") or "gc",  desc = "Comment toggle linewise" },
+                { vim.tbl_get(opts, "opleader", "line") or "gc", desc = "Comment toggle linewise" },
                 { vim.tbl_get(opts, "opleader", "block") or "gb", desc = "Comment toggle blockwise" },
                 {
                     vim.tbl_get(opts, "opleader", "line") or "gc",
@@ -28,7 +28,7 @@ return {
             vim.list_extend(keys, {
                 { vim.tbl_get(keys, "extra", "below") or "gco", desc = "Comment insert below" },
                 { vim.tbl_get(opts, "extra", "above") or "gcO", desc = "Comment insert above" },
-                { vim.tbl_get(opts, "extra", "eol") or "gcA",   desc = "Comment insert end of line" },
+                { vim.tbl_get(opts, "extra", "eol") or "gcA", desc = "Comment insert end of line" },
             })
         end
     end,

@@ -4,7 +4,8 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "html", "css" })
+                opts.ensure_installed =
+                    require("utils.core").list_insert_unique(opts.ensure_installed, { "html", "css" })
             end
         end,
     },
@@ -12,8 +13,10 @@ return {
         "williamboman/mason-lspconfig.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed =
-            require("utils.core").list_insert_unique(opts.ensure_installed, { "html", "cssls", "cssmodules_ls", "emmet_ls", "tailwindcss" })
+            opts.ensure_installed = require("utils.core").list_insert_unique(
+                opts.ensure_installed,
+                { "html", "cssls", "cssmodules_ls", "emmet_ls", "tailwindcss" }
+            )
         end,
     },
     {

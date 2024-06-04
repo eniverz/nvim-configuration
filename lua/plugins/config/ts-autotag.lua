@@ -13,7 +13,6 @@ local function exec_buffer_autocmds(event, opts)
     end
 end
 
-
 return function(_, opts)
     require("nvim-ts-autotag").setup(opts)
     exec_buffer_autocmds("FileType", { group = "nvim_ts_xmltag" })

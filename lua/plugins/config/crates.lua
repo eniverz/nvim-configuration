@@ -12,11 +12,10 @@ return function()
         desc = "Load crates.nvim into Cargo buffers",
         pattern = "Cargo.toml",
         callback = function()
-            require("cmp").setup.buffer { sources = { { name = "crates" } } }
-            require "crates"
+            require("cmp").setup.buffer({ sources = { { name = "crates" } } })
+            require("crates")
         end,
     })
-
 
     require("crates").setup({
         smart_insert = true,

@@ -1,5 +1,5 @@
 -- align word by space or tab
--- e.g. 
+-- e.g.
 -- a = 1    -> a   =   1
 -- abc= 123 -> abc = 123
 return {

@@ -77,11 +77,11 @@ function autocmd.load_autocmds()
                 "*.vim",
                 [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
             },
-            { "BufWritePre", "/tmp/*",         "setlocal noundofile" },
+            { "BufWritePre", "/tmp/*", "setlocal noundofile" },
             { "BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile" },
-            { "BufWritePre", "MERGE_MSG",      "setlocal noundofile" },
-            { "BufWritePre", "*.tmp",          "setlocal noundofile" },
-            { "BufWritePre", "*.bak",          "setlocal noundofile" },
+            { "BufWritePre", "MERGE_MSG", "setlocal noundofile" },
+            { "BufWritePre", "*.tmp", "setlocal noundofile" },
+            { "BufWritePre", "*.bak", "setlocal noundofile" },
             -- auto place to last edit
             {
                 "BufReadPost",
@@ -115,12 +115,12 @@ function autocmd.load_autocmds()
             -- Check if file changed when its window is focus, more eager than 'autoread'
             { "FocusGained", "* checktime" },
             -- Equalize window dimensions when resizing vim window
-            { "VimResized",  "*",          [[tabdo wincmd =]] },
+            { "VimResized", "*", [[tabdo wincmd =]] },
         },
         ft = {
-            { "FileType", "alpha",    "set showtabline=0" },
+            { "FileType", "alpha", "set showtabline=0" },
             { "FileType", "markdown", "set wrap" },
-            { "FileType", "make",     "set noexpandtab shiftwidth=8 softtabstop=0" },
+            { "FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0" },
             { "FileType", "dap-repl", "lua require('dap.ext.autocompl').attach()" },
             {
                 "FileType",

@@ -6,5 +6,7 @@ return function(_, opts)
 
     require("luasnip").config.setup(opts)
 
-    vim.tbl_map(function(type) require("luasnip.loaders.from_" .. type).lazy_load() end, { "lua", "vscode", "snipmate" })
+    vim.tbl_map(function(type)
+        require("luasnip.loaders.from_" .. type).lazy_load()
+    end, { "lua", "vscode", "snipmate" })
 end

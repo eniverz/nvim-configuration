@@ -14,7 +14,6 @@ local function tableToString(tbl)
     return result
 end
 
-
 local styles = {
     AlignOperands = "Align",
     AllowAllArgumentsOnNextLine = false,
@@ -30,18 +29,18 @@ local styles = {
     AlwaysBreakTemplateDeclarations = "Yes",
     BreakBeforeBraces = "Custom",
     -- BraceWrapping = {
-        -- AfterCaseLabel = false,
-        -- AfterClass = false,
-        -- AfterControlStatement = "Never",
-        -- AfterEnum = false,
-        -- AfterFunction = false,
-        -- AfterNamespace = false,
-        -- AfterUnion = false,
-        -- BeforeCatch = false,
-        -- BeforeElse = false,
-        -- IndentBraces = false,
-        -- SplitEmptyFunction = false,
-        -- SplitEmptyRecord = true
+    -- AfterCaseLabel = false,
+    -- AfterClass = false,
+    -- AfterControlStatement = "Never",
+    -- AfterEnum = false,
+    -- AfterFunction = false,
+    -- AfterNamespace = false,
+    -- AfterUnion = false,
+    -- BeforeCatch = false,
+    -- BeforeElse = false,
+    -- IndentBraces = false,
+    -- SplitEmptyFunction = false,
+    -- SplitEmptyRecord = true
     -- },
     BreakBeforeBinaryOperators = "None",
     BreakBeforeTernaryOperators = true,
@@ -77,7 +76,7 @@ local styles = {
     SpacesInParentheses = false,
     SpacesInSquareBrackets = false,
     TabWidth = 4,
-    UseTab = "Never"
+    UseTab = "Never",
 }
 
 return tableToString(styles)

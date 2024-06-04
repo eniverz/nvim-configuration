@@ -4,7 +4,8 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "python", "toml" })
+                opts.ensure_installed =
+                    require("utils.core").list_insert_unique(opts.ensure_installed, { "python", "toml" })
             end
         end,
     },
@@ -20,7 +21,9 @@ return {
         optional = true,
         opts = function(_, opts)
             opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "python" })
-            if not opts.handlers then opts.handlers = {} end
+            if not opts.handlers then
+                opts.handlers = {}
+            end
             opts.handlers.python = function() end -- make sure python doesn't get set up by mason-nvim-dap, it's being set up by nvim-dap-python
         end,
     },
@@ -28,8 +31,10 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed =
-            require("utils.core").list_insert_unique(opts.ensure_installed, { "pyright", "black", "isort", "debugpy" })
+            opts.ensure_installed = require("utils.core").list_insert_unique(
+                opts.ensure_installed,
+                { "pyright", "black", "isort", "debugpy" }
+            )
         end,
     },
     {
@@ -45,7 +50,9 @@ return {
                     args = function(self, ctx)
                         local line_end = "\n"
                         local os_name = (vim.uv or vim.loop).os_uname().sysname
-                        if os_name:find "Darwin" then line_end = "\r" end
+                        if os_name:find("Darwin") then
+                            line_end = "\r"
+                        end
 
                         local line_length = 120
 
@@ -59,9 +66,9 @@ return {
                             "$FILENAME",
                             "-",
                         }
-                    end
-                }
-            }
+                    end,
+                },
+            },
         },
     },
     {

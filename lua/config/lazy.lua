@@ -1,5 +1,5 @@
-local global = require "config.global"
-local settings = require "config.settings"
+local global = require("config.global")
+local settings = require("config.settings")
 
 local clone_prefix = settings.use_ssh and "git@github.com:%s.git" or "https://github.com/%s.git"
 local lazy_settings = {
@@ -54,11 +54,11 @@ local lazy_settings = {
             disable_events = { "UIEnter", "BufReadPre" },
             ttl = 3600 * 24 * 2, -- keep unused modules for up to 2 days
         },
-        reset_packpath = true,   -- reset the package path to improve startup time
+        reset_packpath = true, -- reset the package path to improve startup time
         rtp = {
-            reset = true,        -- reset the runtime path to $VIMRUNTIME and the config directory
+            reset = true, -- reset the runtime path to $VIMRUNTIME and the config directory
             ---@type string[]
-            paths = {},          -- add any custom paths here that you want to include in the rtp
+            paths = {}, -- add any custom paths here that you want to include in the rtp
         },
     },
     readme = {
@@ -72,6 +72,5 @@ local lazy_settings = {
 if global.is_mac then
     lazy_settings.concurrency = 20
 end
-
 
 return lazy_settings

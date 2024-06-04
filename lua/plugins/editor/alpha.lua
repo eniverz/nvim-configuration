@@ -1,4 +1,6 @@
-if true then return {} end -- avoid use this because it is full of bugs
+if true then
+    return {}
+end -- avoid use this because it is full of bugs
 -- Dashboard Plugin
 return {
     "goolord/alpha-nvim",

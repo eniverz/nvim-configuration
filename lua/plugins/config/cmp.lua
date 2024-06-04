@@ -34,23 +34,23 @@ return function(_, opts)
 
     local use_copilot = require("config.lsp").features.copilot
     local comparators = use_copilot == true
-        and {
-            require("copilot_cmp.comparators").prioritize,
-            require("copilot_cmp.comparators").score,
-            -- require("cmp_tabnine.compare"),
-            compare.offset, -- Items closer to cursor will have lower priority
-            compare.exact,
-            -- compare.scopes,
-            compare.lsp_scores,
-            compare.sort_text,
-            compare.score,
-            compare.recently_used,
-            -- compare.locality, -- Items closer to cursor will have higher priority, conflicts with `offset`
-            require("cmp-under-comparator").under,
-            compare.kind,
-            compare.length,
-            compare.order,
-        }
+            and {
+                require("copilot_cmp.comparators").prioritize,
+                require("copilot_cmp.comparators").score,
+                -- require("cmp_tabnine.compare"),
+                compare.offset, -- Items closer to cursor will have lower priority
+                compare.exact,
+                -- compare.scopes,
+                compare.lsp_scores,
+                compare.sort_text,
+                compare.score,
+                compare.recently_used,
+                -- compare.locality, -- Items closer to cursor will have higher priority, conflicts with `offset`
+                require("cmp-under-comparator").under,
+                compare.kind,
+                compare.length,
+                compare.order,
+            }
         or {
             -- require("cmp_tabnine.compare"),
             compare.offset, -- Items closer to cursor will have lower priority
@@ -163,7 +163,7 @@ return function(_, opts)
         },
         -- You should specify your *installed* sources.
         sources = {
-            { name = "nvim_lsp",     max_item_count = 350 },
+            { name = "nvim_lsp", max_item_count = 350 },
             { name = "nvim_lua" },
             { name = "luasnip" },
             { name = "path" },

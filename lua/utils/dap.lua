@@ -18,11 +18,7 @@ function M.input_cmake_exec_path()
 end
 
 function M.input_rust_exec_path()
-    return vim.fn.input(
-        "Path to executable (in target/debug): ",
-        vim.fn.expand("%:p:h") .. "/target/debug/",
-        "file"
-    )
+    return vim.fn.input("Path to executable (in target/debug): ", vim.fn.expand("%:p:h") .. "/target/debug/", "file")
 end
 
 function M.input_file_path()
