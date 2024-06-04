@@ -2,7 +2,6 @@ return function()
     local is_windows = require("config.global").is_windows
 
     local mason_registry = require("mason-registry")
-    require("lspconfig.ui.windows").default_options.border = "rounded"
 
     local icons = {
         ui = require("config.icons").get("ui", true),

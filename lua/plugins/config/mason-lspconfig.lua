@@ -20,7 +20,7 @@ return function(_, opts)
 
     local lsp_opts = {
         capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = require("keymap.completion").lsp
+        on_attach = require("keymap.completion").lsp,
     }
     ---A handler to setup all servers defined under `completion/servers/*.lua`
     ---@param lsp_name string

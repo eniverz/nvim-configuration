@@ -33,15 +33,17 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
+        lazy = true,
         config = require("plugins.config.mason-lspconfig"),
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        -- lazy = true,
         dependencies = { "williamboman/mason.nvim" },
         opts = {
             integrations = {
-                ["mason-lspconfig"] = true,
-                ["mason-null-ls"] = true,
+                ["mason-lspconfig"] = false,
+                ["mason-null-ls"] = false,
                 ["mason-nvim-dap"] = false,
             },
         },
