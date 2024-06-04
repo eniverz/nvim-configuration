@@ -29,7 +29,7 @@ return {
             -- during startup.
             -- CODE FROM LazyVim (thanks folke!) https://github.com/LazyVim/LazyVim/commit/1e1b68d633d4bd4faa912ba5f49ab6b8601dc0c9
             require("lazy.core.loader").add_to_rtp(plugin)
-            require "nvim-treesitter.query_predicates"
+            require("nvim-treesitter.query_predicates")
         end,
         config = vim.schedule_wrap(function(_, opts)
             local use_ssh = require("config.settings").use_ssh
@@ -99,14 +99,14 @@ return {
     { "mfussenegger/nvim-treehopper" },
     {
         "abecodes/tabout.nvim",
-        event  = "InsertEnter",
+        event = { "InsertEnter", "InsertCharPre" },
         opts = {
-            tabkey = "",        -- key to trigger tabout, set to an empty string to disable
-            backwards_tabkey = "", -- key to trigger backwards tabout, set to an empty string to disable
-            act_as_tab = true,  -- shift content if tab out is not possible
+            tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
+            backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
+            act_as_tab = true, -- shift content if tab out is not possible
             act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
             enable_backwards = true,
-            completion = true,  -- if the tabkey is used in a completion pum
+            completion = true, -- if the tabkey is used in a completion pum
             tabouts = {
                 { open = "'", close = "'" },
                 { open = '"', close = '"' },
@@ -114,11 +114,12 @@ return {
                 { open = "(", close = ")" },
                 { open = "[", close = "]" },
                 { open = "{", close = "}" },
+                { open = "#", close = "]" },
             },
             ignore_beginning = true, -- if the cursor is at the beginning of a filled element it will rather tab out than shift the content
-            exclude = {},      -- tabout will ignore these filetypes
+            exclude = {}, -- tabout will ignore these filetypes
         },
-        config = function (_, opts)
+        config = function(_, opts)
             require("tabout").setup(opts)
         end,
     },
@@ -139,10 +140,14 @@ return {
     {
         "NvChad/nvim-colorizer.lua",
         config = function()
-            local colorizer = require "colorizer"
+            local colorizer = require("colorizer")
             colorizer.setup({})
             for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
-                if vim.t[tab].bufs then vim.tbl_map(function(buf) colorizer.attach_to_buffer(buf) end, vim.t[tab].bufs) end
+                if vim.t[tab].bufs then
+                    vim.tbl_map(function(buf)
+                        colorizer.attach_to_buffer(buf)
+                    end, vim.t[tab].bufs)
+                end
             end
         end,
     },
@@ -162,7 +167,7 @@ return {
                         return nil
                     end
                     return vim.fn.line("$") > threshold and require("rainbow-delimiters").strategy["global"]
-                    or require("rainbow-delimiters").strategy["local"]
+                        or require("rainbow-delimiters").strategy["local"]
                 end
             end
 
@@ -194,14 +199,14 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        opts ={
+        opts = {
             enable = true,
-            max_lines = 3,      -- How many lines the window should span. Values <= 0 mean no limit.
+            max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
             min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
             line_numbers = true,
             multiline_threshold = 20, -- Maximum number of lines to collapse for a single context line
             trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-            mode = "cursor",    -- Line used to calculate context. Choices: 'cursor', 'topline'
+            mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
             zindex = 30,
         },
         config = function()
@@ -211,19 +216,21 @@ return {
     {
         "JoosepAlviste/nvim-ts-context-commentstring",
         init = function()
-            if vim.fn.has "nvim-0.10" == 1 then
+            if vim.fn.has("nvim-0.10") == 1 then
                 -- HACK: add workaround for native comments: https://github.com/JoosepAlviste/nvim-ts-context-commentstring/issues/109
                 vim.schedule(function()
                     local get_option = vim.filetype.get_option
                     local context_commentstring
                     vim.filetype.get_option = function(filetype, option)
-                        if option ~= "commentstring" then return get_option(filetype, option) end
+                        if option ~= "commentstring" then
+                            return get_option(filetype, option)
+                        end
                         if context_commentstring == nil then
                             local ts_context_avail, ts_context = pcall(require, "ts_context_commentstring.internal")
                             context_commentstring = ts_context_avail and ts_context
                         end
                         return context_commentstring and context_commentstring.calculate_commentstring()
-                        or get_option(filetype, option)
+                            or get_option(filetype, option)
                     end
                 end)
             end
