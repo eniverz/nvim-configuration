@@ -39,17 +39,20 @@ return {
                     name = icons.cmp.tmux .. "Session",
                 },
                 t = {
-                    name = icons.misc.PyEnv .. " Terminal",
+                    name = icons.ui.Terminal .. " Terminal",
                 },
                 w = {
                     name = icons.misc.ManUp .. " Window",
                 },
                 u = {
-                    name = "UI",
+                    name = icons.ui.Window .. " UI",
                 },
                 z = {
-                    name = "fold"
-                }
+                    name = icons.ui.BookMark .. " fold",
+                },
+                x = {
+                    name = icons.ui.Trouble .. " Trouble",
+                },
             },
         })
         require("which-key").setup({

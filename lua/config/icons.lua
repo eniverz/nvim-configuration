@@ -134,6 +134,9 @@ local data = {
         Tab = "",
         Table = "",
         Telescope = "",
+        Terminal = "",
+        Trouble = "󱍼",
+        Window = "",
     },
     diagnostics = {
         Error = "",
