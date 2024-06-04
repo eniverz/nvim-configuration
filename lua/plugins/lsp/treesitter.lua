@@ -209,8 +209,8 @@ return {
             mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
             zindex = 30,
         },
-        config = function()
-            require("treesitter-context").setup()
+        config = function(_, opts)
+            require("treesitter-context").setup(opts)
         end,
     },
     {
