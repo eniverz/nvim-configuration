@@ -31,9 +31,11 @@ if use_copilot then
         dependencies = {
             {
                 "zbirenbaum/copilot-cmp",
-                config = function() require("copilot_cmp").setup() end
+                config = function(_, opts)
+                    require("copilot_cmp").setup(opts)
+                end,
             },
-        }
+        },
     }
 end
 

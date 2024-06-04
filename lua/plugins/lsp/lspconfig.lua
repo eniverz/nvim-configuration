@@ -14,7 +14,7 @@ return {
                 config = true,
             },
         },
-        config = function (_, opts)
+        config = function(_, opts)
             require("lspconfig.ui.windows").default_options.border = "rounded"
             local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -22,11 +22,11 @@ return {
             opts.on_attach = require("keymap.completion").lsp
 
             vim.api.nvim_command([[LspStart]])
-        end
+        end,
     },
     {
         "Jint-lzxy/lsp_signature.nvim",
-        opts =  {
+        opts = {
             bind = true,
             -- TODO: Remove the following line when nvim-cmp#1613 gets resolved
             check_completion_visible = false,
@@ -36,10 +36,12 @@ return {
             hint_enable = true,
             transparency = nil, -- disabled by default, allow floating win transparent value 1~100
             wrap = true,
-            zindex = 45,  -- avoid overlap with nvim.cmp
+            zindex = 45, -- avoid overlap with nvim.cmp
             handler_opts = { border = "single" },
         },
-        config = function() require("lsp_signature") end
+        config = function()
+            require("lsp_signature")
+        end,
     },
     {
         "onsails/lspkind.nvim",
@@ -67,7 +69,7 @@ return {
             },
             menu = {},
         },
-        config= function()end
+        config = function() end,
     },
     {
         "nvimdev/lspsaga.nvim",
@@ -80,5 +82,13 @@ return {
             "nvim-lua/plenary.nvim",
         },
         config = require("plugins.config.lspsaga"),
-    }
+    },
+    {
+        "catppuccin",
+        optional = true,
+        ---@type CatppuccinOptions
+        opts = {
+            integrations = { lsp_saga = true, lsp_trouble = true },
+        },
+    },
 }

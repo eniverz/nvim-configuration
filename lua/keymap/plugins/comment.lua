@@ -19,10 +19,10 @@ local x_mapping = map_cmd("<Esc><Cmd>lua require('Comment.api').locked('toggle.l
 
 bind.nvim_load_mapping({
     ["n|<leader>/"] = mapping,
-    ["ni|<C-/>"] = mapping,
-    ["ni|<C-_>"] = mapping,
+    ["n|<C-/>"] = mapping,
+    ["n|<C-_>"] = mapping,
 
     ["x|<leader>/"] = x_mapping,
-    ["x|<C-/>"] = x_mapping,
-    ["x|<C-_>"] = x_mapping,
+    ["xi|<C-/>"] = x_mapping,
+    ["xi|<C-_>"] = x_mapping,
 })

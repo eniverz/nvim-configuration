@@ -3,10 +3,10 @@ return {
     "akinsho/bufferline.nvim",
     lazy = true,
     event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    config = function()
+    config = function(_, opts)
         local icons = { ui = require("config.icons").get("ui") }
 
-        local opts = {
+        local m_opts = {
             options = {
                 number = nil,
                 close_command = require("utils.buffer").close,
@@ -70,10 +70,9 @@ return {
                     },
                 }),
             }
-
-            opts = vim.tbl_deep_extend("force", opts, catppuccin_hl_overwrite)
         end
+        opts = vim.tbl_deep_extend("force", opts, m_opts)
 
         require("bufferline").setup(opts)
-    end
+    end,
 }

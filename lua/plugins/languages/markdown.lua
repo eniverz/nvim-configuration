@@ -8,11 +8,12 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = function (_, opts)
+        opts = function(_, opts)
             if opts ~= nil then
-                opts = require("utils.core").list_insert_unique(opts.ensure_installed, {"markdown", "markdown_inline"})
+                opts =
+                    require("utils.core").list_insert_unique(opts.ensure_installed, { "markdown", "markdown_inline" })
             end
-        end
+        end,
     },
     {
         "williamboman/mason-lspconfig.nvim",
@@ -29,6 +30,14 @@ return {
                 markdown = { { "prettierd", "prettier" } },
                 ["markdown.mdx"] = { { "prettierd", "prettier" } },
             },
+        },
+    },
+    {
+        "catppuccin",
+        optional = true,
+        ---@type CatppuccinOptions
+        opts = {
+            integrations = { markdown = true },
         },
     },
 }

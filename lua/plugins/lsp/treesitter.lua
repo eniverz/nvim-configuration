@@ -139,9 +139,9 @@ return {
     },
     {
         "NvChad/nvim-colorizer.lua",
-        config = function()
+        config = function(_, opts)
             local colorizer = require("colorizer")
-            colorizer.setup({})
+            colorizer.setup(opts)
             for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
                 if vim.t[tab].bufs then
                     vim.tbl_map(function(buf)
@@ -240,5 +240,21 @@ return {
             vim.g.skip_ts_context_commentstring_module = true
             require("ts_context_commentstring").setup(opts)
         end,
+    },
+    {
+        "catppuccin",
+        optional = true,
+        ---@type CatppuccinOptions
+        opts = {
+            integrations = {
+                rainbow_delimiters = true,
+                treesitter = true,
+                treesitter_context = true,
+                ts_rainbow = false,
+                ts_rainbow2 = false,
+                semantic_tokens = true,
+                symbols_outline = false,
+            },
+        },
     },
 }

@@ -44,12 +44,6 @@ return {
         end,
     },
     {
-        "catppuccin",
-        optional = true,
-        ---@type CatppuccinOptions
-        opts = { integrations = { noice = true } },
-    },
-    {
         "hrsh7th/cmp-cmdline",
         keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
         dependencies = { "hrsh7th/nvim-cmp", "dmitmel/cmp-cmdline-history" },
@@ -60,42 +54,35 @@ return {
                     type = "/",
                     mapping = cmp.mapping.preset.cmdline(),
                     sources = {
-                        cmp.config.sources(
-                            { { name = "buffer" } },
-                            { { name = "cmdline_history" } }
-                        ),
+                        cmp.config.sources({ { name = "buffer" } }, { { name = "cmdline_history" } }),
                     },
                 },
                 {
                     type = ":",
                     mapping = cmp.mapping.preset.cmdline(),
-                    sources = cmp.config.sources(
+                    sources = cmp.config.sources({
+                        { name = "path" },
+                    }, {
                         {
-                            { name = "path" },
-                        },
-                        {
-                            {
-                                name = "cmdline",
-                                option = {
-                                    ignore_cmds = { "Man", "!" },
-                                },
+                            name = "cmdline",
+                            option = {
+                                ignore_cmds = { "Man", "!" },
                             },
                         },
-                        {
-                            { name = "cmdline_history" },
-                        }
-                    ),
+                    }, {
+                        { name = "cmdline_history" },
+                    }),
                 },
                 {
                     type = "?",
                     mapping = cmp.mapping.preset.cmdline(),
-                    sources = { name = "cmdline_history" }
+                    sources = { name = "cmdline_history" },
                 },
                 {
                     type = "@",
                     mapping = cmp.mapping.preset.cmdline(),
-                    sources = { name = "cmdline_history" }
-                }
+                    sources = { name = "cmdline_history" },
+                },
             }
         end,
         config = function(_, opts)
@@ -104,5 +91,11 @@ return {
                 cmp.setup.cmdline(val.type, val)
             end, opts)
         end,
+    },
+    {
+        "catppuccin",
+        optional = true,
+        ---@type CatppuccinOptions
+        opts = { integrations = { noice = true } },
     },
 }

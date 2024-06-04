@@ -33,7 +33,7 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
-        config = require("plugins.config.mason-lspconfig")
+        config = require("plugins.config.mason-lspconfig"),
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -43,10 +43,18 @@ return {
                 ["mason-lspconfig"] = true,
                 ["mason-null-ls"] = true,
                 ["mason-nvim-dap"] = false,
-            }
+            },
         },
         config = function(_, opts)
             require("mason-tool-installer").setup(opts)
-        end
-    }
+        end,
+    },
+    {
+        "catppuccin",
+        optional = true,
+        ---@type CatppuccinOptions
+        opts = {
+            integrations = { mason = true },
+        },
+    },
 }
