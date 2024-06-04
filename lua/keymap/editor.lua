@@ -4,10 +4,14 @@ local map_cr = bind.map_cr
 local map_callback = bind.map_callback
 
 bind.nvim_load_mapping({
-    ["n|<C-H>"] = map_cmd("db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
-    ["i|<C-H>"] = map_cmd("<C-o>db"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
-    ["n|<C-Del>"] = map_cmd("dw"):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word backward"),
-    ["i|<C-Del>"] = map_cmd("<C-o>dw")
+    ["n|<C-H>"] = map_cmd('"_db'):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
+    ["i|<C-H>"] = map_cmd('<C-o>"_db')
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("edit: Delete word forward"),
+    ["n|<C-Del>"] = map_cmd('"_dw'):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word backward"),
+    ["i|<C-Del>"] = map_cmd('<C-o>"_dw')
         :with_noremap()
         :with_silent()
         :with_nowait()
@@ -112,4 +116,8 @@ bind.nvim_load_mapping({
 
     -- indent
     ["n|<leader>lF"] = map_cmd("<Cmd>normal! gg=G``<CR>"):with_noremap():with_silent():with_desc("format indent"),
+
+    -- history
+    ["n|r"] = map_cr("redo"):with_noremap():with_silent():with_nowait():with_desc("edit: Redo"),
+    ["n|u"] = map_cr("undo"):with_noremap():with_silent():with_nowait():with_desc("edit: Undo"),
 })
