@@ -28,6 +28,7 @@ return {
         opts = {
             formatters_by_ft = {
                 sh = { "shfmt" },
+                bash = { "shfmt" },
             },
             formatters = {
                 shfmt = {
@@ -40,9 +41,9 @@ return {
                         "-ci", -- Switch cases will be indented
                         "-filename",
                         "$FILENAME",
-                    }
-                }
-            }
+                    },
+                },
+            },
         },
     },
     {
@@ -64,5 +65,4 @@ return {
             )
         end,
     },
-
 }
