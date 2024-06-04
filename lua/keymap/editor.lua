@@ -71,43 +71,41 @@ bind.nvim_load_mapping({
     -- line
     ["i|<C-CR>"] = map_cmd("<C-o>o"):with_silent():with_noremap():with_nowait():with_desc("edit: new line"),
     ["i|<S-CR>"] = map_cmd("<C-o>o"):with_silent():with_noremap():with_nowait():with_desc("edit: new line"),
-    ["n|<C-d>"] = map_cr("copy .")
-        :with_silent()
-        :with_noremap()
-        :with_nowait()
-        :with_desc("edit: duplicate line"),
+    ["n|<C-d>"] = map_cr("copy ."):with_silent():with_noremap():with_nowait():with_desc("edit: duplicate line"),
     ["i|<C-d>"] = map_cmd("<Esc><Esc><Cmd>copy .<CR>i")
         :with_silent()
         :with_noremap()
         :with_nowait()
         :with_desc("edit: duplicate line"),
-    ["v|<C-d>"] = map_cr("copy '>")
+    ["v|<C-d>"] = map_cr("copy '>"):with_silent():with_noremap():with_nowait():with_desc("edit: duplicate line"),
+
+    ["n|<C-S-down>"] = map_cmd("<Cmd>m+<CR>==")
         :with_silent()
         :with_noremap()
         :with_nowait()
-        :with_desc("edit: duplicate line"),
-
-    ["n|<C-S-down>"] = map_cmd("<Cmd>m+<CR>=="):with_silent()
+        :with_desc("edit: move line down"),
+    ["n|<C-S-up>"] = map_cmd("<Cmd>m-2<CR>==")
+        :with_silent()
+        :with_noremap()
+        :with_nowait()
+        :with_desc("edit: move line up"),
+    ["i|<C-S-up>"] = map_cmd("<C-o><Cmd>m-2<CR>")
+        :with_silent()
+        :with_noremap()
+        :with_nowait()
+        :with_desc("edit: move line up"),
+    ["i|<C-S-down>"] = map_cmd("<C-o><Cmd>m+<CR>")
+        :with_silent()
         :with_noremap()
         :with_nowait()
         :with_desc("edit: move line down"),
-    ["n|<C-S-up>"] = map_cmd("<Cmd>m-2<CR>=="):with_silent()
+    ["v|<C-S-up>"] = map_cmd("<Cmd>'<,'>m-2<CR>gv=gv")
+        :with_silent()
         :with_noremap()
         :with_nowait()
         :with_desc("edit: move line up"),
-    ["i|<C-S-up>"] = map_cmd("<C-o><Cmd>m-2<CR>==gi"):with_silent()
-        :with_noremap()
-        :with_nowait()
-        :with_desc("edit: move line up"),
-    ["i|<C-S-down>"] = map_cmd("<C-o><Cmd>m+<CR>==gi"):with_silent()
-        :with_noremap()
-        :with_nowait()
-        :with_desc("edit: move line down"),
-    ["v|<C-S-up>"] = map_cmd("<Cmd>'<,'>m-2<CR>gv=gv"):with_silent()
-        :with_noremap()
-        :with_nowait()
-        :with_desc("edit: move line up"),
-    ["v|<C-S-down>"] = map_cmd("<Cmd>m'>+<CR>gv=gv"):with_silent()
+    ["v|<C-S-down>"] = map_cmd("<Cmd>m'>+<CR>gv=gv")
+        :with_silent()
         :with_noremap()
         :with_nowait()
         :with_desc("edit: move line down"),
