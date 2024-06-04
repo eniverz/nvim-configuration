@@ -1,4 +1,4 @@
-require("keymap.plugins.alpha")
+-- require("keymap.plugins.alpha")
 require("keymap.plugins.autopairs")
 require("keymap.plugins.bufferline")
 require("keymap.plugins.colorizer")
