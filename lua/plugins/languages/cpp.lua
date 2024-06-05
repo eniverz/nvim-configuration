@@ -7,10 +7,8 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed = require("utils.core").list_insert_unique(
-                    opts.ensure_installed,
-                    { "cpp", "c", "objc", "cuda", "proto" }
-                )
+                opts.ensure_installed =
+                    require("utils.core").list_insert_unique(opts.ensure_installed, { "cpp", "c", "cuda" })
             end
         end,
     },
@@ -57,15 +55,7 @@ return {
     -- },
     -- {
     --     "Civitasv/cmake-tools.nvim",
-    --     ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-    --     dependencies = {
-    --         {
-    --             "jay-babu/mason-nvim-dap.nvim",
-    --             opts = function(_, opts)
-    --                 opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb" })
-    --             end,
-    --         },
-    --     },
+    --     ft = { "c", "cpp", "cuda" },
     --     opts = {},
     -- },
     {
@@ -101,11 +91,13 @@ return {
             formatters = {
                 ["clang-format"] = {
                     command = "clang-format",
-                    args = vim.tbl_extend(
-                        "force",
-                        require("plugins.config.formatters.clang_format"),
-                        { "-assume-filename", "$FILENAME" }
-                    ),
+                    prepend_args = function()
+                        print(vim.fn.stdpath("config") .. "/lua/config/format/.clang-format")
+                        return {
+                            "-style=file:" .. vim.fn.stdpath("config") .. "/lua/config/format/.clang-format",
+                        }
+                    end,
+                    args = { "-assume-filename", "$FILENAME" },
                     range_args = function(self, ctx)
                         local start_offset, end_offset =
                             require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
