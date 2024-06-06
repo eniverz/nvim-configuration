@@ -18,7 +18,7 @@ return {
                 opts = {
                     manual_mode = false,
                     detection_methods = { "lsp", "pattern" },
-                    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+                    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "CMakeLists.txt", "package.json" },
                     ignore_lsp = { "null-ls", "copilot" },
                     exclude_dirs = {},
                     show_hidden = false,
