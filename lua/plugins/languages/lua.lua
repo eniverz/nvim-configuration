@@ -58,16 +58,8 @@ return {
                             "--no-editorconfig",
                             "--line-endings",
                             line_end,
-                            "--column-width",
-                            "120",
-                            "--indent-type",
-                            "Spaces",
-                            "--indent-width",
-                            "4",
-                            "--quote-style",
-                            "AutoPreferDouble",
-                            "--call-parentheses", -- Whether parentheses should be applied on function calls with a single string/table argument.
-                            "Always",
+                            "--config-path",
+                            vim.fn.stdpath("config") .. "/lua/config/format/stylua.config.toml",
                         }
                     end,
                     range_args = function(_, ctx)
