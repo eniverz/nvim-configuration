@@ -4,6 +4,7 @@ local map_cr = bind.map_cr
 local map_callback = bind.map_callback
 
 bind.nvim_load_mapping({
+    -- delete
     ["n|<C-H>"] = map_cmd('"_db'):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
     ["i|<C-H>"] = map_cmd('<C-o>"_db')
         :with_noremap()
@@ -62,6 +63,7 @@ bind.nvim_load_mapping({
     -- indent
     ["v|<S-Tab>"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),
     ["v|<Tab>"] = map_cmd(">gv"):with_desc("edit: Increase indent"),
+    ["n|<leader>lF"] = map_cmd("<Cmd>normal! gg=G``<CR>"):with_noremap():with_silent():with_desc("format indent"),
 
     -- buffer
     ["ni|<C-s>"] = map_cmd("<Esc><Esc><Esc>:w<CR>"):with_desc("edit: Save file"),
@@ -114,10 +116,16 @@ bind.nvim_load_mapping({
         :with_nowait()
         :with_desc("edit: move line down"),
 
-    -- indent
-    ["n|<leader>lF"] = map_cmd("<Cmd>normal! gg=G``<CR>"):with_noremap():with_silent():with_desc("format indent"),
-
     -- history
     ["n|r"] = map_cr("redo"):with_noremap():with_silent():with_nowait():with_desc("edit: Redo"),
     ["n|u"] = map_cr("undo"):with_noremap():with_silent():with_nowait():with_desc("edit: Undo"),
+
+    -- search
+    ["n|<Esc>"] = map_callback(function()
+            pcall(vim.cmd.noh)
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("edit: Clear search highlight"),
 })
