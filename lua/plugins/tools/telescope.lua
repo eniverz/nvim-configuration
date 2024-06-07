@@ -19,7 +19,7 @@ return {
                     manual_mode = false,
                     detection_methods = { "lsp", "pattern" },
                     patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "CMakeLists.txt", "package.json" },
-                    ignore_lsp = { "null-ls", "copilot" },
+                    ignore_lsp = { "null-ls", "copilot", "conform" },
                     exclude_dirs = {},
                     show_hidden = false,
                     silent_chdir = true,
