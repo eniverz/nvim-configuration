@@ -21,43 +21,6 @@ return {
             end
         end,
     },
-    -- {
-    --     "p00f/clangd_extensions.nvim",
-    --     lazy = true,
-    --     opts = function()
-    --         local ce = vim.api.nvim_create_augroup("clangd_extensions", { clear = true })
-    --         vim.api.nvim_create_autocmd("LspAttach", {
-    --             group = ce,
-    --             desc = "Load clangd_extensions with clangd",
-    --             callback = function(args)
-    --                 if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "clangd" then
-    --                     require "clangd_extensions"
-    --                     vim.api.nvim_del_augroup_by_name "clangd_extensions"
-    --                 end
-    --             end,
-    --         })
-
-    --         local cem = vim.api.nvim_create_augroup("clangd_extension_mappings", { clear = true })
-    --         vim.api.nvim_create_autocmd("LspAttach", {
-    --             group = cem,
-    --             desc = "Load clangd_extensions with clangd",
-    --             callback = function(args)
-    --                 if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "clangd" then
-    --                     require("utils.core").set_mappings({
-    --                         n = {
-    --                             ["<Leader>lw"] = { "<Cmd>ClangdSwitchSourceHeader<CR>", desc = "Switch source/header file" },
-    --                         },
-    --                     }, { buffer = args.buf })
-    --                 end
-    --             end,
-    --         })
-    --     end,
-    -- },
-    -- {
-    --     "Civitasv/cmake-tools.nvim",
-    --     ft = { "c", "cpp", "cuda" },
-    --     opts = {},
-    -- },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
@@ -114,5 +77,42 @@ return {
                 },
             },
         },
+    },
+    {
+        "Civitasv/cmake-tools.nvim",
+        lazy = true,
+        ft = { "cmake", "make", "c", "cpp" },
+        opts = {
+            cmake_command = "cmake",
+            ctest_command = "ctest",
+            cmake_use_preset = true,
+            cmake_regenerate_on_save = true,
+            cmake_generate_options = {
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_MAKE_PROGRAM=ninja",
+                "-DCMAKE_C_COMPILER=gcc",
+                "-G Ninja",
+                "-S ./",
+                "-B ./cmake-build-debug",
+            }, -- this will be passed when invoke `CMakeGenerate`
+            cmake_build_options = { "--build cmake-build-debug", "-j18" }, -- this will be passed when invoke `CMakeBuild`
+            cmake_build_directory = function()
+                if require("cmake-tools.osys").iswin32 then
+                    return "cmake-build-debug"
+                end
+                return "cmake-build-debug"
+            end,
+            cmake_dap_configuration = { -- debug settings for cmake
+                name = "cmake",
+                type = "codelldb",
+                request = "launch",
+                stopOnEntry = false,
+                runInTerminal = true,
+                console = "integratedTerminal",
+            },
+        },
+        config = function(_, opts)
+            require("cmake-tools").setup(opts)
+        end,
     },
 }
