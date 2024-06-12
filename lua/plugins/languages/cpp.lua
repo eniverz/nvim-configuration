@@ -86,6 +86,7 @@ return {
             cmake_command = "cmake",
             ctest_command = "ctest",
             cmake_use_preset = true,
+            cmake_soft_link_compile_commands = true,
             cmake_regenerate_on_save = true,
             cmake_generate_options = {
                 "-DCMAKE_BUILD_TYPE=Debug",
