@@ -79,41 +79,57 @@ return {
         },
     },
     {
-        "Civitasv/cmake-tools.nvim",
-        lazy = true,
-        ft = { "cmake", "make", "c", "cpp" },
-        opts = {
-            cmake_command = "cmake",
-            ctest_command = "ctest",
-            cmake_use_preset = true,
-            cmake_soft_link_compile_commands = true,
-            cmake_regenerate_on_save = true,
-            cmake_generate_options = {
-                "-DCMAKE_BUILD_TYPE=Debug",
-                "-DCMAKE_MAKE_PROGRAM=ninja",
-                "-DCMAKE_C_COMPILER=gcc",
-                "-G Ninja",
-                "-S ./",
-                "-B ./cmake-build-debug",
-            }, -- this will be passed when invoke `CMakeGenerate`
-            cmake_build_options = { "--build cmake-build-debug", "-j18" }, -- this will be passed when invoke `CMakeBuild`
-            cmake_build_directory = function()
-                if require("cmake-tools.osys").iswin32 then
-                    return "cmake-build-debug"
-                end
-                return "cmake-build-debug"
-            end,
-            cmake_dap_configuration = { -- debug settings for cmake
-                name = "cmake",
-                type = "codelldb",
-                request = "launch",
-                stopOnEntry = false,
-                runInTerminal = true,
-                console = "integratedTerminal",
-            },
-        },
-        config = function(_, opts)
-            require("cmake-tools").setup(opts)
+        "Shatur/neovim-tasks",
+        optional = true,
+        opts = function()
+            local path = require("plenary.path")
+            return {
+                default_params = {
+                    cmake = {
+                        cmd = "cmake",
+                        build_dir = function()
+                            print(
+                                tostring(path:new("{cwd}", "cmake-build-"))
+                                    .. string.lower(tostring(path:new("{build_type}")))
+                            )
+                            return tostring(path:new("{cwd}", "cmake-build-"))
+                                .. string.lower(tostring(path:new("{build_type}")))
+                        end,
+                        build_type = "Debug",
+                        dap_name = "codelldb",
+                        args = {
+                            configure = {
+                                "-D",
+                                "CMAKE_MAKE_PROGRAM=ninja",
+                                "-D",
+                                "CMAKE_C_COMPILER=gcc",
+                                "-G",
+                                "Ninja",
+                                "-S",
+                                "./",
+                                "-B",
+                                tostring(path:new("{cwd}", "cmake-build-"))
+                                    .. string.lower(tostring(path:new("{build_type}"))),
+                            },
+                            build = {
+                                "--build",
+                                tostring(path:new("{cwd}", "cmake-build-"))
+                                    .. string.lower(tostring(path:new("{build_type}"))),
+                                "-j18",
+                            },
+                        },
+                        save_before_run = true,
+                        params_file = "neovim.json",
+                        quickfix = {
+                            pos = "botright", -- Default quickfix position.
+                            height = 12, -- Default height.
+                        },
+                        dap_open_command = function()
+                            return require("dap").repl.open()
+                        end,
+                    },
+                },
+            }
         end,
     },
 }

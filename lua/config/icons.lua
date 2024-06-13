@@ -133,6 +133,7 @@ local data = {
         Symlink = "",
         Tab = "",
         Table = "",
+        Tasks = "",
         Telescope = "",
         Terminal = "",
         Trouble = "󱍼",

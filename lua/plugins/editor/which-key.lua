@@ -42,6 +42,9 @@ return {
                     t = {
                         name = icons.ui.Terminal .. " Terminal",
                     },
+                    T = {
+                        name = icons.ui.Tasks .. " Tasks",
+                    },
                     w = {
                         name = icons.misc.ManUp .. " Window",
                     },
