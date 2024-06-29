@@ -153,6 +153,18 @@ return {
     },
     {
         "hiphish/rainbow-delimiters.nvim",
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter",
+                optional = true,
+                opts = function(_, opts)
+                    if opts.ensure_installed ~= "all" then
+                        opts.ensure_installed =
+                            require("utils.core").list_insert_unique(opts.ensure_installed, { "latex" })
+                    end
+                end,
+            },
+        },
         config = function()
             ---@param threshold number @Use global strategy if nr of lines exceeds this value
             local function init_strategy(threshold)

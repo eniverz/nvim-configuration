@@ -3,7 +3,19 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        dependencies = { "MunifTanjim/nui.nvim" },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            {
+                "nvim-treesitter/nvim-treesitter",
+                optional = true,
+                opts = function(_, opts)
+                    if opts.ensure_installed ~= "all" then
+                        opts.ensure_installed =
+                            require("utils.core").list_insert_unique(opts.ensure_installed, { "regex" })
+                    end
+                end,
+            },
+        },
         opts = function(_, opts)
             local utils = require("utils.core")
             return utils.extend_tbl(opts, {
