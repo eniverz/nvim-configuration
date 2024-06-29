@@ -1,8 +1,8 @@
 -- make variable and function dark when it's not used
+-- if true then return {} end
 return {
     "zbirenbaum/neodim",
     lazy = true,
-    commit = "9477da0",
     event = "LspAttach",
     opts = {
         alpha = 0.45,

@@ -42,7 +42,7 @@
   "mason.nvim": { "branch": "main", "commit": "0950b15060067f752fde13a779a994f59516ce3d" },
   "mini.bufremove": { "branch": "main", "commit": "45752e3b6574fa526f026ee5e5031cc98081a1b0" },
   "neodev.nvim": { "branch": "main", "commit": "02893eeb9d6e8503817bd52385e111cba9a90500" },
-  "neodim": { "branch": "master", "commit": "9477da03b93f1984a81fee3b92e6ac7c6ada6aa4" },
+  "neodim": { "branch": "master", "commit": "0543414f1205d8937d8e703a73ae1f9948940b14" },
   "neovim-tasks": { "branch": "master", "commit": "7a73b5bbe67e12c8b23304825c3a239c43d07fed" },
   "noice.nvim": { "branch": "main", "commit": "03c6a75661e68012e30b0ed81f050358b1e2233c" },
   "nui.nvim": { "branch": "main", "commit": "61574ce6e60c815b0a0c4b5655b8486ba58089a1" },
