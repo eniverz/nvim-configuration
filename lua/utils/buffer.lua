@@ -164,7 +164,7 @@ end
 
 --- Fully wipeout a given buffer
 ---@param bufnr? integer The buffer to wipe or the current buffer if not provided
----@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
+---@param force? boolean Whether or not to force close the buffers or confirm changes (default: false)
 function M.wipe(bufnr, force)
     if not bufnr or bufnr == 0 then
         bufnr = vim.api.nvim_get_current_buf()
