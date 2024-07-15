@@ -10,54 +10,22 @@ return {
                 git = require("config.icons").get("git", true),
                 cmp = require("config.icons").get("cmp", true),
             }
-            require("which-key").register({
-                ["<leader>"] = {
-                    b = {
-                        name = icons.ui.Buffer .. " Buffer",
-                    },
-                    C = {
-                        name = icons.misc.Gavel .. "Crates",
-                    },
-                    d = {
-                        name = icons.ui.Bug .. " Debug",
-                    },
-                    f = {
-                        name = icons.ui.Telescope .. " Fuzzy Find",
-                    },
-                    g = {
-                        name = icons.git.Git .. "Git",
-                    },
-                    l = {
-                        name = icons.misc.LspAvailable .. " Lsp",
-                    },
-                    n = {
-                        name = icons.ui.FolderOpen .. " Nvim Tree",
-                    },
-                    p = {
-                        name = icons.ui.Package .. " Package",
-                    },
-                    s = {
-                        name = icons.cmp.tmux .. "Session",
-                    },
-                    t = {
-                        name = icons.ui.Terminal .. " Terminal",
-                    },
-                    T = {
-                        name = icons.ui.Tasks .. " Tasks",
-                    },
-                    w = {
-                        name = icons.misc.ManUp .. " Window",
-                    },
-                    u = {
-                        name = icons.ui.Window .. " UI",
-                    },
-                    z = {
-                        name = icons.ui.BookMark .. " fold",
-                    },
-                    x = {
-                        name = icons.ui.Trouble .. " Trouble",
-                    },
-                },
+            require("which-key").add({
+                { "<leader>b", group = icons.ui.Buffer .. " Buffer" },
+                { "<leader>C", group = icons.misc.Gavel .. " Crates" },
+                { "<leader>d", group = icons.ui.Bug .. " Debug" },
+                { "<leader>f", group = icons.ui.Telescope .. " Fuzzy Find" },
+                { "<leader>g", group = icons.git.Git .. " Git" },
+                { "<leader>l", group = icons.misc.LspAvailable .. " Lsp" },
+                { "<leader>n", group = icons.ui.FolderOpen .. " Nvim Tree" },
+                { "<leader>p", group = icons.ui.Package .. " Package" },
+                { "<leader>s", group = icons.cmp.tmux .. "Session" },
+                { "<leader>t", group = icons.ui.Terminal .. " Terminal" },
+                { "<leader>T", group = icons.ui.Tasks .. " Tasks" },
+                { "<leader>w", group = icons.misc.ManUp .. " Window" },
+                { "<leader>u", group = icons.ui.Window .. " UI" },
+                { "<leader>z", group = icons.ui.BookMark .. " Fold" },
+                { "<leader>x", group = icons.ui.Trouble .. " Trouble" },
             })
             require("which-key").setup({
                 plugins = {
