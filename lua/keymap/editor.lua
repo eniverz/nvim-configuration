@@ -24,7 +24,7 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_nowait()
         :with_desc("edit: force quit"),
-    ["n|<leader>n"] = map_cmd("<Cmd>enew<CR>")
+    ["n|<leader>N"] = map_cmd("<Cmd>enew<CR>")
         :with_noremap()
         :with_silent()
         :with_nowait()
