@@ -8,26 +8,7 @@ if use_copilot then
         lazy = true,
         cmd = "Copilot",
         event = "InsertEnter",
-        opts = function(_, opts)
-            opts = vim.tbl_deep_extend("force", opts, {
-                cmp = {
-                    enabled = true,
-                    method = "getCompletionsCycling",
-                },
-                panel = {
-                    -- if true, it can interfere with completions in copilot-cmp
-                    enabled = false,
-                },
-                suggestion = {
-                    -- if true, it can interfere with completions in copilot-cmp
-                    enabled = false,
-                },
-                filetypes = {
-                    ["dap-repl"] = false,
-                    ["big_file_disabled_ft"] = false,
-                },
-            })
-        end,
+        config = require("plugins.config.copliot"),
         dependencies = {
             {
                 "zbirenbaum/copilot-cmp",
