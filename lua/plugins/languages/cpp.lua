@@ -55,7 +55,6 @@ return {
                 ["clang-format"] = {
                     command = "clang-format",
                     prepend_args = function()
-                        print(vim.fn.stdpath("config") .. "/lua/config/format/.clang-format")
                         return {
                             "-style=file:" .. vim.fn.stdpath("config") .. "/lua/config/format/.clang-format",
                         }

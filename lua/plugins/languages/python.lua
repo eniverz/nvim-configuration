@@ -44,29 +44,29 @@ return {
             formatters_by_ft = {
                 python = { "isort", "black" },
             },
-            formatter = {
-                isort = {
-                    command = "isort",
+            formatters = {
+                ---@type conform.FileFormatterConfig
+                black = {
+                    meta = {
+                        url = "https://github.com/psf/black",
+                        description = "The uncompromising Python code formatter.",
+                    },
+                    command = "black",
                     args = function(self, ctx)
-                        local line_end = "\n"
-                        local os_name = (vim.uv or vim.loop).os_uname().sysname
-                        if os_name:find("Darwin") then
-                            line_end = "\r"
-                        end
-
-                        local line_length = 120
-
+                        local line_length = 160
                         return {
-                            "--stdout",
-                            "--line-ending",
-                            line_end,
+                            "--stdin-filename",
+                            "$FILENAME",
                             "--line-length",
                             line_length,
-                            "--filename",
-                            "$FILENAME",
+                            "--quiet",
                             "-",
                         }
                     end,
+                    cwd = require("conform.util").root_file({
+                        -- https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
+                        "pyproject.toml",
+                    }),
                 },
             },
         },
