@@ -80,6 +80,7 @@
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "promise-async": { "branch": "main", "commit": "28c1d5a295eb5310afa2523d4ae9aa41ec5a9de2" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "b29da4a6061a88270e875b38367d82c04c856128" },
+  "remote-sshfs.nvim": { "branch": "main", "commit": "8f05563150fbd713027471eed56f391b053ba8b8" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
   "schemastore.nvim": { "branch": "main", "commit": "623df28bf9a2661d9d5a0f391bf30bdd8f8de62b" },
   "smart-splits.nvim": { "branch": "master", "commit": "7697116ca807304c9d27a3d8157fe4bc78e88d0f" },

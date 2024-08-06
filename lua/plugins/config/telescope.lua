@@ -11,4 +11,5 @@ return function(_, opts)
     telescope.load_extension("zoxide")
     telescope.load_extension("persisted")
     telescope.load_extension("aerial")
+    telescope.load_extension("remote-sshfs")
 end
