@@ -19,7 +19,7 @@ return {
             }
 
             local HEIGHT_RATIO = 0.8
-            local WIDTH_RATIO = 0.3
+            local WIDTH_RATIO = 0.4
 
             require("nvim-tree").setup({
                 auto_reload_on_write = true,
@@ -43,7 +43,7 @@ return {
                         open_win_config = function()
                             local screen_w = vim.opt.columns:get()
                             local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-                            local window_w = screen_w * WIDTH_RATIO
+                            local window_w = screen_w <= 160 and 64 or screen_w * WIDTH_RATIO
                             local window_h = screen_h * HEIGHT_RATIO
                             local window_w_int = math.floor(window_w)
                             local window_h_int = math.floor(window_h)
