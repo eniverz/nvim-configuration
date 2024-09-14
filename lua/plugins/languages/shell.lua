@@ -29,6 +29,7 @@ return {
             formatters_by_ft = {
                 sh = { "shfmt" },
                 bash = { "shfmt" },
+                fish = { "shfmt" },
             },
             formatters = {
                 shfmt = {
