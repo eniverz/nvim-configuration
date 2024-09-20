@@ -29,36 +29,6 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_nowait()
         :with_desc("edit: create new file"),
-    ["n|<leader>c"] = map_callback(function()
-            require("utils.buffer").close()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("edit: close current buffer"),
-    ["n|<leader>bc"] = map_callback(function()
-            require("utils.buffer").close_all(true)
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("edit: close all except current buffer"),
-    ["n|<leader>bl"] = map_callback(function()
-            require("utils.buffer").close_left()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("edit: close all buffer at left"),
-    ["n|<leader>br"] = map_callback(function()
-            require("utils.buffer").close_right()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("edit: close all buffer at right"),
-    ["n|<leader>bC"] = map_callback(function()
-            require("utils.buffer").close_all()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("edit: close all buffers"),
 
     -- indent
     ["v|<S-Tab>"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),

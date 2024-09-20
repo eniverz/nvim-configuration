@@ -8,7 +8,7 @@ return {
 
         local m_opts = {
             options = {
-                number = nil,
+                numbers = "ordinal",
                 close_command = require("utils.buffer").close,
                 right_mouse_command = require("utils.buffer").close,
                 modified_icon = icons.ui.Modified,
@@ -28,8 +28,12 @@ return {
                 always_show_bufferline = true,
                 separator_style = "slant", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
                 diagnostics = "nvim_lsp",
-                diagnostics_indicator = function(count)
-                    return "(" .. count .. ")"
+                -- diagnostics_indicator = function(count)
+                --     return "(" .. count .. ")"
+                -- end,
+                diagnostics_indicator = function(count, level, diagnostics_dict, context)
+                    local icon = level:match("error") and " " or " "
+                    return " " .. icon .. count
                 end,
                 offsets = {
                     {
