@@ -1,12 +1,6 @@
 -- markdown preview
 return {
     {
-        "iamcco/markdown-preview.nvim",
-        lazy = true,
-        ft = "markdown",
-        build = ":call mkdp#util#install()",
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         opts = function(_, opts)
             if opts ~= nil then
