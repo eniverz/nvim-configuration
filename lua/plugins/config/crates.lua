@@ -1,4 +1,4 @@
-return function()
+return function(_, opts)
     local icons = {
         diagnostics = require("config.icons").get("diagnostics", true),
         git = require("config.icons").get("git", true),
@@ -17,19 +17,7 @@ return function()
         end,
     })
 
-    require("crates").setup({
-        smart_insert = true,
-        insert_closing_quote = true,
-        avoid_prerelease = true,
-        autoload = true,
-        autoupdate = true,
-        autoupdate_throttle = 250,
-        loading_indicator = true,
-        date_format = "%Y-%m-%d",
-        thousands_separator = ",",
-        notification_title = "Crates",
-        curl_args = { "-sL", "--retry", "1" },
-        disable_invalid_feature_diagnostic = false,
+    local new_opts = {
         text = {
             loading = " " .. icons.misc.Watch .. "Loading",
             version = " " .. icons.ui.Check .. "%s",
@@ -40,16 +28,9 @@ return function()
             error = " " .. icons.diagnostics.Error .. "Error fetching crate",
         },
         popup = {
-            autofocus = false,
             hide_on_select = true,
-            copy_register = '"',
-            style = "minimal",
             border = "rounded",
             show_version_date = true,
-            show_dependency_version = true,
-            max_height = 30,
-            min_width = 20,
-            padding = 1,
             text = {
                 title = icons.ui.Package .. "%s",
                 description = "%s",
@@ -85,14 +66,15 @@ return function()
                 loading = " " .. icons.misc.Watch,
             },
         },
-        src = {
-            insert_closing_quote = true,
+        completion = {
             text = {
                 prerelease = " " .. icons.diagnostics.Warning_alt .. "pre-release ",
                 yanked = " " .. icons.diagnostics.Error_alt .. "yanked ",
             },
         },
-    })
+    }
+    opts = require("utils.core").extend_tbl(opts, new_opts)
+    require("crates").setup(opts)
 
     -- Set buffer-local keymaps
     require("keymap.plugins.crates")

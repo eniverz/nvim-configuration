@@ -174,6 +174,7 @@ return function(_, opts)
             { name = "buffer" },
             { name = "latex_symbols" },
             { name = "copilot" },
+            { name = "crates" },
             -- { name = "codeium" },
             -- { name = "cmp_tabnine" },
         },

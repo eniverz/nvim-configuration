@@ -19,21 +19,51 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb" })
+            opts.ensure_installed =
+                require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb", "rust-analyzer" })
         end,
     },
     {
+        "Saecki/crates.nvim",
+        lazy = true,
+        event = "BufReadPost Cargo.toml",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            thousands_separator = ",",
+            completion = {
+                cmp = { enabled = true },
+            },
+            lsp = {
+                enabled = true,
+                actions = true,
+                completion = true,
+                hover = true,
+            },
+        },
+        config = require("plugins.config.crates"),
+    },
+    {
         "mrcjkb/rustaceanvim",
-        version = "^4",
+        lazy = true,
+        version = "^5",
         ft = "rust",
-        opts = function()
+        config = function()
+            for _, method in ipairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
+                local default_diagnostic_handler = vim.lsp.handlers[method]
+                vim.lsp.handlers[method] = function(err, result, context, config)
+                    if err ~= nil and err.code == -32802 then
+                        return
+                    end
+                    return default_diagnostic_handler(err, result, context, config)
+                end
+            end
             local adapter
-            local success, package = pcall(function()
+            local success, pkg = pcall(function()
                 return require("mason-registry").get_package("codelldb")
             end)
             local cfg = require("rustaceanvim.config")
             if success then
-                local package_path = package:get_install_path()
+                local package_path = pkg:get_install_path()
                 local codelldb_path = package_path .. "/codelldb"
                 local liblldb_path = package_path .. "/extension/lldb/lib/liblldb"
                 local this_os = vim.loop.os_uname().sysname
@@ -48,79 +78,44 @@ return {
                 end
                 adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path)
             else
-                adapter = cfg.get_codelldb_adapter()
+                adapter = nil
             end
 
-            local lsp_opts = {
-                capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-                on_attach = require("keymap.completion"),
-                settings = {
-                    ["rust-analyzer"] = {
-                        check = {
-                            command = "clippy",
-                            extraArgs = {
-                                "--no-deps",
-                            },
-                        },
-                        assist = {
-                            importEnforceGranularity = true,
-                            importPrefix = "crate",
-                        },
-                        completion = {
-                            postfix = {
-                                enable = false,
-                            },
-                        },
-                        inlayHints = {
-                            lifetimeElisionHints = {
-                                enable = true,
-                                useParameterNames = true,
-                            },
-                        },
-                    },
-                },
-                -- Disable automatic DAP configuration to avoid conflicts with previous user configs
-                dap = {
-                    adapter = false,
-                    configuration = false,
-                    autoload_configurations = false,
-                },
-            }
             local server = {
-                ---@type table | (fun(project_root:string|nil, default_settings: table|nil):table) -- The rust-analyzer settings or a function that creates them.
                 settings = function(project_root, default_settings)
-                    local lsp_settings = lsp_opts.settings or {}
-
-                    local merge_table = require("utils.core").extend_tbl(default_settings or {}, lsp_settings)
-                    local ra = require("rustaceanvim.config.server")
+                    local settings = require("utils.core").extend_tbl(default_settings or {}, {
+                        ["rust-analyzer"] = {
+                            check = {
+                                command = "clippy",
+                                extraArgs = {
+                                    "--no-deps",
+                                },
+                            },
+                        },
+                    })
                     -- load_rust_analyzer_settings merges any found settings with the passed in default settings table and then returns that table
-                    return ra.load_rust_analyzer_settings(project_root, {
+                    return require("rustaceanvim.config.server").load_rust_analyzer_settings(project_root, {
                         settings_file_pattern = "rust-analyzer.json",
-                        default_settings = merge_table,
+                        default_settings = settings,
                     })
                 end,
+                capabilities = require("cmp_nvim_lsp").default_capabilities(
+                    vim.lsp.protocol.make_client_capabilities()
+                ),
+                on_attach = require("keymap.completion").lsp,
             }
-            local final_server = require("utils.core").extend_tbl(lsp_opts, server)
-            return { server = final_server, dap = { adapter = adapter }, tools = { enable_clippy = false } }
+
+            ---@type RustaceanOpts
+            ---@diagnostic disable: missing-fields
+            vim.g.rustaceanvim = require("utils.core").extend_tbl({
+                tools = {
+                    enable_clippy = false,
+                },
+                dap = {
+                    adapter = adapter,
+                },
+                server = server,
+            }, vim.g.rustaceanvim)
         end,
-        config = function(_, opts)
-            vim.g.rustaceanvim = require("utils.core").extend_tbl(opts, vim.g.rustaceanvim)
-        end,
-    },
-    {
-        "Saecki/crates.nvim",
-        lazy = true,
-        event = "BufReadPost Cargo.toml",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {
-            src = {
-                cmp = { enabled = true },
-            },
-            null_ls = {
-                enabled = true,
-                name = "crates.nvim",
-            },
-        },
-        config = require("plugins.config.crates"),
     },
 }
