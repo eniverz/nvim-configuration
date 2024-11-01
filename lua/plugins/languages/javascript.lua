@@ -5,8 +5,9 @@ return {
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
                 opts.ensure_installed =
-                    require("utils.core").list_insert_unique(opts.ensure_installed, { "javascript" })
+                    require("utils.core").list_insert_unique(opts.ensure_installed, { "javascript", "typescript" })
             end
+            vim.treesitter.language.register("typescriptreact", "javascriptreact")
         end,
     },
     {
@@ -31,6 +32,8 @@ return {
             formatters_by_ft = {
                 javascript = { { "prettier" } },
                 typescript = { { "prettier" } },
+                javascriptreact = { { "prettier" } },
+                typescriptreact = { { "prettier" } },
             },
         },
     },
