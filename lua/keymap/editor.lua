@@ -90,6 +90,10 @@ bind.nvim_load_mapping({
     ["n|r"] = map_cr("redo"):with_noremap():with_silent():with_nowait():with_desc("edit: Redo"),
     ["n|u"] = map_cr("undo"):with_noremap():with_silent():with_nowait():with_desc("edit: Undo"),
 
+    -- jump cursor position
+    ["n|<A-S-left>"] = map_cmd("<C-o>"):with_noremap():with_silent():with_nowait():with_desc("edit: jump cursor position"),
+    ["n|<A-S-right>"] = map_cmd("<C-i>"):with_noremap():with_silent():with_nowait():with_desc("edit: jump cursor position"),
+
     -- search
     ["n|<Esc>"] = map_callback(function()
             pcall(vim.cmd.noh)
