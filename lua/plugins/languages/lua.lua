@@ -4,26 +4,15 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed =
-                    require("utils.core").list_insert_unique(opts.ensure_installed, { "lua", "luap" })
+                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "lua", "luap" })
             end
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "lua_ls" })
         end,
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(
-                opts.ensure_installed,
-                { "lua-language-server", "stylua", "selene" }
-            )
+            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "lua-language-server", "stylua", "selene" })
         end,
     },
     {
@@ -56,6 +45,8 @@ return {
 
                         return {
                             "--no-editorconfig",
+                            "--column-width",
+                            "160",
                             "--line-endings",
                             line_end,
                             "--config-path",
@@ -63,8 +54,7 @@ return {
                         }
                     end,
                     range_args = function(_, ctx)
-                        local start_offset, end_offset =
-                            require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
+                        local start_offset, end_offset = require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
 
                         return {
                             "--search-parent-directories",

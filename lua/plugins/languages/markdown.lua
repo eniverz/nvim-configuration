@@ -4,13 +4,12 @@ return {
         "nvim-treesitter/nvim-treesitter",
         opts = function(_, opts)
             if opts ~= nil then
-                opts =
-                    require("utils.core").list_insert_unique(opts.ensure_installed, { "markdown", "markdown_inline" })
+                opts = require("utils.core").list_insert_unique(opts.ensure_installed, { "markdown", "markdown_inline" })
             end
         end,
     },
     {
-        "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
         opts = function(_, opts)
             opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "marksman" })
@@ -29,7 +28,6 @@ return {
     {
         "catppuccin",
         optional = true,
-        ---@type CatppuccinOptions
         opts = {
             integrations = { markdown = true },
         },

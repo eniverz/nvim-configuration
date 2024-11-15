@@ -9,18 +9,10 @@ return {
         end,
     },
     {
-        "jay-babu/mason-nvim-dap.nvim",
-        optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb" })
-        end,
-    },
-    {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed =
-                require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb", "rust-analyzer" })
+            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb", "rust-analyzer" })
         end,
     },
     {
@@ -99,9 +91,7 @@ return {
                         default_settings = settings,
                     })
                 end,
-                capabilities = require("cmp_nvim_lsp").default_capabilities(
-                    vim.lsp.protocol.make_client_capabilities()
-                ),
+                capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
                 on_attach = require("keymap.completion").lsp,
             }
 

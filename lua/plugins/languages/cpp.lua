@@ -13,15 +13,6 @@ return {
         end,
     },
     {
-        "williamboman/mason-lspconfig.nvim",
-        optional = true,
-        opts = function(_, opts)
-            if not is_linux_arm then
-                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "clangd" })
-            end
-        end,
-    },
-    {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
         opts = function(_, opts)
@@ -30,14 +21,6 @@ return {
                 table.insert(tools, "clangd")
             end
             opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, tools)
-        end,
-    },
-    {
-        "jay-babu/mason-nvim-dap.nvim",
-        optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed =
-                require("utils.core").list_insert_unique(opts.ensure_installed, { "codelldb", "cppdbg" })
         end,
     },
     {

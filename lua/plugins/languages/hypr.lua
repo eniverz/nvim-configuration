@@ -15,7 +15,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "hypr" })
+            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "hyprls" })
         end,
     },
 }

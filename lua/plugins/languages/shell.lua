@@ -9,20 +9,6 @@ return {
         end,
     },
     {
-        "williamboman/mason-lspconfig.nvim",
-        optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "bashls" })
-        end,
-    },
-    {
-        "jay-babu/mason-nvim-dap.nvim",
-        optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "bash" })
-        end,
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {
@@ -60,10 +46,8 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
         opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(
-                opts.ensure_installed,
-                { "bash-language-server", "shellcheck", "shfmt", "bash-debug-adapter" }
-            )
+            opts.ensure_installed =
+                require("utils.core").list_insert_unique(opts.ensure_installed, { "bash-language-server", "shellcheck", "shfmt", "bash-debug-adapter" })
         end,
     },
 }
