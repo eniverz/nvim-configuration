@@ -37,12 +37,6 @@ bind.nvim_load_mapping({
 
     -- buffer
     ["ni|<C-s>"] = map_cmd("<Esc><Esc><Esc>:w<CR>"):with_desc("edit: Save file"),
-    ["n|<C-w>"] = map_callback(function()
-            require("utils.buffer").close()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("edit: close current buffer"),
 
     -- line
     ["i|<C-CR>"] = map_cmd("<C-o>o"):with_silent():with_noremap():with_nowait():with_desc("edit: new line"),
