@@ -1,6 +1,7 @@
 return {
     {
         "folke/snacks.nvim",
+        priority = 1000,
         opts = {
             bigfile = {
                 size = require("config.settings").large_buf.size, -- unit: bytes

@@ -15,5 +15,19 @@ bind.nvim_load_mapping({
         :with_noremap()
         :with_nowait()
         :with_silent()
-        :with_desc("Snacks: clear all notifications"),
+        :with_desc("Snacks: show notifications history"),
+    ["n|<leader>gg"] = map_callback(function()
+            Snacks.lazygit.open()
+        end)
+        :with_noremap()
+        :with_nowait()
+        :with_silent()
+        :with_desc("Snacks: open lazygit panel"),
+    ["n|<leader>gl"] = map_callback(function()
+            Snacks.lazygit.log()
+        end)
+        :with_noremap()
+        :with_nowait()
+        :with_silent()
+        :with_desc("Snacks: open lazygit panel"),
 })
