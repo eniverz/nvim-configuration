@@ -3,7 +3,6 @@ return {
         "folke/snacks.nvim",
         opts = {
             bigfile = {
-                enable = true,
                 size = require("config.settings").large_buf.size, -- unit: bytes
                 ---@param ctx {buf: number, ft:string}
                 setup = function(ctx)
@@ -75,6 +74,16 @@ return {
                     { section = "startup" },
                     { text = { " Have Fun with neovim", hl = "SnacksDashboardDesc" }, align = "center" },
                 },
+            },
+            notifier = {
+                icons = {
+                    debug = require("config.icons").get("dap").Debugger,
+                    error = require("config.icons").get("diagnostics").Error,
+                    info = require("config.icons").get("diagnostics").Information,
+                    trace = require("config.icons").get("diagnostics").Hint,
+                    warn = require("config.icons").get("diagnostics").Warning,
+                },
+                style = "compact",
             },
         },
     },

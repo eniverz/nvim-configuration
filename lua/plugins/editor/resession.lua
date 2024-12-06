@@ -3,6 +3,7 @@ return {
     {
         "stevearc/resession.nvim",
         dependencies = { { "romgrk/barbar.nvim", optional = true } },
+        lazy = true,
         opts = {
             tab_buf_filter = function(tabpage, bufnr)
                 local dir = vim.fn.getcwd(-1, vim.api.nvim_tabpage_get_number(tabpage))
