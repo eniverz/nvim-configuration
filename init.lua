@@ -1,7 +1,3 @@
--- change delete keymap
-vim.api.nvim_set_keymap("n", "d", '"_d', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "d", '"_d', { noremap = true, silent = true })
-
 local global = require("config.global")
 local settings = require("config.settings")
 local scheme = require("config.scheme")
@@ -155,10 +151,6 @@ local load_core = function()
     require("config.options")
     require("lazy_setup")
     require("keymap")
-
-    -- change delete keymap
-    vim.api.nvim_set_keymap("n", "d", '"_d', { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("v", "d", '"_d', { noremap = true, silent = true })
 
     local colorscheme = scheme.colorscheme
     local background = scheme.background
