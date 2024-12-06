@@ -20,7 +20,7 @@ local settings = {
         }
     },
     sessions = {
-        save_dir = vim.fn.expand(vim.fn.stdpath("data") .. "session/"),
+        save_dir = "session",
     },
     external_browser = "xdg-open",
     formatter = {
