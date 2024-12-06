@@ -11,6 +11,9 @@ return {
                 return vim.startswith(vim.api.nvim_buf_get_name(bufnr), dir)
             end,
             dir = require("config.settings").sessions.save_dir,
+            extensions = {
+                barbar = {},
+            },
         },
         config = function(_, opts)
             local resession = require("resession")
@@ -19,7 +22,7 @@ return {
             -- Automatically save sessions on by working directory on exit
             vim.api.nvim_create_autocmd("VimLeavePre", {
                 callback = function()
-                    resession.save_tab(vim.fn.getcwd(), { notify = true })
+                    resession.save(vim.fn.getcwd(), { dir = require("config.settings").sessions.save_dir, notify = false })
                 end,
             })
         end,
