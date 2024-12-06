@@ -1,3 +1,4 @@
+-- tab bar
 return {
     {
         "romgrk/barbar.nvim",

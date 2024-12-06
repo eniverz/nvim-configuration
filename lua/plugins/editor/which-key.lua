@@ -1,3 +1,4 @@
+-- cheatsheet for keybindings
 return {
     {
         "folke/which-key.nvim",

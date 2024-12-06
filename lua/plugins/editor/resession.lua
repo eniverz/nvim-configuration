@@ -1,3 +1,4 @@
+-- session manager
 return {
     {
         "stevearc/resession.nvim",
