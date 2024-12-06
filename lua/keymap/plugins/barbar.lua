@@ -13,9 +13,13 @@ bind.nvim_load_mapping({
     ["n|<leader>bP"] = map_cr("BufferPrevious"):with_noremap():with_silent():with_nowait():with_desc("Buffer: previous"),
     ["n|<leader>bN"] = map_cr("BufferNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: next"),
     ["n|<leader>bG"] = map_cr("BufferLast"):with_noremap():with_silent():with_nowait():with_desc("Buffer: go last"),
-    ["n|<leader>bc"] = map_cr("BufferClose"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close current"),
-    ["n|<leader>br"] = map_cr("BufferRestore"):with_noremap():with_silent():with_nowait():with_desc("Buffer: restore closed"),
+
     ["n|<leader>bp"] = map_cr("BufferPin"):with_noremap():with_silent():with_nowait():with_desc("Buffer: pin/unpin current"),
+    ["n|<leader>c"] = map_cr("BufferClose"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close current"),
+    ["n|<leader>bc"] = map_cr("BufferCloseAllButCurrentOrPinned"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close all except current"),
+    ["n|<leader>bl"] = map_cr("BufferCloseBufferLeft"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close left buffer"),
+    ["n|<leader>br"] = map_cr("BufferCloseBufferRight"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close right buffer"),
+    ["n|<leader>bR"] = map_cr("BufferRestore"):with_noremap():with_silent():with_nowait():with_desc("Buffer: restore closed"),
 
     ["n|<leader>bsi"] = map_cr("BufferOrderByBufferNumber"):with_noremap():with_silent():with_nowait():with_desc("Buffer: sort by buffer id"),
     ["n|<leader>bsn"] = map_cr("BufferOrderByName"):with_noremap():with_silent():with_nowait():with_desc("Buffer: sort by name"),
