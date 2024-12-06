@@ -37,4 +37,9 @@ return {
             },
         },
     },
+    {
+        "catppuccin/nvim",
+        optional = true,
+        opts = { integrations = { barbar = true } },
+    },
 }

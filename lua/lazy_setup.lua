@@ -21,7 +21,7 @@ if not pcall(require, "lazy") then
 end
 
 require("lazy").setup({
-    -- { import = "themes" },
+    { import = "themes" },
     { import = "plugins.editor" },
     -- { import = "plugins.formatter" },
     -- { import = "plugins.languages" },
