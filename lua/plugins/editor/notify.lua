@@ -5,11 +5,11 @@ return {
         lazy = true,
         dependencies = { { "nvim-lua/plenary.nvim", lazy = true } },
         init = function()
-            local old_func = module["notify"]
-            module["notify"] = function(...)
-                module["notify"] = old_func
+            local old_func = vim["notify"]
+            vim["notify"] = function(...)
+                vim["notify"] = old_func
                 require("lazy").load({ plugins = { "nvim-notify" } })
-                module["notify"](...)
+                vim["notify"](...)
             end
         end,
         opts = function(_, opts)
