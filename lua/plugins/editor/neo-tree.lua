@@ -51,17 +51,28 @@ return {
                         ignored = icons.git.Ignore,
                     },
                 },
-                window = {
-                    position = "float",
-                    width = math.floor(vim.opt.columns:get() <= 160 and 64 or vim.opt.columns:get() * 0.4),
-                },
-                filesystem = {
-                    filtered_items = {
-                        visible = true,
-                        never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-                            ".DS_Store",
-                            "thumbs.db",
+            },
+            window = {
+                position = "float",
+                mappings = {
+                    ["a"] = {
+                        "add",
+                        -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
+                        -- some commands may take optional config options, see `:h neo-tree-mappings` for details
+                        config = {
+                            show_path = "absolute", -- "none", "relative", "absolute"
                         },
+                    },
+                },
+            },
+            filesystem = {
+                filtered_items = {
+                    visible = true,
+                    hide_dotfiles = false,
+                    hide_hidden = false,
+                    never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+                        ".DS_Store",
+                        "thumbs.db",
                     },
                 },
             },
@@ -73,9 +84,9 @@ return {
 
         local neotree_highlights = Highlight.HighlightGroups({
             NeoTreeGitAdded = { guifg = palette.green },
-            NeoTreeGitStaged = { guifg = palette.teal},
+            NeoTreeGitStaged = { guifg = palette.teal },
 
-            NeoTreeGitConflict = { guifg = palette.maroon},
+            NeoTreeGitConflict = { guifg = palette.maroon },
 
             NeoTreeGitDeleted = { guifg = palette.red },
             NeoTreeModified = { guifg = palette.peach },
