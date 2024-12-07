@@ -50,7 +50,7 @@ if true then
                             -- For base configs
                             NormalFloat = { fg = cp.text, bg = transparent_background and cp.none or cp.mantle },
                             FloatBorder = {
-                                fg = transparent_background and cp.blue or cp.mantle,
+                                fg = transparent_background and cp.blue or cp.lavender,
                                 bg = transparent_background and cp.none or cp.mantle,
                             },
                             CursorLineNr = { fg = cp.green },
