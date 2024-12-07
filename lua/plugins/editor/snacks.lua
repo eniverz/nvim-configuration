@@ -104,6 +104,8 @@ return {
                 style = "compact",
             },
             quickfile = { enabled = true },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
         },
     },
     {

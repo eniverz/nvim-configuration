@@ -33,4 +33,20 @@ bind.nvim_load_mapping({
         :with_nowait()
         :with_silent()
         :with_desc("Snacks: open lazygit panel"),
+
+    -- word jumps
+    ["nt|]]"] = map_callback(function()
+            Snacks.words.jump(vim.v.count1)
+        end)
+        :with_noremap()
+        :with_nowait()
+        :with_silent()
+        :with_desc("Snacks: jump next word"),
+    ["nt|[["] = map_callback(function()
+            Snacks.words.jump(-vim.v.count1)
+        end)
+        :with_noremap()
+        :with_nowait()
+        :with_silent()
+        :with_desc("Snacks: jump next word"),
 })
