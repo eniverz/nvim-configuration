@@ -89,6 +89,7 @@ return {
                 },
                 style = "compact",
             },
+            quickfile = { enabled = true },
         },
     },
     {
