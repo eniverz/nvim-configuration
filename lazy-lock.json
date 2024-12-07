@@ -1,4 +1,5 @@
 {
+  "aerial.nvim": { "branch": "master", "commit": "fd7fbe36772d7a955815c90ff9b58523bfdb410d" },
   "barbar.nvim": { "branch": "master", "commit": "a26bae6c51899db530de19ce3c2f4307e37a869e" },
   "catppuccin": { "branch": "main", "commit": "faf15ab0201b564b6368ffa47b56feefc92ce3f4" },
   "cmp-cmdline": { "branch": "main", "commit": "d250c63aa13ead745e3a40f61fdd3470efde3923" },
