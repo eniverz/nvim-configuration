@@ -2,6 +2,7 @@ local bind = require("keymap.bind")
 local map_callback = bind.map_callback
 
 bind.nvim_load_mapping({
+    -- notifier
     ["n|<leader>ud"] = map_callback(function()
             Snacks.notifier.hide()
         end)
@@ -16,6 +17,8 @@ bind.nvim_load_mapping({
         :with_nowait()
         :with_silent()
         :with_desc("Snacks: show notifications history"),
+
+    -- lazygit
     ["n|<leader>gg"] = map_callback(function()
             Snacks.lazygit.open()
         end)
