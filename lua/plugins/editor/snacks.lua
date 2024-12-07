@@ -4,6 +4,7 @@ return {
         priority = 1000,
         opts = {
             bigfile = {
+                enabled = true,
                 size = require("config.settings").large_buf.size, -- unit: bytes
                 ---@param ctx {buf: number, ft:string}
                 setup = function(ctx)
@@ -38,6 +39,7 @@ return {
                 end,
             },
             dashboard = {
+                enabled = true,
                 preset = {
                     keys = {
                         { icon = " ", desc = "Scheme Change", key = "t", action = ":Telescope colorscheme" },
@@ -77,6 +79,7 @@ return {
                 },
             },
             notifier = {
+                enabled = true,
                 icons = {
                     debug = require("config.icons").get("dap").Debugger,
                     error = require("config.icons").get("diagnostics").Error,

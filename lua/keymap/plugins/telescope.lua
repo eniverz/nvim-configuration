@@ -91,12 +91,6 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_noremap()
         :with_desc("find: keymaps"),
-    ["n|<leader>fn"] = map_callback(function()
-            require("telescope").extensions.notify.notify()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("find: notifications history"),
     ["n|<leader>fe"] = map_callback(function()
             require("telescope.builtin").oldfiles()
         end)
