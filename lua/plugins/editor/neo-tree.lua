@@ -20,6 +20,7 @@ return {
         vim.fn.sign_define("DiagnosticsSignHint", { text = icons.diagnostics.Hint, texthl = "DiagnosticsSignHint" })
 
         return {
+            close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
             enable_git_status = true,
             enable_diagnostics = true,
             sort_function = function(a, b)
