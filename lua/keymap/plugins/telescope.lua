@@ -149,12 +149,6 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_noremap()
         :with_desc("find: symbols"),
-    ["n|<leader>fz"] = map_callback(function()
-            require("telescope").extensions.zoxide.zoxide()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("find: change current directory by zoxide"),
     ["n|<leader>fs"] = map_cu("Telescope resession"):with_noremap():with_silent():with_desc("find: Session"),
 
     -- for symbols

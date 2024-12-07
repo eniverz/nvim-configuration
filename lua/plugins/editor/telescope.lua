@@ -30,7 +30,6 @@ return {
                     require("project_nvim").setup(opts)
                 end,
             },
-            { "jvgrootveld/telescope-zoxide" },
             { "nvim-telescope/telescope-frecency.nvim" },
             { "nvim-telescope/telescope-live-grep-args.nvim" },
         },
@@ -136,7 +135,6 @@ return {
             telescope.load_extension("live_grep_args")
             telescope.load_extension("projects")
             telescope.load_extension("undo")
-            telescope.load_extension("zoxide")
             telescope.load_extension("aerial")
             telescope.load_extension("remote-sshfs")
         end,
