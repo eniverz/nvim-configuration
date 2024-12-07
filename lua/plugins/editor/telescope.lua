@@ -33,7 +33,6 @@ return {
             { "jvgrootveld/telescope-zoxide" },
             { "nvim-telescope/telescope-frecency.nvim" },
             { "nvim-telescope/telescope-live-grep-args.nvim" },
-            "nvim-treesitter/nvim-treesitter",
         },
         cmd = "Telescope",
         opts = function()

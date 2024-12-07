@@ -2,8 +2,35 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = true,
-        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
+        lazy = vim.fn.argc(-1) == 0,
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                event = "VeryLazy",
+                config = function()
+                    -- When in diff mode, we want to use the default
+                    -- vim text objects c & C instead of the treesitter ones.
+                    local move = require("nvim-treesitter.textobjects.move") ---@type table<string,fun(...)>
+                    local configs = require("nvim-treesitter.configs")
+                    for name, fn in pairs(move) do
+                        if name:find("goto") == 1 then
+                            move[name] = function(q, ...)
+                                if vim.wo.diff then
+                                    local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
+                                    for key, query in pairs(config or {}) do
+                                        if q == query and key:find("[%]%[][cC]") then
+                                            vim.cmd("normal! " .. key)
+                                            return
+                                        end
+                                    end
+                                end
+                                return fn(q, ...)
+                            end
+                        end
+                    end
+                end,
+            },
+        },
         cmd = {
             "TSBufDisable",
             "TSBufEnable",
@@ -19,7 +46,7 @@ return {
             "TSUpdate",
             "TSUpdateSync",
         },
-        event = "BufReadPre",
+        event = { "BufReadPre", "VeryLazy" },
         build = ":TSUpdate",
         init = function(plugin)
             -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -31,61 +58,62 @@ return {
             require("lazy.core.loader").add_to_rtp(plugin)
             require("nvim-treesitter.query_predicates")
         end,
+        opts = {
+            ensure_installed = { "lua" },
+            highlight = {
+                enable = true,
+                disable = function(ft, bufnr)
+                    if vim.tbl_contains({ "vim" }, ft) then
+                        return true
+                    end
+
+                    local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "bigfile_disable_treesitter")
+                    return ok and is_large_file
+                end,
+                additional_vim_regex_highlighting = false,
+            },
+            textobjects = {
+                select = {
+                    enable = true,
+                    -- keymaps = {
+                    --     ["af"] = "@function.outer",
+                    --     ["if"] = "@function.inner",
+                    --     ["ac"] = "@class.outer",
+                    --     ["ic"] = "@class.inner",
+                    -- },
+                },
+                move = {
+                    enable = true,
+                    set_jumps = true, -- whether to set jumps in the jumplist
+                    -- goto_next_start = {
+                    --     ["]["] = "@function.outer",
+                    --     ["]m"] = "@class.outer",
+                    -- },
+                    -- goto_next_end = {
+                    --     ["]]"] = "@function.outer",
+                    --     ["]M"] = "@class.outer",
+                    -- },
+                    -- goto_previous_start = {
+                    --     ["[["] = "@function.outer",
+                    --     ["[m"] = "@class.outer",
+                    -- },
+                    -- goto_previous_end = {
+                    --     ["[]"] = "@function.outer",
+                    --     ["[M"] = "@class.outer",
+                    -- },
+                },
+            },
+            indent = { enable = true },
+            matchup = { enable = true },
+        },
         config = vim.schedule_wrap(function(_, opts)
             local use_ssh = require("config.settings").use_ssh
 
             vim.api.nvim_set_option_value("foldmethod", "expr", {})
             vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})
 
-            ---@diagnostic disable: missing-fields
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = opts.ensure_installed or "maintained",
-                highlight = {
-                    enable = true,
-                    disable = function(ft, bufnr)
-                        if vim.tbl_contains({ "vim" }, ft) then
-                            return true
-                        end
-
-                        local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "bigfile_disable_treesitter")
-                        return ok and is_large_file
-                    end,
-                    additional_vim_regex_highlighting = false,
-                },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        -- keymaps = {
-                        --     ["af"] = "@function.outer",
-                        --     ["if"] = "@function.inner",
-                        --     ["ac"] = "@class.outer",
-                        --     ["ic"] = "@class.inner",
-                        -- },
-                    },
-                    move = {
-                        enable = true,
-                        set_jumps = true, -- whether to set jumps in the jumplist
-                        -- goto_next_start = {
-                        --     ["]["] = "@function.outer",
-                        --     ["]m"] = "@class.outer",
-                        -- },
-                        -- goto_next_end = {
-                        --     ["]]"] = "@function.outer",
-                        --     ["]M"] = "@class.outer",
-                        -- },
-                        -- goto_previous_start = {
-                        --     ["[["] = "@function.outer",
-                        --     ["[m"] = "@class.outer",
-                        -- },
-                        -- goto_previous_end = {
-                        --     ["[]"] = "@function.outer",
-                        --     ["[M"] = "@class.outer",
-                        -- },
-                    },
-                },
-                indent = { enable = true },
-                matchup = { enable = true },
-            })
+            opts = vim.tbl_extend("force", opts, { ensure_installed = opts.ensure_installed or "maintained" })
+            require("nvim-treesitter.configs").setup(opts)
             require("nvim-treesitter.install").prefer_git = true
             if use_ssh then
                 local parsers = require("nvim-treesitter.parsers").get_parser_configs()
@@ -97,118 +125,6 @@ return {
     },
     { "andymass/vim-matchup" },
     { "mfussenegger/nvim-treehopper" },
-    {
-        "abecodes/tabout.nvim",
-        event = { "InsertEnter", "InsertCharPre" },
-        opts = {
-            tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
-            backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-            act_as_tab = true, -- shift content if tab out is not possible
-            act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-            enable_backwards = true,
-            completion = true, -- if the tabkey is used in a completion pum
-            tabouts = {
-                { open = "'", close = "'" },
-                { open = '"', close = '"' },
-                { open = "`", close = "`" },
-                { open = "(", close = ")" },
-                { open = "[", close = "]" },
-                { open = "{", close = "}" },
-                { open = "#", close = "]" },
-            },
-            ignore_beginning = true, -- if the cursor is at the beginning of a filled element it will rather tab out than shift the content
-            exclude = {}, -- tabout will ignore these filetypes
-        },
-        config = function(_, opts)
-            require("tabout").setup(opts)
-        end,
-    },
-    {
-        "windwp/nvim-ts-autotag",
-        opts = {
-            filetypes = {
-                "html",
-                "javascript",
-                "javascriptreact",
-                "typescriptreact",
-                "vue",
-                "xml",
-            },
-        },
-        config = require("plugins.config.ts-autotag"),
-    },
-    {
-        "NvChad/nvim-colorizer.lua",
-        config = function(_, opts)
-            local colorizer = require("colorizer")
-            colorizer.setup(opts)
-            for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
-                if vim.t[tab].bufs then
-                    vim.tbl_map(function(buf)
-                        colorizer.attach_to_buffer(buf)
-                    end, vim.t[tab].bufs)
-                end
-            end
-        end,
-    },
-    {
-        "hiphish/rainbow-delimiters.nvim",
-        dependencies = {
-            {
-                "nvim-treesitter/nvim-treesitter",
-                optional = true,
-                opts = function(_, opts)
-                    if opts.ensure_installed ~= "all" then
-                        opts.ensure_installed =
-                            require("utils.core").list_insert_unique(opts.ensure_installed, { "latex" })
-                    end
-                end,
-            },
-        },
-        config = function()
-            ---@param threshold number @Use global strategy if nr of lines exceeds this value
-            local function init_strategy(threshold)
-                return function()
-                    local errors = 200
-                    vim.treesitter.get_parser():for_each_tree(function(lt)
-                        if lt:root():has_error() and errors >= 0 then
-                            errors = errors - 1
-                        end
-                    end)
-                    if errors < 0 then
-                        return nil
-                    end
-                    return vim.fn.line("$") > threshold and require("rainbow-delimiters").strategy["global"]
-                        or require("rainbow-delimiters").strategy["local"]
-                end
-            end
-
-            vim.g.rainbow_delimiters = {
-                strategy = {
-                    [""] = init_strategy(500),
-                    c = init_strategy(200),
-                    cpp = init_strategy(200),
-                    lua = init_strategy(500),
-                    vimdoc = init_strategy(300),
-                    vim = init_strategy(300),
-                },
-                query = {
-                    [""] = "rainbow-delimiters",
-                    latex = "rainbow-blocks",
-                    javascript = "rainbow-delimiters-react",
-                },
-                highlight = {
-                    "RainbowDelimiterRed",
-                    "RainbowDelimiterOrange",
-                    "RainbowDelimiterYellow",
-                    "RainbowDelimiterGreen",
-                    "RainbowDelimiterBlue",
-                    "RainbowDelimiterCyan",
-                    "RainbowDelimiterViolet",
-                },
-            }
-        end,
-    },
     {
         "nvim-treesitter/nvim-treesitter-context",
         opts = {
@@ -241,8 +157,7 @@ return {
                             local ts_context_avail, ts_context = pcall(require, "ts_context_commentstring.internal")
                             context_commentstring = ts_context_avail and ts_context
                         end
-                        return context_commentstring and context_commentstring.calculate_commentstring()
-                            or get_option(filetype, option)
+                        return context_commentstring and context_commentstring.calculate_commentstring() or get_option(filetype, option)
                     end
                 end)
             end
@@ -259,11 +174,8 @@ return {
         ---@type CatppuccinOptions
         opts = {
             integrations = {
-                rainbow_delimiters = true,
                 treesitter = true,
                 treesitter_context = true,
-                ts_rainbow = false,
-                ts_rainbow2 = false,
                 semantic_tokens = true,
                 symbols_outline = false,
             },
