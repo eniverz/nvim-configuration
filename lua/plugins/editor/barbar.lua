@@ -3,6 +3,7 @@ return {
     {
         "romgrk/barbar.nvim",
         lazy = true,
+        event = { "BufReadPost", "BufAdd", "BufNewFile" },
         dependencies = {
             "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
             "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
