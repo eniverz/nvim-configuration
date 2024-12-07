@@ -46,7 +46,7 @@ return {
             "TSUpdate",
             "TSUpdateSync",
         },
-        event = { "BufReadPre", "VeryLazy" },
+        event = "BufReadPre",
         build = ":TSUpdate",
         init = function(plugin)
             -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -123,10 +123,12 @@ return {
             end
         end),
     },
-    { "andymass/vim-matchup" },
-    { "mfussenegger/nvim-treehopper" },
+    { "andymass/vim-matchup", lazy = vim.fn.argc(-1) == 0, event = "BufReadPre" },
+    { "mfussenegger/nvim-treehopper", lazy = vim.fn.argc(-1) == 0, event = "BufReadPre" },
     {
         "nvim-treesitter/nvim-treesitter-context",
+        lazy = vim.fn.argc(-1) == 0,
+        event = "BufReadPre",
         opts = {
             enable = true,
             max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -143,6 +145,8 @@ return {
     },
     {
         "JoosepAlviste/nvim-ts-context-commentstring",
+        lazy = vim.fn.argc(-1) == 0,
+        event = "BufReadPre",
         init = function()
             if vim.fn.has("nvim-0.10") == 1 then
                 -- HACK: add workaround for native comments: https://github.com/JoosepAlviste/nvim-ts-context-commentstring/issues/109

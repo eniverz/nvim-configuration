@@ -1,6 +1,8 @@
 return {
     {
         "hiphish/rainbow-delimiters.nvim",
+        lazy = vim.fn.argc(-1) == 0,
+        event = "BufReadPre",
         dependencies = {
             {
                 "nvim-treesitter/nvim-treesitter",

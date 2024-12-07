@@ -1,5 +1,7 @@
 return {
     "windwp/nvim-ts-autotag",
+    lazy = vim.fn.argc(-1) == 0,
+    event = { "BufReadPre", "FileType" },
     opts = {
         filetypes = {
             "html",
