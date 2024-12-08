@@ -32,7 +32,6 @@ return {
             require("nvim-treesitter.query_predicates")
         end,
         opts = {
-            ensure_installed = { "lua" },
             highlight = {
                 enable = true,
                 disable = function(ft, bufnr)

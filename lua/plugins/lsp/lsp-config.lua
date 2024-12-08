@@ -1,7 +1,6 @@
 return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        event = "VeryLazy",
         dependencies = { "williamboman/mason.nvim" },
         opts = {
             integrations = {
@@ -41,7 +40,7 @@ return {
                 check_server_version = "c",
                 update_all_servers = "U",
                 check_outdated_servers = "C",
-                uninstall_server = "X",
+                uninstall_server = "x",
                 cancel_installation = "<C-c>",
             },
         },
@@ -75,11 +74,13 @@ return {
             })
             local nvim_lsp = require("lspconfig")
             require("lspconfig.ui.windows").default_options.border = "rounded"
-            local on_attach = require("keymap.completion").lsp
-            for server, config in ipairs(opts.server) do
+            local on_attach = require("keymap.completion").on_attach
+
+            for server, config in pairs(opts.server) do
+                vim.notify("Setting up LSP: " .. server, vim.log.levels.INFO, { title = "Lazy" })
                 config.on_attach = on_attach
                 config.capabilities =
-                    require("blink.cmp").get_lsp_capabilities(vim.tbl_extend("force", config.capabilities, vim.lsp.protocol.make_client_capabilities()))
+                    require("blink.cmp").get_lsp_capabilities(vim.tbl_extend("force", config.capabilities or {}, vim.lsp.protocol.make_client_capabilities()))
                 nvim_lsp[server].setup(config)
             end
         end,
