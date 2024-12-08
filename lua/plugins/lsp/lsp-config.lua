@@ -77,7 +77,6 @@ return {
             local on_attach = require("keymap.completion").on_attach
 
             for server, config in pairs(opts.server) do
-                vim.notify("Setting up LSP: " .. server, vim.log.levels.INFO, { title = "Lazy" })
                 config.on_attach = on_attach
                 config.capabilities =
                     require("blink.cmp").get_lsp_capabilities(vim.tbl_extend("force", config.capabilities or {}, vim.lsp.protocol.make_client_capabilities()))
