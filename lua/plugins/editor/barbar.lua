@@ -28,11 +28,6 @@ return {
                         deleted = { enabled = true, icon = icons.git.Remove },
                     },
                 },
-                sidebar_filetypes = {
-                    -- Use the default value(... = true): {event = 'BufWinLeave', text = '', align = 'left'}
-                    -- align: "left" | "center" | "right" is the text alignment in the bar
-                    ["neo-tree"] = { event = "BufWipeout", text = " Neo Tree", align = "center" },
-                },
             }
         end,
     },
