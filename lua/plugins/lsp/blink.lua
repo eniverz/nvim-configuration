@@ -25,6 +25,7 @@ return {
                 },
                 menu = {
                     border = "rounded",
+                    scrollbar = false,
                     draw = {
                         columns = { { "item_idx" }, { "label", "label_description", gap = 1 }, { "kind_icon" } },
                         components = {
@@ -39,7 +40,7 @@ return {
                 },
                 documentation = {
                     auto_show = true,
-                    window = { border = "single" }
+                    window = { border = "single", scrollbar = false },
                 },
                 signature = {
                     enabled = true,
@@ -61,8 +62,8 @@ return {
                 ["<CR>"] = { "select_and_accept", "fallback" },
                 ["<C-b>"] = { "scroll_documentation_up", "fallback" },
                 ["<C-f>"] = { "scroll_documentation_down", "fallback" },
-                ["<Tab>"] = { "snippet_forward", "fallback" },
-                ["<S-Tab>"] = { "snippet_backward", "fallback" },
+                ["<Tab>"] = { "select_next", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "fallback" },
             },
             appearance = {
                 use_nvim_cmp_as_default = true,
