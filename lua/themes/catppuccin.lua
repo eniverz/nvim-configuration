@@ -69,6 +69,19 @@ if true then
                             IblIndent = { fg = cp.surface0 },
                             IblScope = { fg = cp.surface2, style = { "bold" } },
 
+                            -- For Git
+                            NeoTreeGitAdded = { fg = cp.green },
+                            NeoTreeGitStaged = { fg = cp.teal },
+                            NeoTreeGitConflict = { fg = cp.maroon },
+                            NeoTreeGitDeleted = { fg = cp.red },
+                            NeoTreeModified = { fg = cp.peach },
+                            NeoTreeGitUnstaged = { fg = cp.sky },
+                            NeoTreeGitUntracked = { fg = cp.sky },
+                            NeoTreeGitModified = { fg = cp.yellow },
+                            NeoTreeGitModified_35 = { fg = cp.yellow },
+                            NeoTreeGitModified_60 = { fg = cp.yellow },
+                            NeoTreeGitModified_68 = { fg = cp.yellow },
+
                             -- For nvim-cmp and wilder.nvim
                             Pmenu = { fg = cp.overlay2, bg = transparent_background and cp.none or cp.base },
                             PmenuBorder = { fg = cp.surface1, bg = transparent_background and cp.none or cp.base },
@@ -87,10 +100,6 @@ if true then
 
                             -- For nvim-notify
                             NotifyBackground = { bg = cp.base },
-
-                            -- For nvim-tree
-                            NvimTreeRootFolder = { fg = cp.pink },
-                            NvimTreeIndentMarker = { fg = cp.surface2 },
 
                             -- For trouble.nvim
                             TroubleNormal = { bg = transparent_background and cp.none or cp.base },
@@ -137,16 +146,6 @@ if true then
                                 style = { "bold" },
                             },
                             TelescopeSelectionCaret = { fg = cp.flamingo },
-
-                            -- For glance.nvim
-                            GlanceWinBarFilename = { fg = cp.subtext1, style = { "bold" } },
-                            GlanceWinBarFilepath = { fg = cp.subtext0, style = { "italic" } },
-                            GlanceWinBarTitle = { fg = cp.teal, style = { "bold" } },
-                            GlanceListCount = { fg = cp.lavender },
-                            GlanceListFilepath = { link = "Comment" },
-                            GlanceListFilename = { fg = cp.blue },
-                            GlanceListMatch = { fg = cp.lavender, style = { "bold" } },
-                            GlanceFoldIcon = { fg = cp.green },
 
                             -- For nvim-treehopper
                             TSNodeKey = {

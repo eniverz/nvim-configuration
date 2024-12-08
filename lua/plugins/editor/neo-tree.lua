@@ -80,27 +80,6 @@ return {
         }
     end,
     config = function(_, opts)
-        local Highlight = require("utils.highlight")
-        local palette = require("catppuccin.palettes.mocha")
-
-        local neotree_highlights = Highlight.HighlightGroups({
-            NeoTreeGitAdded = { guifg = palette.green },
-            NeoTreeGitStaged = { guifg = palette.teal },
-
-            NeoTreeGitConflict = { guifg = palette.maroon },
-
-            NeoTreeGitDeleted = { guifg = palette.red },
-            NeoTreeModified = { guifg = palette.peach },
-            NeoTreeGitUnstaged = { guifg = palette.sky },
-            NeoTreeGitUntracked = { guifg = palette.sky },
-
-            NeoTreeGitModified = { guifg = palette.yellow },
-            NeoTreeGitModified_35 = { guifg = palette.yellow },
-            NeoTreeGitModified_60 = { guifg = palette.yellow },
-            NeoTreeGitModified_68 = { guifg = palette.yellow },
-        })
-        Highlight:new():add(neotree_highlights):register_highlights()
-
         require("neo-tree").setup(opts)
     end,
 }
