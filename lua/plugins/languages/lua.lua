@@ -21,6 +21,7 @@ return {
         opts = function(_, opts)
             opts.server = opts.server or {}
             opts.server.lua_ls = {
+                filetypes = { "lua" },
                 settings = {
                     Lua = {
                         runtime = {
