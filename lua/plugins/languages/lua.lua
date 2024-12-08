@@ -20,7 +20,7 @@ return {
         optional = true,
         opts = function(_, opts)
             opts.server = opts.server or {}
-            opts.server.lua = {
+            opts.server.lua_ls = {
                 settings = {
                     Lua = {
                         runtime = {
@@ -72,7 +72,7 @@ return {
         "saghen/blink.cmp",
         optional = true,
         opts = function(_, opts)
-            opts.sources = opts.sources or {}
+            opts.sources = opts.sources or { completion = {} }
             local enabled_providers = opts.sources.completion.enabled_providers or {}
             local providers = opts.sources.providers or {}
             opts.sources.completion.enabled_providers = require("utils.core").list_insert_unique(enabled_providers, { "lazydev" })
