@@ -40,7 +40,36 @@ return {
     {
         "hrsh7th/cmp-cmdline",
         keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
-        dependencies = { "hrsh7th/nvim-cmp", "dmitmel/cmp-cmdline-history" },
+        dependencies = {
+            {
+                "hrsh7th/nvim-cmp",
+                opts = function(_, opts)
+                    local border = function(hl)
+                        return {
+                            { "┌", hl },
+                            { "─", hl },
+                            { "┐", hl },
+                            { "│", hl },
+                            { "┘", hl },
+                            { "─", hl },
+                            { "└", hl },
+                            { "│", hl },
+                        }
+                    end
+
+                    return vim.tbl_extend("force", opts, {
+                        window = {
+                            completion = {
+                                border = border("PmenuBorder"),
+                                winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+                                scrollbar = false,
+                            },
+                        },
+                    })
+                end,
+            },
+            "dmitmel/cmp-cmdline-history",
+        },
         opts = function()
             local cmp = require("cmp")
             return {

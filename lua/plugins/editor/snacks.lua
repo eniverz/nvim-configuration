@@ -86,7 +86,7 @@ return {
                 sections = {
                     { section = "header", align = "center" },
                     { section = "keys", gap = 1, padding = 1 },
-                    { icon = " ", title = "Recent Files", section = "recent_files", limit = 5, cwd = true, indent = 2, padding = 1 },
+                    { icon = " ", title = "Recent Files", section = "recent_files", limit = 5, indent = 2, padding = 1 },
                     { icon = " ", title = "Projects", section = "projects", limit = 5, indent = 2, padding = 1 },
                     { section = "startup" },
                     { text = { " Have Fun with neovim", hl = "SnacksDashboardDesc" }, align = "center" },
