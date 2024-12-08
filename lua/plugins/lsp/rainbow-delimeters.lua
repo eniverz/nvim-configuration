@@ -1,3 +1,4 @@
+-- rainbow brackets
 return {
     {
         "hiphish/rainbow-delimiters.nvim",

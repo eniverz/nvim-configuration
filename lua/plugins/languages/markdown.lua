@@ -20,17 +20,34 @@ return {
         optional = true,
         opts = function(_, opts)
             opts.server = opts.server or {}
-            opts.server.marksman = {}
+            opts.server.marksman = {
+                filetype = { "markdown" },
+            }
         end,
     },
     {
         "MeanderingProgrammer/render-markdown.nvim",
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         opts = {
-            max_file_size = require("config.settings").large_buf.size / 1024 / 1024, -- unit: MB
+            log_level = "debug",
+            overrides = {
+                buftype = {
+                    nofile = {
+                        render_modes = { "n", "c", "i" },
+                        debounce = 5,
+                        code = {
+                            left_pad = 0,
+                            right_pad = 0,
+                            language_pad = 0,
+                        },
+                    },
+                },
+                filetype = {},
+            },
         },
+        ft = { "markdown" },
     },
     {
         "stevearc/conform.nvim",
