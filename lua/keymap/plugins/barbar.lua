@@ -10,11 +10,10 @@ bind.nvim_load_mapping({
     ["n|<A-S-Right>"] = map_cr("BufferMoveNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: move next"),
     ["n|<A-S-j>"] = map_cr("BufferMovePrevious"):with_noremap():with_silent():with_nowait():with_desc("Buffer: move previous"),
     ["n|<A-S-k>"] = map_cr("BufferMoveNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: move next"),
-    ["n|<leader>bP"] = map_cr("BufferPrevious"):with_noremap():with_silent():with_nowait():with_desc("Buffer: previous"),
-    ["n|<leader>bN"] = map_cr("BufferNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: next"),
     ["n|<leader>bG"] = map_cr("BufferLast"):with_noremap():with_silent():with_nowait():with_desc("Buffer: go last"),
+    ["n|<leader>bp"] = map_cr("BufferPick"):with_noremap():with_silent():with_nowait():with_desc("Buffer: pick one buffer"),
 
-    ["n|<leader>bp"] = map_cr("BufferPin"):with_noremap():with_silent():with_nowait():with_desc("Buffer: pin/unpin current"),
+    ["n|<leader>bP"] = map_cr("BufferPin"):with_noremap():with_silent():with_nowait():with_desc("Buffer: pin/unpin current"),
     ["n|<leader>c"] = map_cr("BufferClose"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close current"),
     ["n|<leader>bc"] = map_cr("BufferCloseAllButCurrentOrPinned"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close all except current"),
     ["n|<leader>bl"] = map_cr("BufferCloseBufferLeft"):with_noremap():with_silent():with_nowait():with_desc("Buffer: close left buffer"),

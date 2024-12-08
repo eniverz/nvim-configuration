@@ -12,12 +12,13 @@ return {
             }
             require("which-key").add({
                 { "<leader>b", group = icons.ui.Buffer .. " Buffer" },
+                { "<leader>bs", group = icons.ui.Sort .. " Buffer Sort" },
                 { "<leader>C", group = icons.misc.Gavel .. " Crates" },
                 { "<leader>d", group = icons.ui.Bug .. " Debug" },
                 { "<leader>f", group = icons.ui.Telescope .. " Fuzzy Find" },
                 { "<leader>g", group = icons.git.Git .. " Git" },
                 { "<leader>l", group = icons.misc.LspAvailable .. " Lsp" },
-                { "<leader>n", group = icons.ui.FolderOpen .. " Nvim Tree" },
+                { "<leader>n", group = icons.ui.FolderOpen .. " NeoTree" },
                 { "<leader>p", group = icons.ui.Package .. " Package" },
                 { "<leader>s", group = icons.cmp.tmux .. "Session" },
                 { "<leader>t", group = icons.ui.Terminal .. " Terminal" },
@@ -44,7 +45,7 @@ return {
                 icons = {
                     breadcrumb = icons.ui.Separator,
                     separator = icons.misc.Vbar,
-                    group = "",
+                    group = ""
                 },
 
                 disable = { filetypes = { "TelescopePrompt" } },
