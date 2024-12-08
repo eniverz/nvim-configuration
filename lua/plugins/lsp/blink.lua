@@ -40,6 +40,7 @@ return {
                 },
                 documentation = {
                     auto_show = true,
+                    auto_show_delay_ms = 100,
                     window = { border = "single", scrollbar = false },
                 },
                 signature = {
@@ -66,7 +67,6 @@ return {
                 ["<S-Tab>"] = { "select_prev", "fallback" },
             },
             appearance = {
-                use_nvim_cmp_as_default = true,
                 kind_icons = {
                     Array = "",
                     Boolean = "󰨙",
