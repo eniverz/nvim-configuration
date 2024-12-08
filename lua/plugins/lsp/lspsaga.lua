@@ -13,7 +13,6 @@ return {
         local icons = { ui = icon_config.get("ui"), kind = icon_config.get("kind"), type = icon_config.get("type") }
         return {
             symbol_in_winbar = {
-                enabled = true,
                 seperator = " " .. icons.ui.Separator,
                 show_file = false,
             },
@@ -30,7 +29,7 @@ return {
                 open_link = "gl",
                 open_cmd = "!" .. require("config.settings").external_browser,
             },
-            lightbulb = { enabled = false },
+            lightbulb = { enable = false },
             rename = { in_select = false },
             ui = {
                 border = "rounded", -- none, single, double, shadow, rounded, solid
