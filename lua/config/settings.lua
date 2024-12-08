@@ -5,6 +5,7 @@ local settings = {
         font_name = "CodeNewRoman Nerd Font",
         font_size = 12,
     },
+    external_browser = "google_chrome --incognito",
     large_buf = {
         size = 1024 * 1024 * 1.5,
         features = {

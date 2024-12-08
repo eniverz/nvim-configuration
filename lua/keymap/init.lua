@@ -1,4 +1,3 @@
-require("keymap.plugins.aerial")
 require("keymap.plugins.barbar")
 require("keymap.plugins.neo-tree")
 require("keymap.plugins.resession")
