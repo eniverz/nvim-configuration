@@ -8,6 +8,7 @@ return {
         integrations = {
             default_integrations = false,
             barbar = true,
+            fidget = true,
             lsp_saga = true,
             markdown = true,
             noice = true,
