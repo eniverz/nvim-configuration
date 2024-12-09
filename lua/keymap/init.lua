@@ -1,3 +1,4 @@
+require("keymap.plugins.autopairs")
 require("keymap.plugins.barbar")
 require("keymap.plugins.neo-tree")
 require("keymap.plugins.resession")
