@@ -40,9 +40,4 @@ return {
             },
         },
     },
-    {
-        "catppuccin/nvim",
-        optional = true,
-        opts = { integrations = { barbar = vim.g.colors_name:find("catppuccin") } },
-    },
 }

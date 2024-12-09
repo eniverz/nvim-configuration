@@ -1,34 +1,53 @@
 local M = {}
 
-function M.get_palette()
-    ---@type string
+function M.get_lualine_theme()
     local colorscheme = vim.g.colors_name
-    if colorscheme:find("catppuccin") then
-        return require("catppuccin.palettes").get_palette()
-    elseif colorscheme:find("onedark") then
-        -- TODO: Implement onedark palette
-    elseif colorscheme:find("default") then
-        -- TODO: Implement default palette
-    elseif colorscheme:find("tokyonight") then
-        -- TODO : Implement tokyonight palette
+    if colorscheme:find("onedark") then
+        return "onedark-nvim"
     elseif colorscheme:find("vscode") then
-        -- TODO : Implement vscode palette
+        return "vscode"
+    elseif colorscheme:find("tokyonight") then
+        return "tokyonight"
     else
+        local colors = colorscheme:find("catppuccin") and require("catppuccin.palettes").get_palette()
+            or {
+                flamingo = "#DD7878",
+                peach = "#FF8700",
+                green = "#AFD700",
+                teal = "#B5E8E0",
+                lavender = "#7287FD",
+                text = "#F2F2BF",
+                subtext0 = "#A6ADC8",
+                surface0 = "#302D41",
+            }
+
+        local universal_bg = require("config.scheme").transparent_background and "NONE" or colors.mantle
         return {
-            rosewater = "#DC8A78",
-            flamingo = "#DD7878",
-            mauve = "#CBA6F7",
-            pink = "#F5C2E7",
-            red = "#E95678",
-            maroon = "#B33076",
-            peach = "#FF8700",
-            yellow = "#F7BB3B",
-            green = "#AFD700",
-            sapphire = "#36D0E0",
-            blue = "#61AFEF",
-            sky = "#04A5E5",
-            teal = "#B5E8E0",
-            lavender = "#7287FD",
+            normal = {
+                a = { fg = colors.lavender, bg = colors.surface0, gui = "bold" },
+                b = { fg = colors.text, bg = universal_bg },
+                c = { fg = colors.text, bg = universal_bg },
+            },
+            command = {
+                a = { fg = colors.peach, bg = colors.surface0, gui = "bold" },
+            },
+            insert = {
+                a = { fg = colors.green, bg = colors.surface0, gui = "bold" },
+            },
+            visual = {
+                a = { fg = colors.flamingo, bg = colors.surface0, gui = "bold" },
+            },
+            terminal = {
+                a = { fg = colors.teal, bg = colors.surface0, gui = "bold" },
+            },
+            replace = {
+                a = { fg = colors.red, bg = colors.surface0, gui = "bold" },
+            },
+            inactive = {
+                a = { fg = colors.subtext0, bg = universal_bg, gui = "bold" },
+                b = { fg = colors.subtext0, bg = universal_bg },
+                c = { fg = colors.subtext0, bg = universal_bg },
+            },
         }
     end
 end

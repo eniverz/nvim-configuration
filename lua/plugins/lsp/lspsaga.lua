@@ -82,48 +82,6 @@ return {
         }
     end,
     config = function(_, opts)
-        local color_util = require("utils.color")
-        local palettes = color_util.get_palette()
-        local dat = {
-            Class = palettes.yellow,
-            Constant = palettes.peach,
-            Constructor = palettes.sapphire,
-            Enum = palettes.yellow,
-            EnumMember = palettes.teal,
-            Event = palettes.yellow,
-            Field = palettes.teal,
-            File = palettes.rosewater,
-            Function = palettes.blue,
-            Interface = palettes.yellow,
-            Key = palettes.red,
-            Method = palettes.blue,
-            Module = palettes.blue,
-            Namespace = palettes.blue,
-            Number = palettes.peach,
-            Operator = palettes.sky,
-            Package = palettes.blue,
-            Property = palettes.teal,
-            Struct = palettes.yellow,
-            TypeParameter = palettes.blue,
-            Variable = palettes.peach,
-            Array = palettes.peach,
-            Boolean = palettes.peach,
-            Null = palettes.yellow,
-            Object = palettes.yellow,
-            String = palettes.green,
-            TypeAlias = palettes.green,
-            Parameter = palettes.blue,
-            StaticMethod = palettes.peach,
-            Text = palettes.green,
-            Snippet = palettes.mauve,
-            Folder = palettes.blue,
-            Unit = palettes.green,
-            Value = palettes.peach,
-        }
-        for kind, color in pairs(dat) do
-            color_util.set_global_hl("LspKind" .. kind, color)
-        end
-
         require("lspsaga").setup(opts)
     end,
 }

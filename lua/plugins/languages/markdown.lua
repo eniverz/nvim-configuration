@@ -59,11 +59,4 @@ return {
             },
         },
     },
-    {
-        "catppuccin/nvim",
-        optional = true,
-        opts = {
-            integrations = { markdown = vim.g.colors_name:find("catppuccin") },
-        },
-    },
 }

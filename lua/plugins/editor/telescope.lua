@@ -39,6 +39,10 @@ return {
             local icons = { ui = require("config.icons").get("ui", true) }
 
             return {
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
                 defaults = {
                     vimgrep_arguments = {
                         "rg",
@@ -137,11 +141,5 @@ return {
             telescope.load_extension("undo")
             telescope.load_extension("remote-sshfs")
         end,
-    },
-    {
-        "catppuccin/nvim",
-        optional = true,
-        ---@type CatppuccinOptions
-        opts = { integrations = { telescope = { enabled = vim.g.colors_name:find("catppuccin"), style = "nvchad" } } },
     },
 }

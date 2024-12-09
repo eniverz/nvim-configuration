@@ -140,10 +140,8 @@ You're recommended to install PowerShell for better experience.]],
 end
 
 local load_core = function()
-    local colorscheme = scheme.colorscheme
     local background = scheme.background
     vim.api.nvim_command("set background=" .. background)
-    vim.api.nvim_command("colorscheme " .. colorscheme)
 
     createdir()
     disable_distribution_plugins()

@@ -170,16 +170,4 @@ return {
             require("ts_context_commentstring").setup(opts)
         end,
     },
-    {
-        "catppuccin/nvim",
-        optional = true,
-        ---@type CatppuccinOptions
-        opts = {
-            integrations = {
-                treesitter = vim.g.colors_name:find("catppuccin"),
-                treesitter_context = vim.g.colors_name:find("catppuccin"),
-                semantic_tokens = vim.g.colors_name:find("catppuccin"),
-            },
-        },
-    },
 }
