@@ -33,6 +33,13 @@ bind.nvim_load_mapping({
         :with_nowait()
         :with_silent()
         :with_desc("Snacks: open lazygit panel"),
+    ["n|<leader>gb"] = map_callback(function()
+            Snacks.git.blame_line()
+        end)
+        :with_noremap()
+        :with_nowait()
+        :with_silent()
+        :with_desc("Snacks: open lazygit panel"),
 
     -- word jumps
     ["nt|]]"] = map_callback(function()

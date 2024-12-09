@@ -9,6 +9,7 @@ return {
             default_integrations = false,
             barbar = true,
             fidget = true,
+            gitsigns = true,
             lsp_saga = true,
             markdown = true,
             noice = true,

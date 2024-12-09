@@ -4,7 +4,7 @@ local map_cu = bind.map_cu
 
 if vim.fn.executable("git") then
     bind.nvim_load_mapping({
-        ["n|<leader>gb"] = map_callback(function()
+        ["n|<leader>gB"] = map_callback(function()
                 require("telescope.builtin").git_branches({ use_file_path = true })
             end)
             :with_silent()
