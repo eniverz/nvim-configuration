@@ -1,6 +1,7 @@
 require("keymap.plugins.autopairs")
 require("keymap.plugins.barbar")
 require("keymap.plugins.comment")
+require("keymap.plugins.indent-blankline")
 require("keymap.plugins.neo-tree")
 require("keymap.plugins.resession")
 require("keymap.plugins.snacks")
