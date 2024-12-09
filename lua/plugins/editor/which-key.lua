@@ -25,7 +25,6 @@ return {
                 { "<leader>T", group = icons.ui.Tasks .. " Tasks" },
                 { "<leader>w", group = icons.misc.ManUp .. " Window" },
                 { "<leader>u", group = icons.ui.Window .. " UI" },
-                { "<leader>z", group = icons.ui.BookMark .. " Fold" },
                 { "<leader>x", group = icons.ui.Trouble .. " Trouble" },
                 { "<leader>o", group = icons.ui.Tasks .. " Overseer" },
             })
