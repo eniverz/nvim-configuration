@@ -18,18 +18,11 @@ return {
             char = "│",
             tab_char = "│",
             priority = 2,
-            highlight = {
-                "RainbowDelimiterRed",
-                "RainbowDelimiterOrange",
-                "RainbowDelimiterYellow",
-                "RainbowDelimiterGreen",
-                "RainbowDelimiterBlue",
-                "RainbowDelimiterCyan",
-                "RainbowDelimiterViolet",
-            },
         },
+        whitespace = { remove_blankline_trail = false },
         -- Note: The `scope` field requires treesitter to be set up
         scope = {
+            enabled = true,
             char = "┃",
             show_start = false,
             show_end = false,
@@ -108,6 +101,27 @@ return {
         },
     },
     config = function(_, opts)
+        local hooks = require("ibl.hooks")
+        hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+            vim.api.nvim_set_hl(0, "IndentRainbowRed", { fg = "#7a4654" })
+            vim.api.nvim_set_hl(0, "IndentRainbowBlue", { fg = "#455a7d" })
+            vim.api.nvim_set_hl(0, "IndentRainbowCyan", { fg = "#4a726b" })
+            vim.api.nvim_set_hl(0, "IndentRainbowGreen", { fg = "#537251" })
+            vim.api.nvim_set_hl(0, "IndentRainbowOrange", { fg = "#7d5a44" })
+            vim.api.nvim_set_hl(0, "IndentRainbowViolet", { fg = "#66537c" })
+            vim.api.nvim_set_hl(0, "IndentRainbowYellow", { fg = "#7d7158" })
+        end)
+        local highlight = {
+            "IndentRainbowRed",
+            "IndentRainbowYellow",
+            "IndentRainbowBlue",
+            "IndentRainbowOrange",
+            "IndentRainbowGreen",
+            "IndentRainbowViolet",
+            "IndentRainbowCyan",
+        }
+        opts.indent.highlight = highlight
+        opts.scope.highlight = "RainbowDelimiterCyan"
         require("ibl").setup(opts)
     end,
 }
