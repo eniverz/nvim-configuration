@@ -1,0 +1,7 @@
+{
+    "Insert Warning": {
+        "prefix": ["error", "e"],
+        "body": "> [!ERROR]\n> ",
+        "description": "Insert Error"
+    }
+}
