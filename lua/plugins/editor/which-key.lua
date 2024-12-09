@@ -53,9 +53,9 @@ return {
         end,
     },
     {
-        "catppuccin",
+        "catppuccin/nvim",
         optional = true,
         ---@type CatppuccinOptions
-        opts = { integrations = { which_key = true } },
+        opts = { integrations = { which_key = vim.g.colors_name:find("catppuccin") } },
     }
 }

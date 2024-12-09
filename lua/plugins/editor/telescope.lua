@@ -139,9 +139,9 @@ return {
         end,
     },
     {
-        "catppuccin",
+        "catppuccin/nvim",
         optional = true,
         ---@type CatppuccinOptions
-        opts = { integrations = { telescope = { enabled = true, style = "nvchad" } } },
+        opts = { integrations = { telescope = { enabled = vim.g.colors_name:find("catppuccin"), style = "nvchad" } } },
     },
 }

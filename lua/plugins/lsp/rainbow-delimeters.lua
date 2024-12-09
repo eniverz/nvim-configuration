@@ -64,6 +64,6 @@ return {
         "catppuccin/nvim",
         optional = true,
         ---@type CatppuccinOptions
-        opts = { integrations = { rainbow_delimiters = true } },
+        opts = { integrations = { rainbow_delimiters = vim.g.colors_name:find("catppuccin") } },
     },
 }

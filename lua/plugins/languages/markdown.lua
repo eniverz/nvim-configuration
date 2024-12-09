@@ -60,10 +60,10 @@ return {
         },
     },
     {
-        "catppuccin",
+        "catppuccin/nvim",
         optional = true,
         opts = {
-            integrations = { markdown = true },
+            integrations = { markdown = vim.g.colors_name:find("catppuccin") },
         },
     },
 }

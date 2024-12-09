@@ -171,15 +171,14 @@ return {
         end,
     },
     {
-        "catppuccin",
+        "catppuccin/nvim",
         optional = true,
         ---@type CatppuccinOptions
         opts = {
             integrations = {
-                treesitter = true,
-                treesitter_context = true,
-                semantic_tokens = true,
-                symbols_outline = false,
+                treesitter = vim.g.colors_name:find("catppuccin"),
+                treesitter_context = vim.g.colors_name:find("catppuccin"),
+                semantic_tokens = vim.g.colors_name:find("catppuccin"),
             },
         },
     },

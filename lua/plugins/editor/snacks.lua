@@ -111,6 +111,6 @@ return {
     {
         "catppuccin/nvim",
         optional = true,
-        opts = { integrations = { snacks = true } },
+        opts = { integrations = { snacks = vim.g.colors_name:find("catppuccin") } },
     },
 }

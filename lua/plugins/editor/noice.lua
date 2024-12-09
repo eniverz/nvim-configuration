@@ -116,9 +116,9 @@ return {
         end,
     },
     {
-        "catppuccin",
+        "catppuccin/nvim",
         optional = true,
         ---@type CatppuccinOptions
-        opts = { integrations = { noice = true } },
+        opts = { integrations = { noice = vim.g.colors_name:find("catppuccin") } },
     },
 }

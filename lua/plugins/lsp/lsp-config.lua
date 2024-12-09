@@ -79,7 +79,7 @@ return {
             for server, config in pairs(opts.server) do
                 config.on_attach = on_attach
                 config.capabilities =
-                    require("blink.cmp").get_lsp_capabilities(vim.tbl_extend("force", config.capabilities or {}, vim.lsp.protocol.make_client_capabilities()))
+                    require("blink.cmp").get_lsp_capabilities(vim.tbl_extend("keep", config.capabilities or {}, vim.lsp.protocol.make_client_capabilities()))
                 nvim_lsp[server].setup(config)
             end
         end,

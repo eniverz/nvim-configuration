@@ -140,6 +140,11 @@ You're recommended to install PowerShell for better experience.]],
 end
 
 local load_core = function()
+    local colorscheme = scheme.colorscheme
+    local background = scheme.background
+    vim.api.nvim_command("set background=" .. background)
+    vim.api.nvim_command("colorscheme " .. colorscheme)
+
     createdir()
     disable_distribution_plugins()
     leader_map()
@@ -151,11 +156,6 @@ local load_core = function()
     require("config.options")
     require("lazy_setup")
     require("keymap")
-
-    local colorscheme = scheme.colorscheme
-    local background = scheme.background
-    vim.api.nvim_command("set background=" .. background)
-    vim.api.nvim_command("colorscheme " .. colorscheme)
 end
 
 load_core()
