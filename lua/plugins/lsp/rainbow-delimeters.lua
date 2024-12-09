@@ -14,38 +14,17 @@ return {
             end,
         },
     },
-    config = function()
-        ---@param threshold number @Use global strategy if nr of lines exceeds this value
-        local function init_strategy(threshold)
-            return function()
-                local errors = 200
-                vim.treesitter.get_parser():for_each_tree(function(lt)
-                    if lt:root():has_error() and errors >= 0 then
-                        errors = errors - 1
-                    end
-                end)
-                if errors < 0 then
-                    return nil
-                end
-                return vim.fn.line("$") > threshold and require("rainbow-delimiters").strategy["global"] or require("rainbow-delimiters").strategy["local"]
-            end
-        end
-
-        vim.g.rainbow_delimiters = {
+    opts = function()
+        local rainbow = require("rainbow-delimiters")
+        return {
             strategy = {
-                [""] = init_strategy(500),
-                c = init_strategy(200),
-                cpp = init_strategy(200),
-                lua = init_strategy(500),
-                vimdoc = init_strategy(300),
-                vim = init_strategy(300),
+                [''] = rainbow.strategy["global"],
             },
             query = {
                 [""] = "rainbow-delimiters",
                 latex = "rainbow-blocks",
                 javascript = "rainbow-delimiters-react",
-                javascriptreact = "rainbow-delimiters-react",
-                typescriptreact = "rainbow-delimiters-react",
+                tsx = "rainbow-delimiters-react",
             },
             highlight = {
                 "RainbowDelimiterRed",
@@ -57,5 +36,8 @@ return {
                 "RainbowDelimiterViolet",
             },
         }
+    end,
+    config = function(_, opts)
+        require("rainbow-delimiters.setup").setup(opts)
     end,
 }
