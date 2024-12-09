@@ -32,6 +32,7 @@ return {
         ---@type render.md.UserConfig
         opts = {
             log_level = "debug",
+            render_modes = true,
             overrides = {
                 buftype = {
                     nofile = {
