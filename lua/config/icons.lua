@@ -119,6 +119,7 @@ local data = {
         Package = "",
         Pencil = "󰏫",
         Perf = "󰅒",
+        Pin = "",
         Play = "",
         Project = "",
         Right = "",

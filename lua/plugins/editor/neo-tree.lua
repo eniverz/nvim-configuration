@@ -9,15 +9,9 @@ return {
     cmd = "Neotree",
     opts = function()
         local icons = {
-            diagnostics = require("config.icons").get("diagnostics"),
-            dap = require("config.icons").get("dap"),
             ui = require("config.icons").get("ui"),
             git = require("config.icons").get("git"),
         }
-        vim.fn.sign_define("DiagnosticsSignError", { text = icons.diagnostics.Error, texthl = "DiagnosticsSignError" })
-        vim.fn.sign_define("DiagnosticsSignWarning", { text = icons.diagnostics.Warning, texthl = "DiagnosticsSignWarning" })
-        vim.fn.sign_define("DiagnosticsSignInformation", { text = icons.diagnostics.Information, texthl = "DiagnosticsSignInformation" })
-        vim.fn.sign_define("DiagnosticsSignHint", { text = icons.diagnostics.Hint, texthl = "DiagnosticsSignHint" })
 
         return {
             close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab

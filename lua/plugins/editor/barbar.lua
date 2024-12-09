@@ -12,10 +12,16 @@ return {
             vim.g.barbar_auto_setup = false
         end,
         opts = function()
-            local icons = { diagnostics = require("config.icons").get("diagnostics"), git = require("config.icons").get("git") }
+            local icon_config = require("config.icons")
+            local icons = { diagnostics = icon_config.get("diagnostics"), git = icon_config.get("git"), ui = icon_config.get("ui") }
+            vim.fn.sign_define("DiagnosticSignError", { text = icons.diagnostics.Error_alt, texthl = "DiagnosticsSignError" })
+            vim.fn.sign_define("DiagnosticSignWarn", { text = icons.diagnostics.Warning_alt, texthl = "DiagnosticsSignWarn" })
+            vim.fn.sign_define("DiagnosticSignInfo", { text = icons.diagnostics.Information_alt, texthl = "DiagnosticsSignInfo" })
+            vim.fn.sign_define("DiagnosticSignHint", { text = icons.diagnostics.Hint_alt, texthl = "DiagnosticsSignHint" })
             return {
                 icons = {
                     buffer_index = true,
+                    pinned = { button = icons.ui.Pin, filename = true },
                     diagnostics = {
                         [vim.diagnostic.severity.ERROR] = { enabled = true, icon = icons.diagnostics.Error_alt },
                         [vim.diagnostic.severity.WARN] = { enabled = true, icon = icons.diagnostics.Warning_alt },
