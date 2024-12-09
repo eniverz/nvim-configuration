@@ -17,6 +17,7 @@ return {
             close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
             enable_git_status = true,
             enable_diagnostics = true,
+            sources = { "document_symbols", "filesystem", "buffers", "git_status" },
             sort_function = function(a, b)
                 if a.type == b.type then
                     return a.path < b.path
