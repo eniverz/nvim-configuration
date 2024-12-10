@@ -209,7 +209,7 @@ return {
             options = {
                 icons_enabled = true,
                 theme = custom_theme(),
-                disabled_filetypes = { statusline = { "alpha" } },
+                disabled_filetypes = { statusline = { "alpha", "snacks_dashboard" } },
                 component_separators = "",
                 section_separators = { left = "", right = "" },
             },
