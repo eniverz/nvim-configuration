@@ -4,9 +4,8 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "javascript", "typescript" })
+                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "javascript", "typescript", "tsx" })
             end
-            vim.treesitter.language.register("typescriptreact", "javascriptreact")
         end,
     },
     {
