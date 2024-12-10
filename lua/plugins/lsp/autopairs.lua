@@ -1,12 +1,12 @@
 -- auto close pairs
 return {
     "windwp/nvim-autopairs",
-    event = "User",
+    event = "InsertEnter",
     opts = {
         check_ts = true,
-        ts_config = { java = false },
+        -- ts_config = { java = false },
         fast_wrap = {
-            map = "<M-e>",
+            map = "<A-e>",
             chars = { "{", "[", "(", '"', "'" },
             pattern = ([[ [%'%"%)%>%]%)%}%,] ]]):gsub("%s+", ""),
             offset = 0,
