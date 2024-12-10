@@ -46,6 +46,7 @@
   "remote-sshfs.nvim": { "branch": "main", "commit": "03f6c40c4032eeb1ab91368e06db9c3f3a97a75d" },
   "render-markdown.nvim": { "branch": "main", "commit": "e41b0002fe4196825450ab5a6343300c40791d51" },
   "resession.nvim": { "branch": "master", "commit": "18f507c42e213918ec28bf6ed9a5ec33990c0e95" },
+  "schemastore.nvim": { "branch": "main", "commit": "f8c2a0f5d51b800ea4625808e243d9e8f7c5e1df" },
   "smart-splits.nvim": { "branch": "master", "commit": "264e865589389409f1ac1da7673b1b732b1e8963" },
   "smartyank.nvim": { "branch": "master", "commit": "0a4554a4ea4cad73dab0a15e559f2128ca03c7b2" },
   "snacks.nvim": { "branch": "main", "commit": "fc71e36c90f44e0e6180ac6c5f035817709569d8" },
