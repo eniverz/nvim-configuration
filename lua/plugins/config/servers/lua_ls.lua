@@ -10,7 +10,8 @@ return {
                 -- Get the language server to recognize the `vim` global
                 globals = {
                     'vim',
-                    'require'
+                    'require',
+                    'Snacks'
                 },
                 disable = { "different-requires" },
             },

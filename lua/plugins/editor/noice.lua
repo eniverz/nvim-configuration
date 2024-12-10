@@ -40,22 +40,6 @@ return {
         end,
     },
     {
-        "folke/edgy.nvim",
-        optional = true,
-        opts = function(_, opts)
-            if not opts.bottom then
-                opts.bottom = {}
-            end
-            table.insert(opts.bottom, {
-                ft = "noice",
-                size = { height = 0.4 },
-                filter = function(_, win)
-                    return vim.api.nvim_win_get_config(win).relative == ""
-                end,
-            })
-        end,
-    },
-    {
         "hrsh7th/cmp-cmdline",
         keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
         dependencies = { "hrsh7th/nvim-cmp", "dmitmel/cmp-cmdline-history" },

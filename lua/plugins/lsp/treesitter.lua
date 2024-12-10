@@ -159,8 +159,7 @@ return {
                 optional = true,
                 opts = function(_, opts)
                     if opts.ensure_installed ~= "all" then
-                        opts.ensure_installed =
-                            require("utils.core").list_insert_unique(opts.ensure_installed, { "latex" })
+                        opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "latex" })
                     end
                 end,
             },
@@ -178,8 +177,7 @@ return {
                     if errors < 0 then
                         return nil
                     end
-                    return vim.fn.line("$") > threshold and require("rainbow-delimiters").strategy["global"]
-                        or require("rainbow-delimiters").strategy["local"]
+                    return vim.fn.line("$") > threshold and require("rainbow-delimiters").strategy["global"] or require("rainbow-delimiters").strategy["local"]
                 end
             end
 
@@ -241,8 +239,7 @@ return {
                             local ts_context_avail, ts_context = pcall(require, "ts_context_commentstring.internal")
                             context_commentstring = ts_context_avail and ts_context
                         end
-                        return context_commentstring and context_commentstring.calculate_commentstring()
-                            or get_option(filetype, option)
+                        return context_commentstring and context_commentstring.calculate_commentstring() or get_option(filetype, option)
                     end
                 end)
             end
