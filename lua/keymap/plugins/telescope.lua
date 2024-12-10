@@ -1,6 +1,5 @@
 local bind = require("keymap.bind")
 local map_callback = bind.map_callback
-local map_cu = bind.map_cu
 
 if vim.fn.executable("git") then
     bind.nvim_load_mapping({
@@ -143,13 +142,6 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_noremap()
         :with_desc("find: words in projects"),
-    ["n|<leader>fl"] = map_callback(function()
-            require("telescope").extensions.aerial.aerial()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("find: symbols"),
-    ["n|<leader>fs"] = map_cu("Telescope resession"):with_noremap():with_silent():with_desc("find: Session"),
 
     -- for symbols
     ["n|<leader>fd"] = map_callback(function()

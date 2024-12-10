@@ -50,5 +50,6 @@ return {
     },
     config = function(_, opts)
         require("remote-sshfs").setup(opts)
+        require("telescope").load_extension("remote-sshfs")
     end,
 }

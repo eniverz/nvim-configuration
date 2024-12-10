@@ -28,7 +28,7 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_nowait()
         :with_desc("Session: load last"),
-    ["n|<leader>sf"] = map_callback(function()
+    ["n|<leader>fs"] = map_callback(function()
             local presistence = require("persistence")
             presistence.select()
         end)

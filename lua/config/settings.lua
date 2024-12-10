@@ -20,7 +20,7 @@ local settings = {
         },
     },
     sessions = {
-        save_dir = "session",
+        save_dir = vim.fn.stdpath("state") .. "/session/",
     },
     ignore_files = {
         "%.git/",
