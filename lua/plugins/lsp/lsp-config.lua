@@ -2,6 +2,7 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         dependencies = { "williamboman/mason.nvim" },
+        event = "VeryLazy",
         opts = {
             integrations = {
                 ["mason-lspconfig"] = false,
@@ -15,7 +16,6 @@ return {
     },
     {
         "williamboman/mason.nvim",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
         event = "VeryLazy",
         cmd = {
             "Mason",
@@ -49,6 +49,11 @@ return {
             require("mason").setup(opts)
             require("mason-lspconfig").setup({})
         end,
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = { "williamboman/mason.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
+        event = "VeryLazy",
     },
     {
         "neovim/nvim-lspconfig",
