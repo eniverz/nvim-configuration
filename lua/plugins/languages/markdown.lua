@@ -9,23 +9,6 @@ return {
         end,
     },
     {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "marksman" })
-        end,
-    },
-    {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.marksman = {
-                filetype = { "markdown" },
-            }
-        end,
-    },
-    {
         "MeanderingProgrammer/render-markdown.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
         ---@module 'render-markdown'
