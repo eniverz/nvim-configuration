@@ -13,10 +13,8 @@ return {
                     copilot = {
                         name = "copilot",
                         module = "blink-cmp-copilot",
-                        score_offset = 1000,
                     },
                     buffer = { score_offset = -5 },
-                    lsp = { score_offset = 100 },
                 },
                 completion = {
                     enabled_providers = { "lsp", "path", "snippets", "buffer", "copilot" },
@@ -112,6 +110,7 @@ return {
                     Variable = "",
                 },
             },
+            opts_extend = { "sources.completion.enabled_providers" },
         },
     },
     {
