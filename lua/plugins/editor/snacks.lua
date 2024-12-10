@@ -61,7 +61,7 @@ return {
                         { icon = " ", desc = "Project find", key = "p", action = ":Telescope projects" },
                         { icon = "󰈞 ", desc = "File find", key = "f", action = ":Telescope find_files" },
                         { icon = " ", desc = "Word find", key = "w", action = ":Telescope live_grep" },
-                        { icon = " ", desc = "Restore Session", key = "s", action = function() require("presistence").select() end },
+                        { icon = " ", desc = "Restore Session", key = "s", action = function() require("persistence").select() end },
                         {
                             icon = { "󰒲 ", hl = "Title" },
                             desc = { "Lazy", hl = "String" },
