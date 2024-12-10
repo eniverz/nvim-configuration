@@ -59,7 +59,7 @@ local function configure_treesitter()
     end
 
     local disable_cb = function(_, buf)
-        local success, detected = pcall(vim.api.nvim_buf_get_var, buf, "bigfile_disable_treesitter")
+        local success, detected = pcall(vim.api.nvim_buf_get_var, buf, "big_file_disabled_ft")
         return success and detected
     end
 
@@ -82,7 +82,7 @@ function M.treesitter(ctx)
     if not is_ts_configured then
         configure_treesitter()
     end
-    vim.api.nvim_buf_set_var(ctx.buf, "bigfile_disable_treesitter", true)
+    vim.api.nvim_buf_set_var(ctx.buf, "big_file_disabled_ft", true)
 end
 
 ---disable vim options

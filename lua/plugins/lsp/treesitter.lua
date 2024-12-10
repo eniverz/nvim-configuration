@@ -39,7 +39,7 @@ return {
                         return true
                     end
 
-                    local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "bigfile_disable_treesitter")
+                    local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "big_file_disabled_ft")
                     return ok and is_large_file
                 end,
                 additional_vim_regex_highlighting = false,
