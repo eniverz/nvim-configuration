@@ -34,11 +34,11 @@ return {
             { "nvim-telescope/telescope-live-grep-args.nvim" },
         },
         cmd = "Telescope",
-        opts = function()
+        opts = function(_, opts)
             local lga_actions = require("telescope-live-grep-args.actions")
             local icons = { ui = require("config.icons").get("ui", true) }
 
-            return {
+            local new_opts = {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
@@ -84,13 +84,6 @@ return {
                     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
                 },
                 extensions = {
-                    aerial = {
-                        show_lines = false,
-                        show_nesting = {
-                            ["_"] = false, -- This key will be the default
-                            lua = true, -- You can set the option for specific filetypes
-                        },
-                    },
                     fzf = {
                         fuzzy = false,
                         override_generic_sorter = true,
@@ -130,6 +123,7 @@ return {
                     },
                 },
             }
+            return vim.tbl_extend("force", new_opts, opts)
         end,
         config = function(_, opts)
             local telescope = require("telescope")
@@ -139,7 +133,6 @@ return {
             telescope.load_extension("live_grep_args")
             telescope.load_extension("projects")
             telescope.load_extension("undo")
-            telescope.load_extension("remote-sshfs")
         end,
     },
 }
