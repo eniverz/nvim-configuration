@@ -21,7 +21,7 @@ return {
         optional = true,
         opts = function(_, opts)
             opts.server = opts.server or {}
-            opts.server.ts_ls = {}
+            opts.server.ts_ls = { settings = { implicitProjectConfiguration = { checkJs = true } } }
         end,
     },
     {
