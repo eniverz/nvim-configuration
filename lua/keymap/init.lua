@@ -11,6 +11,7 @@ require("keymap.plugins.snacks")
 require("keymap.plugins.sniprun")
 require("keymap.plugins.suda")
 require("keymap.plugins.telescope")
+require("keymap.plugins.todo-comment")
 require("keymap.plugins.toggleterm")
 
 require("keymap.editor")

@@ -31,7 +31,7 @@ if vim.fn.executable("git") then
     })
 end
 bind.nvim_load_mapping({
-    ["n|<leader>ft"] = map_callback(function()
+    ["n|<leader>fT"] = map_callback(function()
             require("telescope.builtin").colorscheme({ enable_preview = true })
         end)
         :with_noremap()
