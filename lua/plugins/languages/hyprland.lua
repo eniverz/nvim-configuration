@@ -1,3 +1,4 @@
+-- for hyprland config files
 return {
     {
         "nvim-treesitter/nvim-treesitter",
