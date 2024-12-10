@@ -19,6 +19,7 @@ return {
         "Saecki/crates.nvim",
         lazy = true,
         event = "BufReadPost Cargo.toml",
+        tag = "stable",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             thousands_separator = ",",
