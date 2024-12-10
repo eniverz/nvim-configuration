@@ -61,8 +61,10 @@ bind.nvim_load_mapping({
     ["n|<leader>wh"] = move_cursor_right,
     ["n|<C-H>"] = move_cursor_right,
     --resize
-    ["n|<leader>wL"] = resize_right,
-    ["n|<leader>wJ"] = resize_down,
-    ["n|<leader>wK"] = resize_up,
-    ["n|<leader>wH"] = resize_left,
+    ["n|<leader>wr"] = map_callback(function()
+            require("smart-splits").start_resize_mode()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("smart-split: resize split"),
 })
