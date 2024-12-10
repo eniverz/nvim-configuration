@@ -131,10 +131,6 @@ return {
                             "-",
                         }
                     end,
-                    -- cwd = require("conform.util").root_file({
-                    -- ".stylua.toml",
-                    -- "stylua.toml",
-                    -- }),
                 },
             },
         },

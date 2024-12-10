@@ -23,7 +23,7 @@ end
 require("lazy").setup({
     { import = "themes" },
     { import = "plugins.editor" },
-    -- { import = "plugins.formatter" },
+    { import = "plugins.formatter" },
     { import = "plugins.languages" },
     { import = "plugins.lsp" },
 }, lazy_config)
