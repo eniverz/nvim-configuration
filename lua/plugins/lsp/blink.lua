@@ -66,6 +66,7 @@ return {
                 ["<C-f>"] = { "scroll_documentation_down", "fallback" },
                 ["<Tab>"] = { "select_next", "fallback" },
                 ["<S-Tab>"] = { "select_prev", "fallback" },
+                ["<C-s>"] = { "fallback" },
             },
             appearance = {
                 kind_icons = {
