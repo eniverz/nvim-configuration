@@ -50,7 +50,7 @@ return {
                         description = "The uncompromising Python code formatter.",
                     },
                     command = "black",
-                    args = function(self, ctx)
+                    args = function(_, _)
                         local line_length = 160
                         return {
                             "--stdin-filename",
