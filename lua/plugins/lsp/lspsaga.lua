@@ -17,7 +17,7 @@ return {
                 show_file = false,
             },
             callhierarchy = { keys = { close = { "q", "<Esc>" } } },
-            code_action = { keys = { quit = { "q", "<Esc>" } } },
+            code_action = { keys = { quit = { "q", "<Esc>" } }, extend_gitsigns = true },
             diagnostic = {
                 max_width = 0.5,
                 max_height = 0.6,
