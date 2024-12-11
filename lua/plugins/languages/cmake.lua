@@ -11,9 +11,7 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "neocmakelsp" })
-        end,
+        opts = { ensure_installed = { "neocmakelsp" } },
     },
     {
         "neovim/nvim-lspconfig",

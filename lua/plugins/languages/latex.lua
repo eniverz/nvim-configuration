@@ -11,9 +11,7 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
-        opts = function(_, opts)
-            opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "latexindent", "texlab" })
-        end,
+        opts = { ensure_installed = { "latexindent", "texlab" } },
     },
     {
         "neovim/nvim-lspconfig",
@@ -28,7 +26,7 @@ return {
         optional = true,
         opts = {
             formatters_by_ft = {
-                latex = { { "latexindent" } }
+                latex = { { "latexindent" } },
             },
         },
     },
