@@ -65,11 +65,14 @@ return {
         "saghen/blink.cmp",
         optional = true,
         opts = {
-            providers = {
-                lsp = { fallback_for = { "lazydev" } },
-                lazydev = {
-                    name = "LazyDev",
-                    module = "lazydev.integrations.blink",
+            sources = {
+                completion = { enabled_providers = { "lazydev" } },
+                providers = {
+                    lsp = { fallback_for = { "lazydev" } },
+                    lazydev = {
+                        name = "LazyDev",
+                        module = "lazydev.integrations.blink",
+                    },
                 },
             },
         },
