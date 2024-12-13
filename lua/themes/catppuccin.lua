@@ -9,6 +9,7 @@ return {
             default_integrations = false,
             barbar = true,
             blink_cmp = true,
+            diffview = true,
             fidget = true,
             gitsigns = true,
             lsp_saga = true,
