@@ -13,6 +13,7 @@ return {
                     copilot = {
                         name = "copilot",
                         module = "blink-cmp-copilot",
+                        score_offset = 10000,
                     },
                     buffer = { score_offset = -5 },
                 },
