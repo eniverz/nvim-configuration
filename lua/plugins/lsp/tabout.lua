@@ -1,3 +1,4 @@
+-- tab out of delimiters
 return {
     "abecodes/tabout.nvim",
     event = { "InsertEnter", "InsertCharPre" },

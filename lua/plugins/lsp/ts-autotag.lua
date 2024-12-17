@@ -1,3 +1,4 @@
+-- auto close tags
 return {
     "windwp/nvim-ts-autotag",
     lazy = vim.fn.argc(-1) == 0,
