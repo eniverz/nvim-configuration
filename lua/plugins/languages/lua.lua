@@ -104,6 +104,8 @@ return {
                             "--no-editorconfig",
                             "--column-width",
                             "160",
+                            "--indent-width",
+                            vim.opt_local.shiftwidth._value,
                             "--line-endings",
                             line_end,
                             "--config-path",
