@@ -40,8 +40,10 @@ bind.nvim_load_mapping({
             local presistence = require("persistence")
             if presistence._active then
                 presistence.stop()
+                vim.notify("Session auto save is disabled", vim.log.levels.WARN, { title = "Persistence" })
             else
                 presistence.start()
+                vim.notify("Session auto save is enabled", vim.log.levels.INFO, { title = "Persistence" })
             end
         end)
         :with_noremap()
