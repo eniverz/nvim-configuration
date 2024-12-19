@@ -68,6 +68,9 @@ local lazy_settings = {
         -- only generate markdown helptags for plugins that dont have docs
         skip_if_doc_exists = true,
     },
+    dev = {
+        path = "~/Documents/neovim",
+    }
 }
 if global.is_mac then
     lazy_settings.concurrency = 20
