@@ -161,6 +161,7 @@ return {
                                     "--no-deps",
                                 },
                             },
+                            cargo = { allFeatures = true },
                         },
                     })
                     -- load_rust_analyzer_settings merges any found settings with the passed in default settings table and then returns that table
