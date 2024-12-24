@@ -48,6 +48,7 @@ return {
                             CompletionItemKind[kind_idx] = "Copilot"
                             for _, item in ipairs(items) do
                                 item.kind = kind_idx
+                                item.highlight = "BlinkCmpKindCopilot"
                             end
                             return items
                         end,
