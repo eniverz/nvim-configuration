@@ -66,9 +66,9 @@ return {
         optional = true,
         opts = {
             sources = {
-                completion = { enabled_providers = { "lazydev" } },
+                default = { "lazydev" },
                 providers = {
-                    lsp = { fallback_for = { "lazydev" } },
+                    lsp = { fallbacks = { "lazydev" } },
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",

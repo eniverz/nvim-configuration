@@ -8,23 +8,12 @@ return {
         -- build = "cargo build --release",
         version = "v0.*",
         opts = {
-            sources = {
-                providers = {
-                    copilot = {
-                        name = "copilot",
-                        module = "blink-cmp-copilot",
-                        score_offset = 10000,
-                    },
-                    buffer = { score_offset = -5 },
-                },
-                completion = {
-                    enabled_providers = { "lsp", "path", "snippets", "buffer", "copilot" },
-                },
-            },
             completion = {
-                accept = {
-                    auto_brackets = { enabled = true },
+                trigger = {
+                    show_on_blocked_trigger_characters = {},
+                    show_on_x_blocked_trigger_characters = {},
                 },
+                list = { selection = "auto_insert" },
                 menu = {
                     border = "rounded",
                     scrollbar = false,
@@ -45,28 +34,38 @@ return {
                     auto_show_delay_ms = 100,
                     window = { border = "single", scrollbar = false },
                 },
-                signature = {
-                    enabled = true,
+            },
+            signature = { enabled = true },
+            sources = {
+                providers = {
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-cmp-copilot",
+                        score_offset = 10000,
+                        transform_items = function(_, items)
+                            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+                            local kind_idx = #CompletionItemKind + 1
+                            CompletionItemKind[kind_idx] = "Copilot"
+                            for _, item in ipairs(items) do
+                                item.kind = kind_idx
+                            end
+                            return items
+                        end,
+                    },
+                    buffer = { score_offset = -25 },
                 },
+                default = { "lsp", "path", "snippets", "buffer", "copilot" },
             },
             keymap = {
-                ["<A-1>"] = { function(cmp) cmp.accept({ index = 1 }) end, },
-                ["<A-2>"] = { function(cmp) cmp.accept({ index = 2 }) end, },
-                ["<A-3>"] = { function(cmp) cmp.accept({ index = 3 }) end, },
-                ["<A-4>"] = { function(cmp) cmp.accept({ index = 4 }) end, },
-                ["<A-5>"] = { function(cmp) cmp.accept({ index = 5 }) end, },
-                ["<A-6>"] = { function(cmp) cmp.accept({ index = 6 }) end, },
-                ["<A-7>"] = { function(cmp) cmp.accept({ index = 7 }) end, },
-                ["<A-8>"] = { function(cmp) cmp.accept({ index = 8 }) end, },
-                ["<A-9>"] = { function(cmp) cmp.accept({ index = 9 }) end, },
                 ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-                ["<C-e>"] = { "hide", "fallback" },
                 ["<ESC>"] = { "cancel", "fallback" },
-                ["<CR>"] = { "select_and_accept", "fallback" },
+                ["<CR>"] = { "accept", "fallback" },
                 ["<C-b>"] = { "scroll_documentation_up", "fallback" },
                 ["<C-f>"] = { "scroll_documentation_down", "fallback" },
-                ["<Tab>"] = { "select_next", "fallback" },
-                ["<S-Tab>"] = { "select_prev", "fallback" },
+                ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+                ["<down>"] = { "select_next", "fallback" },
+                ["<up>"] = { "select_prev", "fallback" },
                 ["<C-s>"] = { "fallback" },
             },
             appearance = {
@@ -80,7 +79,7 @@ return {
                     Collapsed = "",
                     Constant = "󰏿",
                     Constructor = "",
-                    Copilot = " ",
+                    Copilot = "",
                     Enum = "󰦨",
                     EnumMember = "",
                     Event = "",
@@ -112,7 +111,6 @@ return {
                     Variable = "",
                 },
             },
-            opts_extend = { "sources.completion.enabled_providers" },
         },
     },
     {
