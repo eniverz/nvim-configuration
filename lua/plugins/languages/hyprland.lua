@@ -20,9 +20,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.hyprls = {}
-        end,
+        opts = { server = { hyprls = {} } },
     },
 }

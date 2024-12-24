@@ -16,9 +16,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.vimls = {}
-        end,
+        opts = { server = { vimls = {} } },
     },
 }

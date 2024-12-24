@@ -17,9 +17,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.taplo = {}
-        end,
+        opts = { server = { taplo = {} } },
     },
 }

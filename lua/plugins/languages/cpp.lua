@@ -7,8 +7,7 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed =
-                    require("utils.core").list_insert_unique(opts.ensure_installed, { "cpp", "c", "cuda" })
+                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "cpp", "c", "cuda" })
             end
         end,
     },
@@ -26,10 +25,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.clangd = {}
-        end
+        opts = { server = { clangd = {} } },
     },
     {
         "stevearc/conform.nvim",
@@ -52,8 +48,7 @@ return {
                     end,
                     args = { "-assume-filename", "$FILENAME" },
                     range_args = function(_, ctx)
-                        local start_offset, end_offset =
-                            require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
+                        local start_offset, end_offset = require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
                         local length = end_offset - start_offset
                         return {
                             "-assume-filename",
@@ -78,12 +73,8 @@ return {
                     cmake = {
                         cmd = "cmake",
                         build_dir = function()
-                            print(
-                                tostring(path:new("{cwd}", "cmake-build-"))
-                                    .. string.lower(tostring(path:new("{build_type}")))
-                            )
-                            return tostring(path:new("{cwd}", "cmake-build-"))
-                                .. string.lower(tostring(path:new("{build_type}")))
+                            print(tostring(path:new("{cwd}", "cmake-build-")) .. string.lower(tostring(path:new("{build_type}"))))
+                            return tostring(path:new("{cwd}", "cmake-build-")) .. string.lower(tostring(path:new("{build_type}")))
                         end,
                         build_type = "Debug",
                         dap_name = "codelldb",
@@ -98,13 +89,11 @@ return {
                                 "-S",
                                 "./",
                                 "-B",
-                                tostring(path:new("{cwd}", "cmake-build-"))
-                                    .. string.lower(tostring(path:new("{build_type}"))),
+                                tostring(path:new("{cwd}", "cmake-build-")) .. string.lower(tostring(path:new("{build_type}"))),
                             },
                             build = {
                                 "--build",
-                                tostring(path:new("{cwd}", "cmake-build-"))
-                                    .. string.lower(tostring(path:new("{build_type}"))),
+                                tostring(path:new("{cwd}", "cmake-build-")) .. string.lower(tostring(path:new("{build_type}"))),
                                 "-j18",
                             },
                         },

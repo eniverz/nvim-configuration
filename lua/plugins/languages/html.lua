@@ -16,13 +16,14 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.html = { init_options = { provideFormatter = false }, filetype = { "html" } }
-            opts.server.cssls = { init_options = { provideFormatter = false } }
-            opts.server.cssmodules_ls = {}
-            opts.server.tailwindcss = {}
-        end,
+        opts = {
+            server = {
+                html = { init_options = { provideFormatter = false }, filetype = { "html" } },
+                cssls = { init_options = { provideFormatter = false } },
+                cssmodules_ls = {},
+                tailwindcss = {},
+            },
+        },
     },
     {
         "stevearc/conform.nvim",

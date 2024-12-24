@@ -16,10 +16,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.texlab = {}
-        end,
+        opts = { server = { texlab = {} } },
     },
     {
         "stevearc/conform.nvim",

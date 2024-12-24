@@ -1,10 +1,5 @@
 return {
     {
-        "b0o/schemastore.nvim",
-        lazy = true,
-        ft = { "json" },
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         optional = true,
         opts = function(_, opts)
@@ -21,15 +16,22 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.settings = opts.settings or {}
-            opts.server.jsonls = {}
-            opts.settings.json = {
-                schemas = require("schemastore").json.schemas(),
-                validate = { enabled = true },
-            }
-        end,
+        dependencies = {
+            "b0o/schemastore.nvim",
+            lazy = true,
+            ft = { "json" },
+        },
+        opts = {
+            server = {
+                jsonls = { capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } } },
+                settings = {
+                    jsonls = {
+                        schemas = require("schemastore").json.schemas(),
+                        validate = { enabled = true },
+                    },
+                },
+            },
+        },
     },
     {
         "stevearc/conform.nvim",

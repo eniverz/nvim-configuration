@@ -16,13 +16,13 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.neocmake = {
-                cmd = { "neocmakelsp", "--stdio" },
-                filetype = { "cmake" },
-                init_options = { buildDirectory = "cmake-build-debug" },
-            }
-        end,
+        opts = {
+            server = {
+                neocmake = {
+                    capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
+                    init_options = { buildDirectory = "cmake-build-debug" },
+                },
+            },
+        },
     },
 }

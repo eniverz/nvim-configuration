@@ -16,10 +16,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.ts_ls = { settings = { implicitProjectConfiguration = { checkJs = true } } }
-        end,
+        opts = { server = { ts_ls = { settings = { implicitProjectConfiguration = { checkJs = true } } } } },
     },
     {
         "stevearc/conform.nvim",

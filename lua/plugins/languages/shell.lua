@@ -16,16 +16,9 @@ return {
     {
         "neovim/nvim-lspconfig",
         optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.bashls = {
-                settings = {
-                    bashIde = {
-                        globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command|.zsh)",
-                    },
-                },
-            }
-        end,
+        opts = {
+            server = { bashls = { settings = { bashIde = { globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command|.zsh)" } } } },
+        },
     },
     {
         "stevearc/conform.nvim",
