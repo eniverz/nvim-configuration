@@ -18,7 +18,6 @@ bind.nvim_load_mapping({
 
     -- buffer operations
     ["n|<leader>q"] = map_cmd("<Cmd>confirm q<CR>"):with_noremap():with_silent():with_nowait():with_desc("edit: force quit"),
-    ["n|<leader>N"] = map_cmd("<Cmd>enew<CR>"):with_noremap():with_silent():with_nowait():with_desc("edit: create new file"),
 
     -- indent
     ["v|<S-Tab>"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),
