@@ -1,6 +1,7 @@
 -- render background color for the string with HEX color code
 return {
     "NvChad/nvim-colorizer.lua",
+    event = "VeryLazy",
     config = function(_, opts)
         local colorizer = require("colorizer")
         colorizer.setup(opts)
