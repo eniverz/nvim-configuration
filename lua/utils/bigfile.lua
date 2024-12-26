@@ -7,10 +7,10 @@ function M.cmp()
     end)
 end
 
----disable indent blankline
+---disable indent by snacks
 function M.indent_blankline()
     pcall(function()
-        require("indent_blankline.commands").disable()
+        Snacks.indent.disable()
     end)
 end
 

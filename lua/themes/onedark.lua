@@ -47,6 +47,7 @@ return {
         for kind, color in pairs(lsp_kind_icons_color) do
             opts.highlights["LspKind" .. kind] = { fg = color }
         end
+        opts.highlights = vim.tbl_extend("force", opts.highlights, require("config.scheme").highlight_overrides)
         require("onedark").setup(vim.tbl_extend("force", opts, {
             transparent = scheme.transparent_background,
         }))

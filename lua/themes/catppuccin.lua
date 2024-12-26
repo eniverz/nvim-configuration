@@ -59,9 +59,10 @@ return {
             ---@param cp palette
             all = function(cp)
                 local transparent_background = require("config.scheme").transparent_background
+                local highlight_override = require("config.scheme").highlight_overrides
                 local clear = {}
 
-                return {
+                local hls = {
                     -- For base configs
                     NormalFloat = { fg = cp.text, bg = transparent_background and cp.none or cp.mantle },
                     FloatBorder = {
@@ -79,10 +80,6 @@ return {
 
                     -- For mason.nvim
                     MasonNormal = { link = "NormalFloat" },
-
-                    -- For indent-blankline
-                    IblIndent = { fg = cp.surface0 },
-                    IblScope = { fg = cp.surface2, style = { "bold" } },
 
                     -- For Git
                     NeoTreeGitAdded = { fg = cp.green },
@@ -175,6 +172,8 @@ return {
                     ["@error.c"] = { fg = cp.none, style = clear },
                     ["@error.cpp"] = { fg = cp.none, style = clear },
                 }
+
+                return vim.tbl_extend("force", hls, highlight_override)
             end,
         },
     },
