@@ -5,6 +5,7 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
+        "folke/snacks.nvim",
     },
     cmd = "Neotree",
     opts = function()
@@ -12,11 +13,18 @@ return {
             ui = require("config.icons").get("ui"),
             git = require("config.icons").get("git"),
         }
-
+        local function handler(event)
+            Snacks.rename.on_rename_file(event.source, event.destination)
+        end
+        local events = require("neo-tree.events")
         return {
             close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
             enable_git_status = true,
             enable_diagnostics = true,
+            event_handlers = {
+                { event = events.FILE_MOVED, handler = handler },
+                { event = events.FILE_RENAMED, handler = handler },
+            },
             sources = { "document_symbols", "filesystem", "buffers", "git_status" },
             sort_function = function(a, b)
                 if a.type == b.type then
