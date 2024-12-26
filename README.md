@@ -43,8 +43,6 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [gitsigns](https://github.com/lewis6991/gitsigns.nvim): git status
 
-[indent-blank](https://github.com/lukas-reineke/indent-blankline.nvim): show indent lines
-
 [lualine](https://github.com/nvim-lualine/lualine.nvim): status bar
 
 [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim): file manager
