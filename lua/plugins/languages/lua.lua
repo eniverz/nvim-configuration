@@ -29,25 +29,15 @@ return {
                             },
                             diagnostics = {
                                 -- Get the language server to recognize the `vim` global
-                                globals = {
-                                    "vim",
-                                    "require",
-                                    "Snacks",
-                                },
+                                globals = { "vim", "require", "Snacks" },
                                 disable = { "different-requires" },
                             },
                             workspace = {
-                                library = {
-                                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                    [vim.fn.stdpath("config") .. "/lua"] = true,
-                                },
+                                library = { vim.fn.expand("$VIMRUNTIME/lua"), vim.fn.stdpath("config") .. "/lua" },
                                 maxPreload = 100000,
                                 preloadFileSize = 10000,
                             },
-                            hint = {
-                                enable = true,
-                                arrayIndex = "Disable",
-                            },
+                            hint = { enable = true, arrayIndex = "Disable" },
                             format = { enable = false },
                             telemetry = { enable = false },
                             -- Do not override treesitter lua highlighting with lua_ls's highlighting
@@ -61,7 +51,7 @@ return {
     {
         "folke/lazydev.nvim",
         ft = "lua",
-        opts = { library = {} },
+        opts = { library = { "snacks.nvim", "lazy.nvim" } },
     },
     {
         "saghen/blink.cmp",
@@ -70,10 +60,10 @@ return {
             sources = {
                 default = { "lazydev" },
                 providers = {
-                    lsp = { fallbacks = { "lazydev" } },
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
+                        fallbacks = { "lsp" },
                     },
                 },
             },
