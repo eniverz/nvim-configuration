@@ -25,7 +25,7 @@ return {
             opts.server = opts.server or {}
             opts.server.jsonls = {
                 settings = {
-                    jsonls = {
+                    json = {
                         schemas = require("schemastore").json.schemas(),
                         validate = { enabled = true },
                     },
