@@ -31,6 +31,7 @@ return {
                 open_cmd = "!" .. require("config.settings").external_browser,
             },
             lightbulb = { enable = false },
+            outline = { win_width = 50 },
             rename = { in_select = false },
             ui = {
                 border = "rounded", -- none, single, double, shadow, rounded, solid
