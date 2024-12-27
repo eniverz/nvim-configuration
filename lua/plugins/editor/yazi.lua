@@ -1,17 +1,11 @@
 return {
     "mikavilpas/yazi.nvim",
     cmd = "Yazi",
-    opts = {},
-    keys = {
-        {
-            "<leader>ny",
-            "<cmd>Yazi<cr>",
-            desc = "Yazi: show current file",
-        },
-        {
-            "<leader>nY",
-            "<cmd>Yazi cwd<cr>",
-            desc = "Yazi: show current working directory",
-        },
+    opts = {
+        highlight_groups = { hovered_buffer = {} },
+        highlight_hovered_buffers_in_same_directory = false,
+        floating_window_scaling_factor = 0.6,
+        keymaps = false,
+        open_multiple_tabs = true,
     },
 }
