@@ -34,7 +34,8 @@ return {
                 :with_del(cond.not_after_regex("xx"))
                 -- disable adding a newline when you press <cr>
                 :with_cr(cond.none()),
-        }, {
+        })
+        npairs.add_rules({
             Rule("$$", "$$", "tex"):with_pair(function(opt)
                 if opt.line == "aa $$" then
                     -- don't add pair on that line
