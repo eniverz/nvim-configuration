@@ -18,7 +18,6 @@ return {
                 { "<leader>f", group = "Fuzzy Find", icon = icons.ui.Telescope },
                 { "<leader>g", group = "Git", icon = icons.git.Git },
                 { "<leader>l", group = "Lsp", icon = icons.misc.LspAvailable },
-                { "<leader>n", group = "NeoTree", icon = icons.ui.FolderOpen },
                 { "<leader>p", group = "Package", icon = icons.ui.Package },
                 { "<leader>s", group = "Session", icon = icons.cmp.tmux },
                 { "<leader>t", group = "Terminal", icon = icons.ui.Terminal },
