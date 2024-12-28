@@ -32,14 +32,14 @@ bind.nvim_load_mapping({
         :with_noremap()
         :with_nowait()
         :with_silent()
-        :with_desc("Snacks: open lazygit panel"),
+        :with_desc("Snacks: open lazygit commit log panel"),
     ["n|<leader>gb"] = map_callback(function()
             Snacks.git.blame_line()
         end)
         :with_noremap()
         :with_nowait()
         :with_silent()
-        :with_desc("Snacks: open lazygit panel"),
+        :with_desc("Snacks: show commit history in current line"),
 
     -- word jumps
     ["nt|]]"] = map_callback(function()
@@ -56,6 +56,29 @@ bind.nvim_load_mapping({
         :with_nowait()
         :with_silent()
         :with_desc("Snacks: jump next word"),
+
+    ["n|<leader>tf"] = map_callback(function()
+            Snacks.terminal.toggle()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_desc("Snacks: open float terminal"),
+    ["n|<leader>th"] = map_callback(function()
+            ---@diagnostic disable-next-line:missing-fields
+            Snacks.terminal.toggle(nil, { win = { position = "bottom", height = 0.4 }, env = { NVIM_TERM = "horizontal" } })
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: open horizontal terminal"),
+    ["n|<leader>tv"] = map_callback(function()
+            ---@diagnostic disable-next-line:missing-fields
+            Snacks.terminal.toggle(nil, { win = { position = "right", width = 0.4 }, env = { NVIM_TERM = "vertical" } })
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: open horizontal terminal"),
 })
 
 Snacks.toggle.diagnostics():map("<leader>uD")

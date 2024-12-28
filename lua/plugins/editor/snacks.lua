@@ -118,6 +118,17 @@ return {
         quickfile = { enabled = true },
         statuscolumn = { enabled = true },
         scroll = { enabled = true },
+        ---@type snacks.terminal.Config
+        terminal = {
+            win = {
+                relative = "editor",
+                border = "rounded",
+                position = "float",
+                height = 0.8,
+                width = 0.85,
+                keys = { hide = { "<A-d>", "hide", mode = "t" } },
+            },
+        },
         words = { enabled = true },
     },
 }
