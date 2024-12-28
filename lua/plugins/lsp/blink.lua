@@ -59,7 +59,18 @@ return {
             },
             keymap = {
                 ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-                ["<ESC>"] = { "cancel", "fallback" },
+                ["<ESC>"] = {
+                    function(cmp)
+                        local success = cmp.cancel()
+                        if not success and vim.fn.mode() == "c" then
+                            -- Whem in command line mode, the fallback will be "submit" event instead of "cancel". so we need to manually cancel it.
+                            vim.api.nvim_input("<C-\\><C-n>")
+                            success = true
+                        end
+                        return success
+                    end,
+                    "fallback",
+                },
                 ["<CR>"] = { "accept", "fallback" },
                 ["<C-Up>"] = { "scroll_documentation_up", "fallback" },
                 ["<C-Down>"] = { "scroll_documentation_down", "fallback" },
