@@ -22,7 +22,7 @@ bind.nvim_load_mapping({
     -- indent
     ["v|<S-Tab>"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),
     ["v|<Tab>"] = map_cmd(">gv"):with_desc("edit: Increase indent"),
-    ["n|<leader>lF"] = map_cmd("<Cmd>normal! gg=G``<CR>"):with_noremap():with_silent():with_desc("format indent"),
+    ["n|<leader>lF"] = map_cr("normal! gg=G``"):with_noremap():with_silent():with_desc("format indent"),
 
     -- buffer
     ["ni|<C-s>"] = map_cmd("<Esc><Esc><Esc>:w<CR>"):with_desc("edit: Save file"),
