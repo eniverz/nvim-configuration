@@ -36,18 +36,13 @@ bind.nvim_load_mapping({
     ["i|<C-d>"] = map_cmd("<Esc><Esc><Cmd>copy .<CR>i"):with_silent():with_noremap():with_nowait():with_desc("edit: duplicate line"),
     ["v|<C-d>"] = map_cr("copy '>"):with_silent():with_noremap():with_nowait():with_desc("edit: duplicate line"),
 
-    ["n|<C-S-down>"] = map_cmd("<Cmd>m+<CR>=="):with_silent():with_noremap():with_nowait():with_desc("edit: move line down"),
-    ["n|<C-S-up>"] = map_cmd("<Cmd>m-2<CR>=="):with_silent():with_noremap():with_nowait():with_desc("edit: move line up"),
-    ["i|<C-S-up>"] = map_cmd("<C-o><Cmd>m-2<CR>"):with_silent():with_noremap():with_nowait():with_desc("edit: move line up"),
-    ["i|<C-S-down>"] = map_cmd("<C-o><Cmd>m+<CR>"):with_silent():with_noremap():with_nowait():with_desc("edit: move line down"),
-
     -- history
     ["n|r"] = map_cr("redo"):with_noremap():with_silent():with_nowait():with_desc("edit: Redo"),
     ["n|u"] = map_cr("undo"):with_noremap():with_silent():with_nowait():with_desc("edit: Undo"),
 
     -- jump cursor position
-    ["n|<A-S-left>"] = map_cmd("<C-o>"):with_noremap():with_silent():with_nowait():with_desc("edit: jump cursor position"),
-    ["n|<A-S-right>"] = map_cmd("<C-i>"):with_noremap():with_silent():with_nowait():with_desc("edit: jump cursor position"),
+    ["n|<A-S-Left>"] = map_cmd("<C-o>"):with_noremap():with_silent():with_nowait():with_desc("edit: jump cursor position"),
+    ["n|<A-S-Right>"] = map_cmd("<C-i>"):with_noremap():with_silent():with_nowait():with_desc("edit: jump cursor position"),
 
     -- search
     ["n|<Esc>"] = map_callback(function()
