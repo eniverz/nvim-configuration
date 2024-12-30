@@ -1,6 +1,5 @@
 require("keymap.plugins.autopairs")
 require("keymap.plugins.barbar")
-require("keymap.plugins.colorizer")
 require("keymap.plugins.comment")
 require("keymap.plugins.conform")
 require("keymap.plugins.diffview")
