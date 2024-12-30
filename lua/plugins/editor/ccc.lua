@@ -1,3 +1,4 @@
+--- color picker and color highlighter
 return {
     "uga-rosa/ccc.nvim",
     event = "VeryLazy",
