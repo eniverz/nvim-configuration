@@ -9,6 +9,8 @@ bind.nvim_load_mapping({
     ["nv|D"] = map_cmd('"_D'):with_noremap():with_silent():with_nowait():with_desc("edit: change clipboard register for delete"),
     ["nv|s"] = map_cmd('"_s'):with_noremap():with_silent():with_nowait():with_desc("edit: change clipboard register for delete"),
     ["nv|S"] = map_cmd('"_S'):with_noremap():with_silent():with_nowait():with_desc("edit: change clipboard register for delete"),
+    ["nv|c"] = map_cmd('"_c'):with_noremap():with_silent():with_nowait():with_desc("edit: change clipboard register for delete"),
+    ["nv|C"] = map_cmd('"_C'):with_noremap():with_silent():with_nowait():with_desc("edit: change clipboard register for delete"),
 
     -- delete
     ["n|<C-Backspace>"] = map_cmd('"_db'):with_noremap():with_silent():with_nowait():with_desc("edit: Delete word forward"),
