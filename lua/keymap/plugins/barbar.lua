@@ -6,8 +6,6 @@ bind.nvim_load_mapping({
     ["n|<A-Right>"] = map_cr("BufferNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: next"),
     ["n|<A-j>"] = map_cr("BufferPrevious"):with_noremap():with_silent():with_nowait():with_desc("Buffer: previous"),
     ["n|<A-k>"] = map_cr("BufferNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: next"),
-    ["n|<A-S-Left>"] = map_cr("BufferMovePrevious"):with_noremap():with_silent():with_nowait():with_desc("Buffer: moveprevious"),
-    ["n|<A-S-Right>"] = map_cr("BufferMoveNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: move next"),
     ["n|<A-S-j>"] = map_cr("BufferMovePrevious"):with_noremap():with_silent():with_nowait():with_desc("Buffer: move previous"),
     ["n|<A-S-k>"] = map_cr("BufferMoveNext"):with_noremap():with_silent():with_nowait():with_desc("Buffer: move next"),
     ["n|<leader>bG"] = map_cr("BufferLast"):with_noremap():with_silent():with_nowait():with_desc("Buffer: go last"),
