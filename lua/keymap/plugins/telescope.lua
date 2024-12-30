@@ -67,12 +67,6 @@ bind.nvim_load_mapping({
         :with_noremap()
         :with_desc("find: commands"),
     ["n|<leader>ff"] = map_callback(function()
-            require("telescope.builtin").find_files()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("find: files"),
-    ["n|<leader>fF"] = map_callback(function()
             require("telescope.builtin").find_files({ hidden = true, no_ignore = true })
         end)
         :with_silent()
@@ -96,30 +90,12 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_noremap()
         :with_desc("find: old files"),
-    ["n|<leader>fR"] = map_callback(function()
-            require("telescope.builtin").registers()
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("find: registers"),
     ["n|<leader>fu"] = map_callback(function()
             require("telescope").extensions.undo.undo()
         end)
         :with_noremap()
         :with_silent()
         :with_desc("edit: Show undo history"),
-    ["n|<leader>fp"] = map_callback(function()
-            require("telescope").extensions.projects.projects({})
-        end)
-        :with_noremap()
-        :with_silent()
-        :with_desc("find: Project"),
-    ["n|<leader>fr"] = map_callback(function()
-            require("telescope").extensions.frecency.frecency({})
-        end)
-        :with_noremap()
-        :with_silent()
-        :with_desc("find: File by frecency"),
     ["n|<leader>fj"] = map_callback(function()
             require("telescope.builtin").jumplist()
         end)
@@ -127,12 +103,6 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_desc("jump: show jumplist"),
     ["n|<leader>fw"] = map_callback(function()
-            require("telescope.builtin").live_grep()
-        end)
-        :with_noremap()
-        :with_silent()
-        :with_desc("find: Word"),
-    ["n|<leader>fW"] = map_callback(function()
             require("telescope.builtin").live_grep({
                 additional_args = function(args)
                     return vim.list_extend(args, { "--hidden", "--no-ignore" })
