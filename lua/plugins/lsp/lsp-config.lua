@@ -47,7 +47,7 @@ return {
         build = ":MasonUpdate",
         config = function(_, opts)
             require("mason").setup(opts)
-            require("mason-lspconfig").setup({})
+            require("mason-lspconfig").setup()
         end,
     },
     {
