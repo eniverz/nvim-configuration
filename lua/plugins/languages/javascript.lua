@@ -11,7 +11,11 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
-        opts = { ensure_installed = { "typescript-language-server", "prettier" } },
+        opts = function(_, opts)
+            if opts.ensure_installed ~= "all" then
+                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "typescript-language-server", "prettier" })
+            end
+        end,
     },
     {
         "neovim/nvim-lspconfig",

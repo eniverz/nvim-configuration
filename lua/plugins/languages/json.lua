@@ -16,7 +16,11 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
-        opts = { ensure_installed = { "json-lsp", "fixjson" } },
+        opts = function(_, opts)
+            if opts.ensure_installed ~= "all" then
+                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "json-lsp", "fixjson" })
+            end
+        end,
     },
     {
         "neovim/nvim-lspconfig",

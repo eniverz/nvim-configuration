@@ -23,23 +23,4 @@ function M.list_insert_unique(dst, src)
     return dst
 end
 
---- Convert a table to a string
----@param table table
----@param str string
----@return string
-function M.toStr(table, str)
-    for k, v in pairs(table) do
-        if type(v) == "table" then
-            str = M.toStr(v, str .. k .. ".")
-        elseif type(v) == "function" then
-            str = str .. k .. " = function\n"
-        elseif type(v) == "boolean" then
-            str = str .. k .. " = " .. (v and "true" or "false") .. "\n"
-        else
-            str = str .. k .. " = " .. v .. "\n"
-        end
-    end
-    return str
-end
-
 return M

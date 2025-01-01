@@ -11,7 +11,14 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         optional = true,
-        opts = { ensure_installed = { "html-lsp", "css-lsp", "cssmodules-language-server", "tailwindcss-language-server" } },
+        opts = function(_, opts)
+            if opts.ensure_installed ~= "all" then
+                opts.ensure_installed = require("utils.core").list_insert_unique(
+                    opts.ensure_installed,
+                    { "html-lsp", "css-lsp", "cssmodules-language-server", "emmet-ls", "tailwindcss-language-server" }
+                )
+            end
+        end,
     },
     {
         "neovim/nvim-lspconfig",
@@ -20,6 +27,7 @@ return {
             server = {
                 html = { init_options = { provideFormatter = false }, filetype = { "html" } },
                 cssls = { init_options = { provideFormatter = false } },
+                emmet_ls = {},
                 cssmodules_ls = {},
                 tailwindcss = {},
             },
