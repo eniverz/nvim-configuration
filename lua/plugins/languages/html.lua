@@ -27,7 +27,17 @@ return {
             server = {
                 html = { init_options = { provideFormatter = false }, filetype = { "html" } },
                 cssls = { init_options = { provideFormatter = false } },
-                emmet_ls = {},
+                emmet_ls = {
+                    capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
+                    init_options = {
+                        html = {
+                            options = {
+                                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                                ["bem.enabled"] = true,
+                            },
+                        },
+                    },
+                },
                 cssmodules_ls = {},
                 tailwindcss = {},
             },
