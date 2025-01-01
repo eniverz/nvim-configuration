@@ -4,7 +4,7 @@ return {
     params = {
         cmd = { type = "string", order = 1 },
         name = { type = "string", optional = true, order = 2 },
-        cwd = { type = "string", optional = true, order = 4 },
+        cwd = { type = "string", optional = true, order = 4, default = vim.fn.getcwd() },
         env = { type = "opaque", optional = true },
         metadata = { type = "opaque", optional = true },
         components = { type = "opaque", optional = true },
