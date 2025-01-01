@@ -1,6 +1,6 @@
 -- session manager
 return {
-    "folke/persistence.nvim",
+    "TropinoneH/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
     dependencies = {
         "nvim-telescope/telescope-ui-select.nvim",

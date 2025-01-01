@@ -59,9 +59,6 @@ return {
         }
 
         ---@class lualine_hlgrp
-        ---@field fg string
-        ---@field bg string
-        ---@field gui string?
         local utils = {
             force_centering = function()
                 return "%="
@@ -247,6 +244,7 @@ return {
                         cond = conditionals.has_git,
                         padding = { right = 1 },
                     },
+                    { "overseer" },
 
                     { utils.force_centering },
                     {
@@ -300,7 +298,6 @@ return {
                 "quickfix",
                 "nvim-tree",
                 "nvim-dap-ui",
-                "toggleterm",
                 "fugitive",
                 outline,
                 diffview,
