@@ -5,7 +5,6 @@ return {
         lazy = true,
         event = { "InsertEnter", "LspAttach" },
         dependencies = { "giuxtaposition/blink-cmp-copilot", "rafamadriz/friendly-snippets" },
-        -- build = "cargo build --release",
         version = "v0.*",
         opts = {
             completion = {

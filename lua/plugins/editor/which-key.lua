@@ -27,6 +27,7 @@ return {
                 { "<leader>o", group = "Overseer", icon = icons.ui.Tasks },
             })
             require("which-key").setup({
+                preset = "modern",
                 plugins = {
                     presets = {
                         motions = false,
@@ -39,7 +40,7 @@ return {
                     group = ""
                 },
 
-                disable = { filetypes = { "TelescopePrompt" } },
+                disable = { ft = { "TelescopePrompt" } },
             })
         end,
     },
