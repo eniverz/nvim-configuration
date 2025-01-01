@@ -26,16 +26,16 @@ return {
                     bigfile.lsp(ctx)
                 end
                 if vim.tbl.contains(features, "matchparen") then
-                    features.matchparen()
+                    bigfile.matchparen()
                 end
                 if vim.tbl.contains(features, "syntax") then
-                    features.syntax(ctx)
+                    bigfile.syntax(ctx)
                 end
                 if vim.tbl.contains(features, "treesitter") then
                     bigfile.treesitter(ctx)
                 end
                 if vim.tblcontains(features, "vimopts") then
-                    features.vimopts()
+                    bigfile.vimopts()
                 end
             end,
         },
