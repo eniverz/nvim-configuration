@@ -35,6 +35,22 @@ return {
         ft = { "markdown" },
     },
     {
+        "saghen/blink.cmp",
+        optional = true,
+        opts = {
+            sources = {
+                default = { "markdown" },
+                providers = {
+                    markdown = {
+                        name = "RenderMarkdown",
+                        module = "render-markdown.integ.blink",
+                        fallbacks = { "lsp" },
+                    },
+                },
+            },
+        },
+    },
+    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {
