@@ -4,7 +4,7 @@ return {
         optional = true,
         opts = function(_, opts)
             if opts.ensure_installed ~= "all" then
-                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "bash" })
+                opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, { "bash", "fish" })
             end
         end,
     },
@@ -31,7 +31,7 @@ return {
             formatters_by_ft = {
                 sh = { "shfmt" },
                 bash = { "shfmt" },
-                fish = { "shfmt" },
+                fish = { "fish_indent" },
             },
             formatters = {
                 shfmt = {
