@@ -28,17 +28,12 @@ return {
             })
             require("which-key").setup({
                 preset = "modern",
-                plugins = {
-                    presets = {
-                        motions = false,
-                    },
-                },
-
                 icons = {
                     breadcrumb = icons.ui.Separator,
                     separator = icons.misc.Vbar,
-                    group = ""
+                    group = "",
                 },
+                win = { no_overlap = false },
 
                 disable = { ft = { "TelescopePrompt" } },
             })
