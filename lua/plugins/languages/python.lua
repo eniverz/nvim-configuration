@@ -42,6 +42,25 @@ return {
         },
     },
     {
+        "linux-cultist/venv-selector.nvim",
+        cmd = "VenvSelect",
+        branch = "regexp",
+        enabled = vim.fn.executable("fd") == 1 or vim.fn.executable("fdfind") == 1 or vim.fn.executable("fd-find") == 1,
+        dependencies = { "nvim-telescope/telescope.nvim" },
+        opts = {},
+        ft = "python",
+        keys = {
+            { "<leader>vs", "<Cmd>VenvSelect<CR>", desc = "Select Python Virtual Environment" },
+            {
+                "<leader>vd",
+                function()
+                    require("venv-selector").deactivate()
+                end,
+                desc = "Deactivate Python Virtual Environment",
+            },
+        },
+    },
+    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {

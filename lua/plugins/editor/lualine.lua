@@ -146,6 +146,9 @@ return {
             python_venv = {
                 function()
                     local function env_cleanup(venv)
+                        if venv == vim.fn.expand("$HOME") .. "/miniconda3" or venv == vim.fn.expand("$HOME") .. "/anaconda3" then
+                            return "base"
+                        end
                         if string.find(venv, "/") then
                             local final_venv = venv
                             for w in venv:gmatch("([^/]+)") do
@@ -157,7 +160,7 @@ return {
                     end
 
                     if vim.api.nvim_get_option_value("filetype", { scope = "local" }) == "python" then
-                        local venv = os.getenv("CONDA_DEFAULT_ENV")
+                        local venv = os.getenv("CONDA_PREFIX")
                         if venv then
                             return icons.misc.PyEnv .. env_cleanup(venv)
                         end

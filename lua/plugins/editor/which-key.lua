@@ -24,10 +24,12 @@ return {
                 { "<leader>w", group = "Window", icon = icons.misc.ManUp },
                 { "<leader>u", group = "UI", icon = icons.ui.Window },
                 { "<leader>x", group = "Trouble", icon = icons.ui.Trouble },
+                { "<leader>v", group = "Venv", icon = icons.misc.PyEnv },
                 { "<leader>o", group = "Overseer", icon = icons.ui.Tasks },
             })
             require("which-key").setup({
                 preset = "modern",
+                plugins = { presets = { motions = false } },
                 icons = {
                     breadcrumb = icons.ui.Separator,
                     separator = icons.misc.Vbar,
