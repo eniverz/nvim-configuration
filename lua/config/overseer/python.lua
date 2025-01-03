@@ -1,10 +1,16 @@
+---@param path string
+---@param root_path string
+local function relpath(path, root_path)
+    return path:gsub("^" .. root_path, "")
+end
+
 ---@type overseer.TemplateFileDefinition
 return {
     name = "python",
     priority = 60,
     params = {
         cmd = { type = "string", default = vim.fn.getenv("CONDA_PREFIX") .. "/bin/python", order = 1 },
-        target = { type = "string", default = vim.fn.expand("%:r"), order = 2 },
+        target = { type = "string", default = relpath(vim.fn.expand("%:p"), vim.fn.getcwd(0, 0) .. "/"), order = 2 },
         args = { type = "list", delimiter = " ", optional = true, order = 3 },
         cwd = { optional = true, default = vim.fn.getcwd(0, 0), order = 4 },
     },
