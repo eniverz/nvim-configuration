@@ -1,10 +1,12 @@
 ---@type overseer.TemplateFileDefinition
 return {
+    name = "python",
     priority = 60,
     params = {
-        cmd = { type = "string", default = vim.fn.getenv("CONDA_PREFIX") .. "/bin/python" },
-        args = { type = "list", delimiter = " " },
-        cwd = { optional = true, default = vim.fn.getcwd() },
+        cmd = { type = "string", default = vim.fn.getenv("CONDA_PREFIX") .. "/bin/python", order = 1 },
+        target = { type = "string", default = vim.fn.expand("%:r"), order = 2 },
+        args = { type = "list", delimiter = " ", optional = true, order = 3 },
+        cwd = { optional = true, default = vim.fn.getcwd(0, 0), order = 4 },
     },
     condition = { filetype = { "python" } },
     builder = function(params)
@@ -19,7 +21,7 @@ return {
             return nil
         end
         return {
-            cmd = { cmd },
+            cmd = { cmd, params.target },
             args = params.args,
             cwd = params.cwd,
         }
