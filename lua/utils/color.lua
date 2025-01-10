@@ -3,7 +3,7 @@ local M = {}
 function M.get_lualine_theme()
     local colorscheme = vim.g.colors_name
     if colorscheme:find("onedark") then
-        return "onedark-nvim"
+        return colorscheme
     elseif colorscheme:find("vscode") then
         return "vscode"
     elseif colorscheme:find("tokyonight") then
