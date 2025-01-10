@@ -8,6 +8,8 @@ function M.get_lualine_theme()
         return "vscode"
     elseif colorscheme:find("tokyonight") then
         return "tokyonight"
+    elseif colorscheme:find("nord") then
+        return "nord"
     else
         local colors = colorscheme:find("catppuccin") and require("catppuccin.palettes").get_palette()
             or {
