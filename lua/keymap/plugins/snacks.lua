@@ -79,6 +79,14 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_nowait()
         :with_desc("Snacks: open horizontal terminal"),
+
+    ["n|<leader>ff"] = map_callback(function()
+            Snacks.picker()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: open horizontal terminal"),
 })
 
 Snacks.toggle.diagnostics():map("<leader>uD")
