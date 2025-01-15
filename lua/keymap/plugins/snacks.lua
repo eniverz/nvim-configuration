@@ -39,7 +39,7 @@ bind.nvim_load_mapping({
         :with_noremap()
         :with_nowait()
         :with_silent()
-        :with_desc("Snacks: show commit history in current line"),
+        :with_desc("Snacks: show git commit in current line"),
 
     -- word jumps
     ["nt|]]"] = map_callback(function()
@@ -80,13 +80,61 @@ bind.nvim_load_mapping({
         :with_nowait()
         :with_desc("Snacks: open horizontal terminal"),
 
-    ["n|<leader>ff"] = map_callback(function()
+    -- picker: telescope
+    ["n|<leader>f<space>"] = map_callback(function()
             Snacks.picker()
         end)
         :with_noremap()
         :with_silent()
         :with_nowait()
-        :with_desc("Snacks: open horizontal terminal"),
+        :with_desc("Snacks: pickers"),
+    ["n|<leader>ff"] = map_callback(function()
+            Snacks.picker.files()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: pick files"),
+    ["n|<leader>fw"] = map_callback(function()
+            Snacks.picker.grep()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: pick word in project"),
+    ["n|<leader>f<CR>"] = map_callback(function()
+            Snacks.picker.resume()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: picker resume"),
+    ["n|<leader>fd"] = map_callback(function()
+            Snacks.picker.lsp_definitions()
+        end)
+        :with_silent()
+        :with_noremap()
+        :with_desc("Snacks: pick lsp definitions"),
+    ["n|<leader>fh"] = map_callback(function()
+            Snacks.picker.lsp_references()
+        end)
+        :with_silent()
+        :with_noremap()
+        :with_desc("Snacks: pick lsp references"),
+    ["n|<leader>gt"] = map_callback(function()
+            Snacks.picker.git_status()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: git status"),
+    ["n|<leader>gc"] = map_callback(function()
+            Snacks.picker.git_log_file()
+        end)
+        :with_noremap()
+        :with_silent()
+        :with_nowait()
+        :with_desc("Snacks: git commit in current file"),
 })
 
 Snacks.toggle.diagnostics():map("<leader>uD")

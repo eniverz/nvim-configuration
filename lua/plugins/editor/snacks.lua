@@ -115,6 +115,32 @@ return {
             },
             style = "compact",
         },
+        ---@type snacks.picker.Config
+        picker = {
+            sources = { grep = { hidden = true } },
+            layout = {
+                reverse = true,
+                layout = {
+                    box = "horizontal",
+                    backdrop = false,
+                    width = 0.8,
+                    height = 0.9,
+                    border = "none",
+                    {
+                        box = "vertical",
+                        { win = "list", title = " Results ", title_pos = "center", border = "rounded" },
+                        { win = "input", height = 1, border = "rounded", title = "{source} {live}", title_pos = "center" },
+                    },
+                    {
+                        win = "preview",
+                        width = 0.5,
+                        border = "rounded",
+                        title = " Preview ",
+                        title_pos = "center",
+                    },
+                },
+            },
+        },
         quickfile = { enabled = true },
         statuscolumn = {
             left = { "fold", "sign", "mark" }, -- priority of signs on the left (high to low)
