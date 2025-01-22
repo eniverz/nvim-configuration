@@ -14,14 +14,4 @@ bind.nvim_load_mapping({
         :with_noremap()
         :with_silent()
         :with_desc("edit: Show undo history"),
-    ["n|<leader>fw"] = map_callback(function()
-            require("telescope.builtin").live_grep({
-                additional_args = function(args)
-                    return vim.list_extend(args, { "--hidden", "--no-ignore" })
-                end,
-            })
-        end)
-        :with_silent()
-        :with_noremap()
-        :with_desc("find: words in projects"),
 })

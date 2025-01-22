@@ -4,7 +4,7 @@ return {
     lazy = true,
     cmd = { "SudaRead", "SudaWrite" },
     config = function(_, opts)
-        vim.g["suda#prompt"] = "Enter administrator password: "
         require("suda").setup(opts)
+        vim.g["suda#prompt"] = "Enter administrator password: "
     end,
 }

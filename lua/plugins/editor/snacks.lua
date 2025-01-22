@@ -43,10 +43,30 @@ return {
             enabled = true,
             preset = {
                 keys = {
-                    { icon = " ", desc = "Scheme Change", key = "t", action = ":Telescope colorscheme" },
-                    { icon = "󰋚 ", desc = "File history", key = "e", action = ":Telescope oldfiles" },
-                    { icon = " ", desc = "Project find", key = "p", action = ":Telescope projects" },
-                    { icon = "󰈞 ", desc = "File find", key = "f", action = ":Telescope find_files" },
+                    {
+                        icon = " ",
+                        desc = "Scheme Change",
+                        key = "t",
+                        action = function()
+                            Snacks.picker.colorschemes()
+                        end,
+                    },
+                    {
+                        icon = "󰋚 ",
+                        desc = "File history",
+                        key = "e",
+                        action = function()
+                            Snacks.picker.recent()
+                        end,
+                    },
+                    {
+                        icon = "󰈞 ",
+                        desc = "File find",
+                        key = "f",
+                        action = function()
+                            Snacks.picker.files()
+                        end,
+                    },
                     { icon = " ", desc = "Word find", key = "w", action = ":Telescope live_grep" },
                     {
                         icon = " ",
@@ -80,8 +100,8 @@ return {
             sections = {
                 { section = "header", align = "center" },
                 { section = "keys", gap = 1, padding = 1 },
-                { icon = " ", title = "Recent Files", section = "recent_files", limit = 5, indent = 2, padding = 1 },
                 { icon = " ", title = "Projects", section = "projects", limit = 5, indent = 2, padding = 1 },
+                { icon = " ", title = "Recent Files", section = "recent_files", limit = 5, indent = 2, padding = 1 },
                 { section = "startup" },
                 { text = { " Have Fun with neovim", hl = "SnacksDashboardDesc" }, align = "center" },
             },
