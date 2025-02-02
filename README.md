@@ -35,7 +35,7 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [better escape](https://github.com/max397574/better-escape.nvim): better performance for insert letter <kbd>j</kbd> and <kbd>k</kbd>
 
-[colorize](https://github.com/NvChad/nvim-colorizer.lua): render background color for the string with HEX color code
+[ccc](https://github.com/uga-rosa/ccc.nvim): render background color for lsp and string color. and select color in palette.
 
 [diffview](https://github.com/sindrets/diffview.nvim): show better git diff
 
@@ -45,11 +45,15 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [lualine](https://github.com/nvim-lualine/lualine.nvim): status bar
 
-[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim): file manager
+[move](https://github.com/fedepujol/move.nvim): move line or word
 
 [noice](https://github.com/folke/noice.nvim): better command line
 
-[persistence](https://github.com/folke/persistence.nvim): session manager
+[overseer](https://github.com/stevearc/overseer.nvim): task runner
+
+[persistence](https://github.com/TropinoneH/persistence.nvim): session manager
+
+[rip-substitute](https://github.com/chrisgrieser/nvim-rip-substitute): visual search and replace bar
 
 [scroller view](https://github.com/dstein64/nvim-scrollview): scroll bar and show diagnostics in scrollview
 
@@ -61,15 +65,11 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [suda](https://github.com/lambdalisue/suda.vim): write file by sudo
 
-[telescope](nvim-telescope/telescope.nvim): best fuzzy find plugin for neovim
-
-[todo-comments](https://github.com/folke/todo-comments.nvim): highlight TODOs, etc. and jump to them
-
-[toggleterm](https://github.com/akinsho/toggleterm.nvim): open terminal in neovim
-
 [vim-cool](https://github.com/romainl/vim-cool): better highlight searching word
 
 [which-key](https://github.com/folke/which-key.nvim): cheatsheet of keybindings
+
+[yazi](https://github.com/mikavilpas/yazi.nvim): yazi file explorer intergration
 
 ### formatter
 
@@ -109,7 +109,9 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [catppuccin](https://github.com/catppuccin/nvim)
 
-[onedark](https://github.com/navarasu/onedark.nvim)
+[nord](https://github.com/gbprod/nord.nvim)
+
+[onedarkpro](https://github.com/olimorris/onedarkpro.nvim)
 
 [tokyonight](https://github.com/folke/tokyonight.nvim)
 
@@ -117,8 +119,8 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 ### language pack
 
-- c / c++
 - cmake
+- c / c++
 - html
 - hyprland config
 - javascript / typescript
@@ -132,3 +134,4 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 - shell
 - toml
 - vim / vimdoc
+- yaml
