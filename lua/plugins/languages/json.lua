@@ -42,8 +42,8 @@ return {
         optional = true,
         opts = {
             formatters_by_ft = {
-                json = { { "fixjson" } },
-                jsonc = { { "fixjson" } },
+                json = { "fixjson" },
+                jsonc = { "fixjson" },
             },
         },
     },

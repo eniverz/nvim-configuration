@@ -47,10 +47,10 @@ return {
         optional = true,
         opts = {
             formatters_by_ft = {
-                css = { { "prettier" } },
-                sass = { { "prettier" } },
-                scss = { { "prettier" } },
-                less = { { "prettier" } },
+                css = { "prettier" },
+                sass = { "prettier" },
+                scss = { "prettier" },
+                less = { "prettier" },
             },
         },
     },

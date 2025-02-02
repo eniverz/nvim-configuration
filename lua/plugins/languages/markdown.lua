@@ -55,8 +55,8 @@ return {
         optional = true,
         opts = {
             formatters_by_ft = {
-                markdown = { { "prettier" } },
-                ["markdown.mdx"] = { { "prettier" } },
+                markdown = { "prettier" },
+                ["markdown.mdx"] = { "prettier" },
             },
         },
     },
