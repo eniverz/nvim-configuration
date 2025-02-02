@@ -66,7 +66,14 @@ return {
                             Snacks.picker.files()
                         end,
                     },
-                    { icon = " ", desc = "Word find", key = "w", action = ":Telescope live_grep" },
+                    {
+                        icon = " ",
+                        desc = "Word find",
+                        key = "w",
+                        action = function()
+                            Snacks.picker.grep()
+                        end,
+                    },
                     {
                         icon = " ",
                         desc = "Restore Session",
