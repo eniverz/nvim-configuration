@@ -12,7 +12,6 @@ require("keymap.plugins.rip-substitute")
 require("keymap.plugins.smart-split")
 require("keymap.plugins.snacks")
 require("keymap.plugins.suda")
-require("keymap.plugins.telescope")
 require("keymap.plugins.todo-comment")
 require("keymap.plugins.yazi")
 

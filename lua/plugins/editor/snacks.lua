@@ -8,7 +8,6 @@ return {
             size = require("config.settings").large_buf.size, -- unit: bytes
             ---@param ctx {buf: number, ft:string}
             setup = function(ctx)
-                ---@diagnostic disable-next-line:missing-fields
                 Snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
                 local features = require("config.settings").large_buf.features
                 local bigfile = require("utils.bigfile")
