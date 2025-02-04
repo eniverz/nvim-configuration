@@ -143,7 +143,7 @@ return {
         },
         ---@type snacks.picker.Config
         picker = {
-            sources = { grep = { hidden = true } },
+            sources = { grep = { hidden = true }, files = { hidden = true } },
             layout = {
                 reverse = true,
                 layout = {
