@@ -65,6 +65,8 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [suda](https://github.com/lambdalisue/suda.vim): write file by sudo
 
+[todo-comments](https://github.com/folke/todo-comments.nvim): highlight TODOs, etc. and jump to them
+
 [vim-cool](https://github.com/romainl/vim-cool): better highlight searching word
 
 [which-key](https://github.com/folke/which-key.nvim): cheatsheet of keybindings
