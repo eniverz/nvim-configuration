@@ -16,6 +16,7 @@ return {
     },
     opts = function(_, opts)
         return vim.tbl_extend("force", opts, {
+            notify = { enabled = false },
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
