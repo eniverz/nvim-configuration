@@ -13,10 +13,7 @@ return {
         local icon_config = require("config.icons")
         local icons = { ui = icon_config.get("ui"), kind = icon_config.get("kind"), type = icon_config.get("type") }
         return {
-            symbol_in_winbar = {
-                seperator = " " .. icons.ui.Separator,
-                show_file = false,
-            },
+            symbol_in_winbar = { enable = false },
             callhierarchy = { keys = { close = { "q", "<Esc>" } } },
             code_action = { keys = { quit = { "q", "<Esc>" } }, extend_gitsigns = true },
             diagnostic = {
