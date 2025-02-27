@@ -192,6 +192,7 @@ return {
         },
         quickfile = { enabled = true },
         statuscolumn = {
+            enabled = true,
             left = { "fold", "sign", "mark" }, -- priority of signs on the left (high to low)
             right = { "git" }, -- priority of signs on the right (high to low)
             folds = { open = true, git_hl = true },
