@@ -68,24 +68,8 @@ return {
                 python = { "isort", "black" },
             },
             formatters = {
-                black = {
-                    meta = {
-                        url = "https://github.com/psf/black",
-                        description = "The uncompromising Python code formatter.",
-                    },
-                    command = "black",
-                    args = function(_, _)
-                        local line_length = 160
-                        return {
-                            "--stdin-filename",
-                            "$FILENAME",
-                            "--line-length",
-                            line_length,
-                            "--quiet",
-                            "-",
-                        }
-                    end,
-                },
+                black = { args = { "--stdin-filename", "$FILENAME", "--line-length", 160, "--quiet", "-" } },
+                isort = { prepend_args = { "-l", 160 } },
             },
         },
     },
