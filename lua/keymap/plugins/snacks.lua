@@ -137,7 +137,6 @@ bind.nvim_load_mapping({
         :with_desc("Snacks: git commit in current file"),
 })
 
-Snacks.toggle.diagnostics():map("<leader>uD")
 Snacks.toggle.line_number():map("<leader>ul")
 Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
 Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
