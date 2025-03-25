@@ -2,6 +2,14 @@
 return {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "LspAttach", -- Or `LspAttach`
+    opts = {
+        options = {
+            multilines = {
+                enabled = true,
+                always_show = true,
+            },
+        },
+    },
     config = function(_, opts)
         if require("config.settings").lsp.native_diagnostics then
             return
