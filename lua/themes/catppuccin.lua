@@ -9,6 +9,8 @@ return {
             default_integrations = false,
             barbar = true,
             blink_cmp = true,
+            dap = true,
+            dap_ui = true,
             diffview = true,
             fidget = true,
             gitsigns = true,

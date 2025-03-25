@@ -22,6 +22,7 @@ end
 
 require("lazy").setup({
     { import = "themes" },
+    { import = "plugins.dap" },
     { import = "plugins.editor" },
     { import = "plugins.formatter" },
     { import = "plugins.languages" },
