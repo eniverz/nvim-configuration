@@ -11,7 +11,7 @@ bind.nvim_load_mapping({
     ["nv|<leader>dE"] = map_callback(function()
             vim.ui.input({ prompt = "Expression: " }, function(expr)
                 if expr then
-                    require("dapui").eval(expr, { enter = true })
+                    require("dapui").eval(expr)
                 end
             end)
         end)
