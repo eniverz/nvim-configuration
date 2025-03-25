@@ -47,7 +47,7 @@ local settings = {
             autopairs = true,
             copilot = true,
         },
-        diagnostics_virtual_text = true,
+        native_diagnostics = false,
         diagnostics_level = "Hint",
     },
 }
