@@ -47,13 +47,7 @@ return {
         build = ":MasonUpdate",
         config = function(_, opts)
             require("mason").setup(opts)
-            require("mason-lspconfig").setup()
         end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        dependencies = { "williamboman/mason.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" },
-        event = "VeryLazy",
     },
     {
         "neovim/nvim-lspconfig",
@@ -61,7 +55,6 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
-            "williamboman/mason-lspconfig.nvim",
             "antosha417/nvim-lsp-file-operations",
             "saghen/blink.cmp",
         },
