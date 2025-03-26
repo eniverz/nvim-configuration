@@ -29,6 +29,16 @@
 
 use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
+### dap
+
+[nvim-dap](https://github.com/mfussenegger/nvim-dap): debugger
+
+[nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui): UI for debugger
+
+[nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text): show variable value with virtual text
+
+[mason-nvim-dap](https://github.com/jay-babu/mason-nvim-dap.nvim): bridge debug adapter with nvim
+
 ### editor
 
 [barbar](https://github.com/romgrk/barbar.nvim): tab bar
@@ -42,6 +52,8 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 [fidget](https://github.com/j-hui/fidget.nvim): show lsp loading message in bottom right
 
 [gitsigns](https://github.com/lewis6991/gitsigns.nvim): git status
+
+[helpview](https://github.com/OXY2DEV/helpview.nvim): better help view
 
 [lualine](https://github.com/nvim-lualine/lualine.nvim): status bar
 
@@ -65,6 +77,8 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [suda](https://github.com/lambdalisue/suda.vim): write file by sudo
 
+[tiny-inline-diagnostic](https://github.com/rachartier/tiny-inline-diagnostic.nvim): better inline diagnostics
+
 [todo-comments](https://github.com/folke/todo-comments.nvim): highlight TODOs, etc. and jump to them
 
 [vim-cool](https://github.com/romainl/vim-cool): better highlight searching word
@@ -87,11 +101,11 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [Comment](https://github.com/numToStr/Comment.nvim): quick toggle comment
 
+[dropbar](https://github.com/Bekaboo/dropbar.nvim): top dropbar with click enabled
+
 [lsp-config](https://github.com/neovim/nvim-lspconfig): lsp
 
 [mason](https://github.com/williamboman/mason.nvim): lsp, dap, lint manager
-
-[mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim): bridge the gap between lsp-config and mason
 
 [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim): install helper for mason
 
