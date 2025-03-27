@@ -27,10 +27,27 @@ return {
         optional = true,
         opts = {
             formatters_by_ft = {
-                javascript = {"prettier"},
+                javascript = { "prettier" },
                 typescript = { "prettier" },
                 javascriptreact = { "prettier" },
                 typescriptreact = { "prettier" },
+            },
+            formatters = {
+                prettier = {
+                    append_args = {
+                        "--config-precedence",
+                        "prefer-file",
+                        "--print-width",
+                        "120",
+                        "--tab-width",
+                        "4",
+                        "--trailing-comma",
+                        "none",
+                        "--arrow-parens",
+                        "avoid",
+                        "--no-semi",
+                    },
+                },
             },
         },
     },
