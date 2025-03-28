@@ -1,6 +1,7 @@
 ---@type overseer.TemplateFileDefinition
 return {
     name = "shell",
+    priority = 100,
     params = {
         cmd = { type = "string", order = 1 },
         name = { type = "string", optional = true, order = 2 },
