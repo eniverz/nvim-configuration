@@ -18,6 +18,7 @@ require("keymap.plugins.snacks")
 require("keymap.plugins.suda")
 require("keymap.plugins.tiny-virtual-text")
 require("keymap.plugins.todo-comment")
+require("keymap.plugins.vim-visual-multi")
 require("keymap.plugins.yazi")
 
 require("keymap.editor")
