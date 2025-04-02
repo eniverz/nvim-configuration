@@ -14,10 +14,22 @@ return {
         opts = function()
             local icon_config = require("config.icons")
             local icons = { diagnostics = icon_config.get("diagnostics"), git = icon_config.get("git"), ui = icon_config.get("ui") }
-            vim.fn.sign_define("DiagnosticSignError", { text = icons.diagnostics.Error_alt, texthl = "DiagnosticsSignError" })
-            vim.fn.sign_define("DiagnosticSignWarn", { text = icons.diagnostics.Warning_alt, texthl = "DiagnosticsSignWarn" })
-            vim.fn.sign_define("DiagnosticSignInfo", { text = icons.diagnostics.Information_alt, texthl = "DiagnosticsSignInfo" })
-            vim.fn.sign_define("DiagnosticSignHint", { text = icons.diagnostics.Hint_alt, texthl = "DiagnosticsSignHint" })
+            vim.diagnostic.config({
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = icons.diagnostics.Error_alt,
+                        [vim.diagnostic.severity.WARN] = icons.diagnostics.Warning_alt,
+                        [vim.diagnostic.severity.INFO] = icons.diagnostics.Information_alt,
+                        [vim.diagnostic.severity.HINT] = icons.diagnostics.Hint_alt,
+                    },
+                    numhl = {
+                        [vim.diagnostic.severity.ERROR] = "DiagnosticsSignError",
+                        [vim.diagnostic.severity.WARN] = "DiagnosticsSignWarn",
+                        [vim.diagnostic.severity.INFO] = "DiagnosticsSignInfo",
+                        [vim.diagnostic.severity.HINT] = "DiagnosticsSignHint",
+                    },
+                },
+            })
             return {
                 icons = {
                     buffer_index = true,
