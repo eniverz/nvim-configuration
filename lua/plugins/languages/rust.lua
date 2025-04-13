@@ -61,16 +61,6 @@ return {
                 kind = require("config.icons").get("kind", true),
             }
 
-            -- vim.api.nvim_create_autocmd("BufRead", {
-            --     group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
-            --     desc = "Load crates.nvim into Cargo buffers",
-            --     pattern = "Cargo.toml",
-            --     callback = function()
-            --         require("cmp").setup.buffer({ sources = { { name = "crates" } } })
-            --         require("crates")
-            --     end,
-            -- })
-            --
             local new_opts = {
                 text = {
                     loading = " " .. icons.misc.Watch .. "Loading",
@@ -133,5 +123,20 @@ return {
             -- Set buffer-local keymaps
             require("keymap.plugins.crates")
         end,
+    },
+    {
+        "stevearc/conform.nvim",
+        optional = true,
+        opts = {
+            formatters_by_ft = {
+                rust = { "rustfmt" },
+            },
+            formatters = {
+                rustfmt = {
+                    "--config",
+                    "max_width=120,chain_width=80,fn_call_width=80,attr_fn_like_width=100,array_width=72,edition=2024,style_edition=2024",
+                },
+            },
+        },
     },
 }
