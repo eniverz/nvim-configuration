@@ -113,7 +113,7 @@ return {
                 { text = { " Have Fun with neovim", hl = "SnacksDashboardDesc" }, align = "center" },
             },
         },
-        image = { enabled = true },
+        image = { enabled = true, math = { enabled = false } },
         indent = {
             indent = {
                 char = "│",
