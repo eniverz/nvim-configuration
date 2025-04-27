@@ -9,7 +9,7 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_noremap()
         :with_desc("smart-split: move cursor left"),
-    ["n|<leader>wj"] = map_callback(function()
+    ["n|<leader>wh"] = map_callback(function()
             require("smart-splits").move_cursor_right()
         end)
         :with_silent()
@@ -21,7 +21,7 @@ bind.nvim_load_mapping({
         :with_silent()
         :with_noremap()
         :with_desc("smart-split: move cursor up"),
-    ["n|<leader>wh"] = map_callback(function()
+    ["n|<leader>wj"] = map_callback(function()
             require("smart-splits").move_cursor_down()
         end)
         :with_silent()
