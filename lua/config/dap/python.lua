@@ -69,5 +69,25 @@ return function()
                 end
             end,
         },
+        {
+            type = "python",
+            request = "launch",
+            name = "Module",
+            console = "integratedTerminal",
+            module = function()
+                return vim.fn.input("module path:")
+            end,
+            args = function()
+                return vim.split(vim.fn.input("Program arg(s) (enter nothing to leave it null): "), " ", { trimempty = true })
+            end,
+            cwd = "${workspaceFolder}",
+            pythonPath = function()
+                if not is_empty(vim.env.CONDA_PREFIX) then
+                    return vim.env.CONDA_PREFIX .. "/bin/python"
+                else
+                    return vim.fn.exepath("python")
+                end
+            end,
+        },
     }
 end
