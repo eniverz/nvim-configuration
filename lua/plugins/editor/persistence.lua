@@ -1,6 +1,6 @@
 -- session manager
 return {
-    "TropinoneH/persistence.nvim",
+    "eniverz/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
     opts = {
         dir = require("config.settings").sessions.save_dir, -- directory where session files are saved

@@ -1,27 +1,27 @@
 # Neovim Configurate
 
-<p align="center"><a href="https://github.com/neovim/neovim/releases/tag/stable"><img alt="NeoVim Version Capability" src="https://img.shields.io/badge/Supports%20Nvim-v0.10.2-A6D895?style=for-the-badge&colorA=363A4F&logo=neovim&logoColor=D9E0EE"></a></p>
+<p align="center"><a href="https://github.com/neovim/neovim/releases/tag/stable"><img alt="NeoVim Version Capability" src="https://img.shields.io/badge/Supports%20Nvim-v0.11.1-A6D895?style=for-the-badge&colorA=363A4F&logo=neovim&logoColor=D9E0EE"></a></p>
 
 <p align="center">
-    <a href="https://github.com/TropinoneH/nvim-configuration/stargazers">
+    <a href="https://github.com/eniverz/nvim-configuration/stargazers">
         <img
             alt="Stars"
-            src="https://img.shields.io/github/stars/TropinoneH/nvim-configuration?colorA=363A4F&colorB=B7BDF8&logo=adafruit&logoColor=D9E0EE&style=for-the-badge">
+            src="https://img.shields.io/github/stars/eniverz/nvim-configuration?colorA=363A4F&colorB=B7BDF8&logo=adafruit&logoColor=D9E0EE&style=for-the-badge">
     </a>
-    <a href="https://github.com/TropinoneH/nvim-configuration/issues">
+    <a href="https://github.com/eniverz/nvim-configuration/issues">
         <img
             alt="Issues"
-            src="https://img.shields.io/github/issues-raw/TropinoneH/nvim-configuration?colorA=363A4f&colorB=F5A97F&logo=github&logoColor=D9E0EE&style=for-the-badge">
+            src="https://img.shields.io/github/issues-raw/eniverz/nvim-configuration?colorA=363A4f&colorB=F5A97F&logo=github&logoColor=D9E0EE&style=for-the-badge">
     </a>
-    <a href="https://github.com/TropinoneH/nvim-configuration/contributors">
+    <a href="https://github.com/eniverz/nvim-configuration/contributors">
         <img
             alt="Contributors"
-            src="https://img.shields.io/github/contributors/TropinoneH/nvim-configuration?colorA=363A4F&colorB=B5E8E0&logo=git&logoColor=D9E0EE&style=for-the-badge">
+            src="https://img.shields.io/github/contributors/eniverz/nvim-configuration?colorA=363A4F&colorB=B5E8E0&logo=git&logoColor=D9E0EE&style=for-the-badge">
     </a>
-    <a href="https://github.com/TropinoneH/nvim-configuration">
+    <a href="https://github.com/eniverz/nvim-configuration">
         <img
             alt="Code Size"
-            src="https://img.shields.io/github/languages/code-size/TropinoneH/nvim-configuration?colorA=363A4F&colorB=DDB6F2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
+            src="https://img.shields.io/github/languages/code-size/eniverz/nvim-configuration?colorA=363A4F&colorB=DDB6F2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
     </a>
 </p>
 
@@ -63,7 +63,7 @@ use [lazy.nvim](https://github.com/folke/lazy.nvim) as plugin manager
 
 [overseer](https://github.com/stevearc/overseer.nvim): task runner
 
-[persistence](https://github.com/TropinoneH/persistence.nvim): session manager
+[persistence](https://github.com/eniverz/persistence.nvim): session manager
 
 [rip-substitute](https://github.com/chrisgrieser/nvim-rip-substitute): visual search and replace bar
 
