@@ -108,6 +108,19 @@ local clipboard_config = function()
             },
             cache_enabled = 0,
         }
+    elseif global.is_linux then
+        vim.g.clipboard = {
+            name = "copyq",
+            copy = {
+                ["+"] = "copyq add -",
+                ["*"] = "copyq add -",
+            },
+            paste = {
+                ["+"] = "copyq paste -",
+                ["*"] = "copyq paste -",
+            },
+            cache_enabled = 0,
+        }
     end
 end
 
