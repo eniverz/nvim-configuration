@@ -48,6 +48,28 @@ return {
                 },
             }
         end,
+        keys = {
+            {"<A-Left>", "<Cmd>BufferPrevious<CR>", desc = "Buffer: previous"},
+            {"<A-Right>", "<Cmd>BufferNext<CR>", desc = "Buffer: next"},
+            {"<A-j>", "<Cmd>BufferPrevious<CR>", desc = "Buffer: previous"},
+            {"<A-k>", "<Cmd>BufferNext<CR>", desc = "Buffer: next"},
+            {"<A-S-j>", "<Cmd>BufferMovePrevious<CR>", desc = "Buffer: move buffer previous"},
+            {"<A-S-k>", "<Cmd>BufferMoveNext<CR>", desc = "Buffer: move buffer next"},
+            {"<leader>bG", "<Cmd>BufferLast<CR>", desc = "Buffer: goto last buffer"},
+            {"<leader>bp", "<Cmd>BufferPick<CR>", desc = "Buffer: pick one buffer"},
+            {"<leader>bP", "<Cmd>BufferPin<CR>", desc = "Buffer: pin/unpin current buffer"},
+            {"<leader>c", "<Cmd>BufferClose<CR>", desc = "Buffer: close current buffer"},
+            {"<leader>bc", "<Cmd>BufferCloseAllButCurrentOrPinned<CR>", desc = "Buffer: close buffers except current"},
+            {"<leader>bl", "<Cmd>BufferCloseBuffersLeft<CR>", desc = "Buffer: close left buffers"},
+            {"<leader>br", "<Cmd>BufferCloseBuffersRight<CR>", desc = "Buffer: close right buffers"},
+            {"<leader>bR", "<Cmd>BufferRestore<CR>", desc = "Buffer: restore closed buffer"},
+
+            {"<leader>bsi", "<Cmd>BufferOrderByBufferNumber<CR>", desc = "Buffer: sort by buffer id"},
+            {"<leader>bsn", "<Cmd>BufferOrderByName<CR>", desc = "Buffer: sort by buffer name"},
+            {"<leader>bsd", "<Cmd>BufferOrderByDirectory<CR>", desc = "Buffer: sort by buffer path"},
+            {"<leader>bsl", "<Cmd>BufferOrderByLanguage<CR>", desc = "Buffer: sort by code language"},
+            {"<leader>bsw", "<Cmd>BufferOrderByWindowNumber<CR>", desc = "Buffer: sort by window number"},
+        },
     },
     {
         "stevearc/resession.nvim",

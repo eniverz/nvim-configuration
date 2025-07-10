@@ -1,3 +1,4 @@
+-- file explorer
 return {
     "mikavilpas/yazi.nvim",
     cmd = "Yazi",
@@ -8,4 +9,8 @@ return {
         keymaps = false,
         open_multiple_tabs = true,
     },
+    keys = {
+        {"<leader>e", "<Cmd>Yazi<CR>", desc = "Yazi: toggle with current file"},
+        {"<leader>n", "<Cmd>Yazi cwd<CR>", desc = "Yazi: toggle with current working directory"}
+    }
 }

@@ -5,7 +5,6 @@ return {
     event = "LspAttach",
     cmd = "Lspsaga",
     dependencies = {
-        "neovim/nvim-lspconfig",
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",
     },
@@ -25,7 +24,7 @@ return {
                 max_width = 0.45,
                 max_height = 0.7,
                 open_link = "gl",
-                open_cmd = "!" .. require("config.settings").external_browser,
+                open_cmd = "!" .. require("config.settings").settings.external_browser,
             },
             lightbulb = { enable = false },
             outline = { win_width = 50 },
@@ -80,6 +79,20 @@ return {
             },
         }
     end,
+    keys = {
+        {"<leader>lr", "<Cmd>Lspsaga rename<CR>", desc = "Lspsaga: rename in file range"},
+        {"<leader>lR", "<Cmd>Lspsaga rename ++project<CR>", desc = "Lspsaga: rename in project range"},
+        {"<leader>lk", "<Cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga: show doc"},
+        {"<leader>la", "<Cmd>Lspsaga code_action<CR>", desc = "Lspsaga: show code actions"},
+        {"<leader>ld", "<Cmd>Lspsaga peek_definition<CR>", desc = "Lspsaga: show definition under cursor"},
+        {"<leader>lD", "<Cmd>Lspsaga goto_definition<CR>", desc = "Lspsaga: goto definition under cursor"},
+        {"<leader>ls", "<Cmd>Lspsaga outline<CR>", desc = "Lspsaga: show symbol outline"},
+
+        {"<leader>xj", "<Cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Lspsaga: goto next diagnostic"},
+        {"<leader>xk", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Lspsaga: goto previous diagnostic"},
+        {"<leader>xx", "<Cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Lspsaga: show diagnostics on current buffer"},
+        {"<leader>xX", "<Cmd>Lspsaga show_workspace_diagnostics<CR>", desc = "Lspsaga: show diagnostics on workspace"},
+    },
     config = function(_, opts)
         require("lspsaga").setup(opts)
     end,

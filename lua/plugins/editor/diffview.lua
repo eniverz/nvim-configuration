@@ -16,4 +16,8 @@ return {
             },
         }
     end,
+    keys = {
+        { "<leader>gd", "<Cmd>DiffviewFileHistory<CR>", desc = "Diffview: open file history" },
+        { "<leader>gD", "<Cmd>DiffviewOpen<CR>", desc = "Diffview: open file changes panel in current workspace" },
+    },
 }

@@ -17,4 +17,16 @@ return {
             },
         },
     },
+    keys = {
+        {
+            "<leader>or",
+            function()
+                require("overseer").run_template({})
+            end,
+            desc = "Overseer: run task",
+        },
+        { "<leader>oc", ":OverseerRunCmd<CR>", desc = "Overseer: run command" },
+        { "<leader>oc", ":OverseerToggle<CR>", desc = "Overseer: toggle task list" },
+        { "<leader>oc", ":OverseerInfo<CR>", desc = "Overseer: show info" },
+    },
 }

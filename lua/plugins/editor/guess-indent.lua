@@ -1,3 +1,4 @@
+-- auto determine indent for each file
 return {
     "nmac427/guess-indent.nvim",
     lazy = true,

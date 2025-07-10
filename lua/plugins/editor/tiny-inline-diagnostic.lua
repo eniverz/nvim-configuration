@@ -10,8 +10,23 @@ return {
             },
         },
     },
+    keys = {
+        {
+            "<leader>uD",
+            function()
+                local td = require("tiny-inline-diagnostic")
+                local toggle = Snacks.toggle.diagnostics()
+                if toggle:get() then
+                    td.disable()
+                else
+                    td.enable()
+                end
+                toggle:toggle()
+            end,
+        },
+    },
     config = function(_, opts)
-        if require("config.settings").lsp.native_diagnostics then
+        if require("config.settings").settings.lsp.native_diagnostics then
             return
         end
         require("tiny-inline-diagnostic").setup(opts)

@@ -9,4 +9,27 @@ return {
             opts.pre_hook = commentstring.create_pre_hook()
         end
     end,
+    keys = {
+        {"<C-/>", function()
+            return require("Comment.api").call(
+                "toggle.linewise." .. (vim.v.count == 0 and "current" or "count_repeat"),
+                "g@$"
+            )()
+        end, desc = "Comment: toggle line", expr = true},
+        {"<C-_>", function()
+            return require("Comment.api").call(
+                "toggle.linewise." .. (vim.v.count == 0 and "current" or "count_repeat"),
+                "g@$"
+            )()
+        end, desc = "Comment: toggle line", expr = true},
+        {"<leader>/", function()
+            return require("Comment.api").call(
+                "toggle.linewise." .. (vim.v.count == 0 and "current" or "count_repeat"),
+                "g@$"
+            )()
+        end, desc = "Comment: toggle line", expr = true},
+        {"<leader>/", "<Esc><Cmd>lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<CR>", mode = "x", desc = "Comment: toggle select lines"},
+        {"<C-_>", "<Esc><Cmd>lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<CR>", mode = "x", desc = "Comment: toggle select lines"},
+        {"<C-/>", "<Esc><Cmd>lua require('Comment.api').locked('toggle.linewise')(vim.fn.visualmode())<CR>", mode = "x", desc = "Comment: toggle select lines"},
+    }
 }

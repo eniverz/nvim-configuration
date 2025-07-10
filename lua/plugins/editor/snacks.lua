@@ -6,7 +6,7 @@ return {
     opts = {
         bigfile = {
             enabled = true,
-            size = require("config.settings").large_buf.size, -- unit: bytes
+            size = require("config.settings").settings.large_buf.size, -- unit: bytes
             ---@param ctx {buf: number, ft:string}
             setup = function(ctx)
                 Snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
@@ -211,4 +211,37 @@ return {
         },
         words = { enabled = true },
     },
+    keys = {
+        {"<leader>ud", function() Snacks.notifier.hide() end, desc = "Snacks: clear all notifications"},
+        {"<leader>un", function() Snacks.notifier.show_history() end, desc = "Snacks: show notifications history"},
+
+        {"<leader>gg", function() Snacks.lazygit.open() end, desc = "Snacks: open lazygit panel"},
+        {"<leader>gl", function() Snacks.lazygit.log() end, desc = "Snacks: open lazygit log panel"},
+        {"<leader>gb", function() Snacks.lazygit.blame_line() end, desc = "Snacks: showgit commit in current line"},
+
+        {"]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Snacks: jump to next word"},
+        {"[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Snacks: jump to prev word"},
+
+        {"<leader>tf", function() Snacks.terminal.toggle() end, desc = "Snacks: toggle float terminal"},
+        {"<leader>th", function() Snacks.terminal.toggle(nil, { win = { position = "bottom", height = 0.4 }, env = { NVIM_TERM = "horizontal" } }) end, desc = "Snacks: toggle horizontal terminal"},
+        {"<leader>tv", function() Snacks.terminal.toggle(nil, { win = { position = "right", width = 0.4 }, env = {NVIM_TERM = "vertical" }  }) end, desc = "Snacks: toggle vertical terminal"},
+
+        {"<leader>f<space>", function() Snacks.picker() end, desc = "Snacks: pickers"},
+        {"<leader>ff", function() Snacks.picker.files() end, desc = "Snacks: pick files"},
+        {"<leader>fw", function() Snacks.picker.grep() end, desc = "Snacks: pick word in project"},
+        {"<leader>f<CR>", function() Snacks.picker.resume() end, desc = "Snacks: resume last picker"},
+        {"<leader>fh", function() Snacks.picker.lsp_references() end, desc = "Snacks: pick lsp references"},
+        {"<leader>gt", function() Snacks.picker.git_status() end, desc = "Snacks: git status"},
+        {"<leader>gc", function() Snacks.picker.git_log_file() end, desc = "Snacks: git commit in current file"},
+    },
+    config = function (_, opts)
+        require("snacks").setup(opts)
+        Snacks.toggle.line_number():map("<leader>ul")
+        Snacks.toggle.option("relativenumber", {name = "Relative Number"}):map("<leader>uL")
+        Snacks.toggle.option("spell", {name = "Relative Number"}):map("<leader>us")
+        Snacks.toggle.treesitter():map("<leader>ut")
+        Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
+        Snacks.toggle.indent():map("<leader>u|")
+        Snacks.toggle.zen():map("<leader>uz")
+    end
 }

@@ -17,6 +17,18 @@ return {
             highlight_grey = "LineNr",
         },
     },
+    keys = {
+        {"<leader>ua", function()
+            local npairs = require("nvim-autopairs")
+            if npairs.state.disabled then
+                npairs.enabled()
+                vim.notify("npairs enabled", vim.log.levels.INFO, { title = "Autopairs" })
+            else
+                npairs.disabled()
+                vim.notify("npairs disabled", vim.log.levels.WARN, { title = "Autopairs" })
+            end
+        end, desc = "Autopairs: toggle autopairs"}
+    },
     config = function(_, opts)
         local npairs = require("nvim-autopairs")
         local cond = require("nvim-autopairs.conds")
@@ -44,7 +56,7 @@ return {
             end),
         })
 
-        if not require("config.settings").lsp.features.autopairs then
+        if not require("config.settings").settings.lsp.features.autopairs then
             npairs.disable()
         end
     end,

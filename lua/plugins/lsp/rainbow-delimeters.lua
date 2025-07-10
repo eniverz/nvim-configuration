@@ -24,7 +24,6 @@ return {
                 [""] = "rainbow-delimiters",
                 latex = "rainbow-blocks",
                 javascript = "rainbow-delimiters-react",
-                javascriptreact = "rainbow-delimiters-react",
             },
             highlight = {
                 "RainbowDelimiterRed",
