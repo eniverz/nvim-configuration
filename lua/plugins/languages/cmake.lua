@@ -17,16 +17,4 @@ return {
             end
         end,
     },
-    {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = {
-            server = {
-                neocmake = {
-                    capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
-                    init_options = { buildDirectory = "cmake-build-debug" },
-                },
-            },
-        },
-    },
 }

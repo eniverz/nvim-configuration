@@ -18,11 +18,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = { server = { lemminx = {} } },
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {

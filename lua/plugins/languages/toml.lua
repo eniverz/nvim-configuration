@@ -18,9 +18,4 @@ return {
             end
         end,
     },
-    {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = { server = { taplo = {} } },
-    },
 }

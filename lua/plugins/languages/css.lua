@@ -19,30 +19,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = {
-            server = {
-                cssls = { init_options = { provideFormatter = false } },
-                cssmodules_ls = {},
-                tailwindcss = {
-                    root_dir = function(fname)
-                        local root_pattern = require("lspconfig").util.root_pattern(
-                            "tailwind.config.mjs",
-                            "tailwind.config.cjs",
-                            "tailwind.config.js",
-                            "tailwind.config.ts",
-                            "postcss.config.js",
-                            "config/tailwind.config.js",
-                            "assets/tailwind.config.js"
-                        )
-                        return root_pattern(fname)
-                    end,
-                },
-            },
-        },
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {

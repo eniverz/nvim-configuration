@@ -18,41 +18,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = {
-            server = {
-                lua_ls = {
-                    filetypes = { "lua" },
-                    settings = {
-                        Lua = {
-                            runtime = {
-                                -- Tell the language server which version of Lua you're using
-                                -- (most likely LuaJIT in the case of Neovim)
-                                version = "LuaJIT",
-                            },
-                            diagnostics = {
-                                -- Get the language server to recognize the `vim` global
-                                globals = { "vim", "require", "Snacks" },
-                                disable = { "different-requires" },
-                            },
-                            workspace = {
-                                library = { vim.fn.expand("$VIMRUNTIME/lua"), vim.fn.stdpath("config") .. "/lua" },
-                                maxPreload = 100000,
-                                preloadFileSize = 10000,
-                            },
-                            hint = { enable = true, arrayIndex = "Disable" },
-                            format = { enable = false },
-                            telemetry = { enable = false },
-                            -- Do not override treesitter lua highlighting with lua_ls's highlighting
-                            semantic = { enable = false },
-                        },
-                    },
-                },
-            },
-        },
-    },
-    {
         "folke/lazydev.nvim",
         ft = "lua",
         opts = { library = { "snacks.nvim", "lazy.nvim" } },

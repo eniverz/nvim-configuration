@@ -18,11 +18,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = { server = { ts_ls = { settings = { implicitProjectConfiguration = { checkJs = true } } } } },
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {

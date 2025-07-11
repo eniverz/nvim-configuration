@@ -23,11 +23,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = { server = { clangd = {} } },
-    },
-    {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = {

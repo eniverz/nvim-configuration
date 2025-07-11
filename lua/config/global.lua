@@ -7,10 +7,12 @@ local function file_exists(path)
 end
 
 local function check_ssh_keys(home, sep)
-    local k = {"id_rsa","id_ecdsa","id_ed25519","id_dsa"}
+    local k = { "id_rsa", "id_ecdsa", "id_ed25519", "id_dsa" }
     for _, key in ipairs(k) do
         local p = home .. sep .. ".ssh" .. sep .. key
-        if file_exists(p) and file_exists(p .. ".pub") then return true end
+        if file_exists(p) and file_exists(p .. ".pub") then
+            return true
+        end
     end
     return false
 end
@@ -22,10 +24,9 @@ function global:load_variables()
     self.is_windows = os_name == "Windows_NT"
     self.is_wsl = vim.fn.has("wsl") == 1
     self.vim_path = vim.fn.stdpath("config")
-    local path_sep = self.is_windows and "\\" or "/"
-    local home = self.is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
-    self.home = home
-    self.use_ssh = check_ssh_keys(home, path_sep)
+    self.path_sep = self.is_windows and "\\" or "/"
+    self.home = self.is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
+    self.use_ssh = check_ssh_keys(self.home, self.path_sep)
     self.data_dir = string.format("%s/site/", vim.fn.stdpath("data"))
 end
 

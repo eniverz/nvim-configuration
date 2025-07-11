@@ -18,23 +18,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = {
-            server = {
-                rust_analyzer = {
-                    settings = {
-                        rust_analyzer = {
-                            cargo = { allFeatures = true },
-                            check = { command = "clippy", allFeatures = true },
-                            diagnostics = { enable = false },
-                        },
-                    },
-                },
-            },
-        },
-    },
-    {
         "Saecki/crates.nvim",
         lazy = true,
         event = "BufReadPost Cargo.toml",
@@ -50,6 +33,109 @@ return {
                 actions = true,
                 completion = true,
                 hover = true,
+            },
+        },
+        keys = {
+            {
+                "<leader>Ct",
+                function()
+                    require("crates").toggle()
+                end,
+                desc = "Crates: Toggle",
+            },
+            {
+                "<leader>Cr",
+                function()
+                    require("crates").reload()
+                end,
+                desc = "Crates: Reload",
+            },
+            {
+                "<leader>Cr",
+                function()
+                    require("crates").reload()
+                end,
+                desc = "Crates: Reload",
+            },
+            {
+                "<leader>Cs",
+                function()
+                    require("crates").show_popup()
+                end,
+                desc = "Crates: Toggle pop-up window",
+            },
+            {
+                "<leader>Cv",
+                function()
+                    require("crates").show_versions_popup()
+                    require("crates").show_popup()
+                end,
+                desc = "Crates: Select spec version",
+            },
+            {
+                "<leader>Cf",
+                function()
+                    require("crates").show_features_popup()
+                    require("crates").show_popup()
+                end,
+                desc = "Crates: Select spec features",
+            },
+            {
+                "<leader>Cd",
+                function()
+                    require("crates").show_dependencies_popup()
+                    require("crates").show_popup()
+                end,
+                desc = "Crates: Show project dependencies",
+            },
+            {
+                "<leader>Cu",
+                function()
+                    require("crates").update_crate()
+                end,
+                desc = "Crates: Update current crate's spec",
+            },
+            {
+                "<leader>Ca",
+                function()
+                    require("crates").update_all_crates()
+                end,
+                desc = "Crates: Update all crate's spec",
+            },
+            {
+                "<leader>CU",
+                function()
+                    require("crates").upgrade_crate()
+                end,
+                desc = "Crates: Upgrade current crate's spec",
+            },
+            {
+                "<leader>CA",
+                function()
+                    require("crates").upgrade_all_crates()
+                end,
+                desc = "Crates: Upgrade all crate's spec",
+            },
+            {
+                "<leader>CD",
+                function()
+                    require("crates").open_documentation()
+                end,
+                desc = "Crates: Open current crate's documentation",
+            },
+            {
+                "<leader>CR",
+                function()
+                    require("crates").open_repository()
+                end,
+                desc = "Crates: Open current crate's repository",
+            },
+            {
+                "<leader>CC",
+                function()
+                    require("crates").open_crates_io()
+                end,
+                desc = "Crates: Open current crate's documentation",
             },
         },
         config = function(_, opts)
@@ -119,9 +205,6 @@ return {
             }
             opts = vim.tbl_extend("force", opts, new_opts)
             require("crates").setup(opts)
-
-            -- Set buffer-local keymaps
-            require("keymap.plugins.crates")
         end,
     },
     {

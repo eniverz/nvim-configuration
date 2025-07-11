@@ -23,21 +23,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.jsonls = {
-                settings = {
-                    json = {
-                        schemas = require("schemastore").json.schemas(),
-                        validate = { enabled = true },
-                    },
-                },
-            }
-        end,
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = {

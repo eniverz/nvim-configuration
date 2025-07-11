@@ -21,21 +21,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = function(_, opts)
-            opts.server = opts.server or {}
-            opts.server.yamlls = {
-                settings = {
-                    yamlls = {
-                        schemas = require("schemastore").yaml.schemas(),
-                        schemaStore = { enable = false, url = "" },
-                    },
-                },
-            }
-        end,
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = { formatters_by_ft = { yaml = { "prettier" } } },

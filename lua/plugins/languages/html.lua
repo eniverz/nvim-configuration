@@ -18,26 +18,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = {
-            server = {
-                html = { init_options = { provideFormatter = false }, filetype = { "html" } },
-                emmet_ls = {
-                    capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } },
-                    init_options = {
-                        html = {
-                            options = {
-                                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-                                ["bem.enabled"] = true,
-                            },
-                        },
-                    },
-                },
-            },
-        },
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = { formatters_by_ft = { html = { "prettier" } } },

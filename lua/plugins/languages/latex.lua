@@ -18,11 +18,6 @@ return {
         end,
     },
     {
-        "neovim/nvim-lspconfig",
-        optional = true,
-        opts = { server = { texlab = {} } },
-    },
-    {
         "stevearc/conform.nvim",
         optional = true,
         opts = { formatters_by_ft = { latex = { "latexindent" } } },
