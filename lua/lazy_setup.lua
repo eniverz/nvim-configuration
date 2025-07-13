@@ -69,7 +69,7 @@ local lazy_settings = {
     },
     dev = {
         path = "~/Documents/neovim",
-    }
+    },
 }
 if global.is_mac then
     lazy_settings.concurrency = 20
@@ -93,6 +93,16 @@ if not pcall(require, "lazy") then
     vim.fn.getchar()
     vim.cmd.quit()
 end
+
+local map = vim.keymap.set
+local opts = function(desc)
+    return { desc = desc, silent = true, nowait = true, noremap = true }
+end
+
+map("n", "<leader>pl", ":Lazy<CR>", opts("package: Lazy panel"))
+map("n", "<leader>pc", ":Lazy check<CR>", opts("package: Lazy check"))
+map("n", "<leader>pu", ":Lazy update<CR>", opts("package: Lazy update"))
+map("n", "<leader>pp", ":Lazy profile<CR>", opts("package: Lazy profile"))
 
 require("lazy").setup({
     { import = "themes" },
