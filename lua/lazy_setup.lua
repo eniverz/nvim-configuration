@@ -106,7 +106,7 @@ map("n", "<leader>pp", ":Lazy profile<CR>", opts("package: Lazy profile"))
 
 require("lazy").setup({
     { import = "themes" },
-    -- { import = "plugins.dap" },
+    { import = "plugins.dap" },
     { import = "plugins.editor" },
     { import = "plugins.formatter" },
     { import = "plugins.languages" },

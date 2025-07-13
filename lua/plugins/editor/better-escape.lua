@@ -6,8 +6,8 @@ return {
         timeout = 300,
         default_mappings = false,
         mappings = {
-            i = { j = { j = "<Esc>" } },
-            c = { j = { j = "<Esc>" } },
+            i = { j = { j = "<Esc>" }, k = { k = "<Esc>" } },
+            c = { j = { j = "<Esc>" }, k = { k = "<Esc>" } },
         },
     },
 }
