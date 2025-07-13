@@ -217,7 +217,7 @@ return {
 
         {"<leader>gg", function() Snacks.lazygit.open() end, desc = "Snacks: open lazygit panel"},
         {"<leader>gl", function() Snacks.lazygit.log() end, desc = "Snacks: open lazygit log panel"},
-        {"<leader>gb", function() Snacks.lazygit.blame_line() end, desc = "Snacks: showgit commit in current line"},
+        {"<leader>gb", function() Snacks.git.blame_line() end, desc = "Snacks: showgit commit in current line"},
 
         {"]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Snacks: jump to next word"},
         {"[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Snacks: jump to prev word"},
