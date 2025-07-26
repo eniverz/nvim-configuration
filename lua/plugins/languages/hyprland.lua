@@ -1,4 +1,8 @@
 -- for hyprland config files
+if not require("config.global").is_linux then
+    return {}
+end
+
 return {
     {
         "nvim-treesitter/nvim-treesitter",
