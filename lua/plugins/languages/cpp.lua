@@ -18,6 +18,7 @@ return {
             local tools = { "codelldb" }
             if not is_linux_arm then
                 table.insert(tools, "clangd")
+                table.insert(tools, "clang-format")
             end
             opts.ensure_installed = require("utils.core").list_insert_unique(opts.ensure_installed, tools)
         end,
